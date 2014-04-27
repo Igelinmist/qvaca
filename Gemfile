@@ -43,5 +43,7 @@ group :development,:test do
 	gem 'factory_girl_rails'
 end
 
+gem 'shoulda', group: :test
+
 gem 'execjs'
 gem 'therubyracer'
