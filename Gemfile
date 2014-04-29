@@ -47,3 +47,4 @@ gem 'shoulda', group: :test
 
 gem 'execjs'
 gem 'therubyracer'
+gem 'slim-rails'
