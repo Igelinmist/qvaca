@@ -2,9 +2,15 @@
 
 FactoryGirl.define do
   factory :question do
-    title "MyString"
+    title "MyStringMyStringMyString"
     body "MyText"
     votes 1
     views 1
+    end
+  factory :invalid_question, class: 'Question' do
+    title nil
+    body nil
+    votes nil
+    views nil
   end
 end
