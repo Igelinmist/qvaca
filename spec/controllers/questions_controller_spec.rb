@@ -81,9 +81,9 @@ describe QuestionsController do
       end
 
       it 'changes question attributes' do
-        patch :update, id: question, question: {title: 'MyStringMyStringMyString', body: 'new body'}
+        patch :update, id: question, question: {title: 'MyStringFifteenMin', body: 'new body'}
         question.reload
-        expect(question.title).to eq 'MyStringMyStringMyString'
+        expect(question.title).to eq 'MyStringFifteenMin'
         expect(question.body).to eq 'new body'
       end
 
@@ -91,6 +91,30 @@ describe QuestionsController do
         patch :update, id: question, question: attributes_for(:question)
         expect(response).to redirect_to question
       end
+    end
+    context 'invalid attributes' do
+      before {patch :update, id: question, question: {title: 'MyStringFifteenMin', body: nil}}
+      it 'does not change question attributes' do
+        question.reload
+        expect(question.title).to eq 'MyStringFifteenMin'
+        expect(question.body).to eq 'MyText'
+      end
+
+      it 're-renders edit view ' do
+        expect(response).to render_template :edit
+      end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    before {question}
+    it 'deletes question' do
+      expect {delete :destroy, id: question}.to change(Question, :count).by(-1)
+    end
+
+    it 'redirect to index view' do
+      delete :destroy, id: question
+      expect(response).to redirect_to questions_path
     end
   end
 end

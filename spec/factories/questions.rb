@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :question do
-    title "MyStringMyStringMyString"
+    title "MyStringFifteenMin"
     body "MyText"
     votes 1
     views 1
@@ -13,4 +13,4 @@ FactoryGirl.define do
     votes nil
     views nil
   end
-end
+  end
