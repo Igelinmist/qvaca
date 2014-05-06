@@ -2,15 +2,12 @@
 
 FactoryGirl.define do
   factory :question do
-    title "MyStringFifteenMin"
+    #title "MyStringFifteenMin"
+    sequence(:title) {|n| "MyStringFifteenMin#{n}"}
     body "MyText"
-    votes 1
-    views 1
-    end
+  end
   factory :invalid_question, class: 'Question' do
     title nil
     body nil
-    votes nil
-    views nil
   end
   end
