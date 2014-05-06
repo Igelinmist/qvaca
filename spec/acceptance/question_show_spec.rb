@@ -16,6 +16,5 @@ I want to see the title and body of question
     visit questions_path
     click_on questions[1].title
     expect(page).to have_content(questions[1].body)
-
   end
 end
