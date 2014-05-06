@@ -9,5 +9,17 @@ feature 'registering', %q{
     visit '/'
     expect(page).to have_link('Register')
   end
+
+  scenario "Guest click Register link and view register form" do
+    visit '/'
+    click_on 'Register'
+    # save_and_open_page
+    expect(page).to have_content 'Please fill registration data'
+  end
+
+  scenario "Guest open register form and not see Register link" do
+    visit new_user_path
+    expect(page).to have_no_link 'Register'
+  end
   
 end
