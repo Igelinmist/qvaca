@@ -5,7 +5,9 @@ feature 'registering', %q{
   As a guest
   I want be able to register new user
 } do 
+
   let(:user) {create(:user)}
+
   scenario "Guest visit any page and see invitation to register" do
     visit '/'
     expect(page).to have_link('Register')
@@ -27,6 +29,19 @@ feature 'registering', %q{
     click_button('Save')
     expect(page).to have_content('You successfully registered')
   end
+
+  scenario "Guest must fill Nickname field" do
+    visit new_user_path
+    fill_in('First Name', with: user.first_name)
+    fill_in('Last Name', with: user.last_name)
+    fill_in('Email', with: user.email)    
+    click_button('Save')
+    expect(page).to have_content('error')
+  end
+
+  scenario "Guest must fill First Name field"
+  scenario "Guest must fill Last Name field"
+  scenario "Guest must fill Email field"
 
   scenario "Guest open register form and not see Register link" do
     visit new_user_path
