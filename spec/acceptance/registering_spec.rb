@@ -22,26 +22,53 @@ feature 'registering', %q{
 
   scenario "Guest can fill the register form fields and apply form checking" do    
     visit new_user_path
-    fill_in('Nickname', with: user.nickname)
-    fill_in('First Name', with: user.first_name)
-    fill_in('Last Name', with: user.last_name)
-    fill_in('Email', with: user.email)    
+    fill_in('Nickname', with: 'test_nick')
+    fill_in('First Name', with: 'test_fname')
+    fill_in('Last Name', with: 'test_lname')
+    fill_in('Email', with: 'test@testsrv.com')    
     click_button('Save')
     expect(page).to have_content('You successfully registered')
   end
 
   scenario "Guest must fill Nickname field" do
     visit new_user_path
+    fill_in('Nickname', with: nil)
     fill_in('First Name', with: user.first_name)
+    fill_in('Last Name', with: user.last_name)
+    fill_in('Email', with: user.email)       
+    click_button('Save')
+    expect(page).to have_content('error')
+  end
+
+  scenario "Guest must fill First Name field" do
+    visit new_user_path
+    fill_in('Nickname', with: user.nickname)
+    fill_in('First Name', with: nil)
     fill_in('Last Name', with: user.last_name)
     fill_in('Email', with: user.email)    
     click_button('Save')
     expect(page).to have_content('error')
   end
 
-  scenario "Guest must fill First Name field"
-  scenario "Guest must fill Last Name field"
-  scenario "Guest must fill Email field"
+  scenario "Guest must fill Last Name field" do 
+    visit new_user_path
+    fill_in('Nickname', with: user.nickname)
+    fill_in('First Name', with: user.first_name)
+    fill_in('Last Name', with: nil)
+    fill_in('Email', with: user.email)    
+    click_button('Save')
+    expect(page).to have_content('error')
+  end
+
+  scenario "Guest must fill Email field" do
+    visit new_user_path
+    fill_in('Nickname', with: user.nickname)
+    fill_in('First Name', with: user.first_name)
+    fill_in('Last Name', with: user.last_name)
+    fill_in('Email', with: nil)    
+    click_button('Save')
+    expect(page).to have_content('error')
+  end
 
   scenario "Guest open register form and not see Register link" do
     visit new_user_path

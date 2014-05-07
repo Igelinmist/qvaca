@@ -1,17 +1,2 @@
-h1 Please fill registration data
-=form_for @user do |f|
-  .field
-    =f.label :nickname
-    =f.text_field :nickname
-  .field
-    =f.label :first_name, 'First Name'
-    =f.text_field :first_name  
-  .field
-    =f.label :last_name, 'Last Name'
-    =f.text_field :last_name
-  .field
-    =f.label :email, 'Email'
-    =f.text_field :email
-  .submit
-    =f.submit 'Save'
+=render 'form'
 
