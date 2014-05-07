@@ -83,7 +83,7 @@ describe QuestionsController do
       it 'changes question attributes' do
         patch :update, id: question, question: {title: 'MyStringFifteenMin', body: 'new body'}
         question.reload
-        expect(question.title).to eq 'MyStringFifteenMin'
+        expect(question.title).to match /MyStringFifteenMin/
         expect(question.body).to eq 'new body'
       end
 
@@ -96,7 +96,7 @@ describe QuestionsController do
       before {patch :update, id: question, question: {title: 'MyStringFifteenMin', body: nil}}
       it 'does not change question attributes' do
         question.reload
-        expect(question.title).to eq 'MyStringFifteenMin'
+        expect(question.title).to match /MyStringFifteenMin/
         expect(question.body).to eq 'MyText'
       end
 

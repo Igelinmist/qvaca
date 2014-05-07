@@ -45,6 +45,10 @@ group :development,:test do
 	gem 'factory_girl_rails'
 	gem 'capybara'
 	gem 'launchy'
+  gem 'guard-rspec'
+  gem 'spork-rails'
+  gem 'guard-spork'
+  gem 'childprocess'
 end
 
 gem 'shoulda', group: :test
