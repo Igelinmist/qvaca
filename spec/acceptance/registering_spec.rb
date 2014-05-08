@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 feature 'registering', %q{
-  In order to become a member
-  As a guest
-  I want be able to register new user
+In order to become a member
+As a guest
+I want be able to register new user
 } do 
 
   let(:user) {create(:user)}
@@ -26,7 +26,7 @@ feature 'registering', %q{
     fill_in('First Name', with: 'test_fname')
     fill_in('Last Name', with: 'test_lname')
     fill_in('Email', with: 'test@testsrv.com')    
-    click_button('Save')
+    click_on('Save')
     expect(page).to have_content('You successfully registered')
   end
 
@@ -46,7 +46,7 @@ feature 'registering', %q{
     fill_in('First Name', with: nil)
     fill_in('Last Name', with: user.last_name)
     fill_in('Email', with: user.email)    
-    click_button('Save')
+    click_on('Save')
     expect(page).to have_content('error')
   end
 
@@ -56,7 +56,7 @@ feature 'registering', %q{
     fill_in('First Name', with: user.first_name)
     fill_in('Last Name', with: nil)
     fill_in('Email', with: user.email)    
-    click_button('Save')
+    click_on('Save')
     expect(page).to have_content('error')
   end
 
@@ -66,13 +66,13 @@ feature 'registering', %q{
     fill_in('First Name', with: user.first_name)
     fill_in('Last Name', with: user.last_name)
     fill_in('Email', with: nil)    
-    click_button('Save')
+    click_on('Save')
     expect(page).to have_content('error')
   end
 
   scenario "Guest open register form and not see Register link" do
     visit new_user_path
-    expect(page).to have_no_link 'Register'
+    expect(page).to_not have_link 'Register'
   end
   
 end
