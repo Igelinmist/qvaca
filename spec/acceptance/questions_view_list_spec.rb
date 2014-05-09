@@ -6,7 +6,7 @@ As a non authenticate user
 I want to see the list of questions
 } do
 
-  let!(:questions) { create_list(:question, 2) }
+  given!(:questions) { create_list(:question, 2) }
 
   scenario "Anyone is able to view the list of question and the titles of questions are hyperlinks" do
     visit questions_path
