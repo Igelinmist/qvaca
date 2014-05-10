@@ -12,19 +12,19 @@ feature 'Create question', %q{
     sign_in(user)
     
     visit '/questions'
-    click_on 'Ask question'
-    fill_in 'Title', with: 'Test question 15'
-    fill_in 'Text', with: 'test text'
-    click_on 'Create'    
+    click_on 'Разместить вопрос'
+    fill_in 'Заголовок', with: 'Test question 15'
+    fill_in 'Содержание', with: 'test text'
+    click_on 'Разместить'    
     
-    expect(page).to have_content 'Your question successfuly created.'
+    expect(page).to have_content 'Ваш вопрос успешно размещен.'
   end
 
   scenario "Non-authenticated user try to create question" do
     visit '/questions'
-    click_on 'Ask question'
+    click_on 'Разместить вопрос'
 
-    expect(page).to have_content 'You need to sign in or sign up'
+    expect(page).to have_content 'Вам необходимо войти или зарегистрироваться.'
   end
 
 end

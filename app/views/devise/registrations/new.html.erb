@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Введите данные для регистрации на сайте</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -6,13 +6,13 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password, 'Пароль' %><br />
     <%= f.password_field :password, autocomplete: "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :password_confirmation,'Повторите пароль' %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div><%= f.submit "Регистрация" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>

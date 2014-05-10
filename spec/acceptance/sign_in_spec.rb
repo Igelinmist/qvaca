@@ -20,7 +20,18 @@ feature 'Signing in', %q{
     fill_in 'Password', with: '12345'
     click_on 'Sign in'
 
-    expect(page).to have_content 'Invalid email or password'
+    expect(page).to have_content 'Неверный email или пароль'
+  end
+
+  scenario 'Non authenticate user see link Sign in' do
+    visit '/'
+    expect(page).to have_link 'Вход', new_user_session_path
+  end
+
+  scenario 'User sign in and not see Sign in link' do
+    sign_in(user)
+    visit '/'
+    expect(page).to_not have_link 'Вход', new_user_session_path
   end
 
 end

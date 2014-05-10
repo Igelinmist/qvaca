@@ -1,8 +1,8 @@
 =form_for @question do |f|
   .field
-    =f.label :title
+    =f.label :title, 'Заголовок'
     =f.text_field :title
   .field
-    =f.label :body,'Text'
+    =f.label :body,'Содержание'
     =f.text_area :body
-  =f.submit 'Create'
+  =f.submit 'Разместить'
