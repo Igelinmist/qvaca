@@ -1,4 +1,5 @@
 class Answer < ActiveRecord::Base
-	belongs_to :question
+	validates :body, presence: true
+  belongs_to :question
   has_many :comments, as: :commentable
 end
