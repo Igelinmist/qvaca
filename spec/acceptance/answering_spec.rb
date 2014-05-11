@@ -12,13 +12,13 @@ feature 'Answering',%q{
     sign_in(user)
     visit question_path(question)
 
-    fill_in 'Ваш ответ', with: 'Мой ответ на Ваш вопрос'
+    fill_in 'Ваш ответ', with: 'Some text'
     click_on 'Сохранить'
 
     expect(current_path).to eq question_path(question)
-
-    within '.answer'
-    expect(page).to have_content 'Мой ответ на Ваш вопрос'
+    within '.answers' do
+      expect(page).to have_content 'Some text'
+    end
   end
 
 end
