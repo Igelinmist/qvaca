@@ -8,7 +8,7 @@ I want to see the list of questions
 
   given!(:questions) { create_list(:question, 2) }
 
-  scenario "Anyone is able to view the list of question and the titles of questions are hyperlinks" do
+  scenario "Anyone is able to view the list of question and the titles of questions are hyperlinks", js: false do
     visit questions_path
     expect(page).to have_link questions[1].title, href: "/questions/#{questions[1].id}"
   end

@@ -5,7 +5,7 @@ feature 'Registration', %q{
   As a guest
   I want be able to register
 } do
-  scenario 'Guest open home page and use link Sign up' do
+  scenario 'Guest open home page and use link Sign up', js: false do
     visit '/'
     click_link 'Регистрация'
 

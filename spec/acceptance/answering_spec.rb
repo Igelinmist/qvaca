@@ -5,10 +5,10 @@ feature 'Answering',%q{
   As an authenticate user
   I want to public an answer
 } do
-  given(:user) { create(:user) }
-  given(:question) { create(:question) }
+  given!(:user) { create(:user) }
+  given!(:question) { create(:question) }
 
-  scenario 'Authenticate user public an answer' do
+  scenario 'Authenticate user public an answer', js: true do
     sign_in(user)
     visit question_path(question)
 
