@@ -4,7 +4,12 @@ FactoryGirl.define do
   factory :comment do
     body "MyText"
     correction 1
-    commentable_type "MyString"
+    commentable_type "Question"
+    commentable_id 1
+  end
+
+  factory :invalid_comment, class: 'Comment' do
+    commentable_type "Question"
     commentable_id 1
   end
 end
