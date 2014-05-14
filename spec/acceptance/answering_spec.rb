@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative 'acceptance_helper'
 
 feature 'Answering',%q{
   In order to share my knowledge
@@ -19,6 +19,15 @@ feature 'Answering',%q{
     within '.answers' do
       expect(page).to have_content 'Some text'
     end
+  end
+
+  scenario "User try to create invalid answer", js: true do
+    sign_in user
+    visit question_path(question)
+
+    click_on 'Сохранить'
+
+    expect(page).to have_content "не может быть пустым"
   end
 
 end
