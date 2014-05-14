@@ -51,7 +51,7 @@ group :development,:test do
   gem 'spork-rails'
   gem 'guard-spork'
   gem 'childprocess'
-  gem 'selenium-webdriver'
+  gem 'capybara-webkit'
   gem 'database_cleaner'
 end
 

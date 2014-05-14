@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative 'acceptance_helper'
 
 feature 'View question list', %q{
 In order to view questions

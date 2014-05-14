@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative 'acceptance_helper'
 
 feature 'Registration', %q{
   In order to work on site

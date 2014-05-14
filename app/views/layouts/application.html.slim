@@ -4,13 +4,19 @@ head
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
 body
-  .notice=notice
-  .alert=alert
-  ul
-    -unless user_signed_in?
-      li=link_to 'Вход', new_user_session_path
-      li=link_to 'Регистрация', new_user_registration_path
-    -else
-      li=link_to 'Выход',destroy_user_session_path, method: :delete
-  =yield
+  .navbar.navbar-inverse.navbar-fixed-top
+    .navbar-inner
+      .container
+        =link_to "QVACA", "/", id: "logo"
+        nav
+          ul.nav.nav-pills.pull-right
+            -if user_signed_in?
+              li=link_to 'Выход',destroy_user_session_path, method: :delete
+            -else
+              li=link_to 'Вход', new_user_session_path
+              li=link_to 'Регистрация', new_user_registration_path
+  .container
+    .notice=notice
+    .alert=alert
+    =yield
 

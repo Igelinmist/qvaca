@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative 'acceptance_helper'
 
 feature 'view answers',%q{
   In order to read answers

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative 'acceptance_helper'
 
 feature 'User can comment question', %q{ 
   In order to leave note to question (not answer)
