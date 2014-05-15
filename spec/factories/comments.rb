@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :comment do
-    body "MyText"
+    body "Текст моего коммента"
     correction 1
     commentable_type "Question"
     commentable_id 1
