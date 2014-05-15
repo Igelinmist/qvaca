@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :question do
     #title "MyStringFifteenMin"
     sequence(:title) {|n| "MyStringFifteenMin#{n}"}
-    body "MyText"
+    body "Текст моего вопроса"
   end
   factory :invalid_question, class: 'Question' do
     title nil
