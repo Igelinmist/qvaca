@@ -10,6 +10,11 @@ class AnswersController < ApplicationController
     @question = @answer.question
   end
 
+  def edit
+    @answer = Answer.find(params[:id])
+    @question = @answer.question
+  end
+
   private
 
   def answer_params

@@ -28,6 +28,19 @@ describe AnswersController do
     end
   end
 
+  describe 'GET #edit' do
+    let(:answer) { create(:answer, question: question) }
+    before {get :edit, id: answer, question_id: question, format: :js}
+
+    it 'assigns the requested answer to @answer' do
+      expect(assigns(:answer)).to eq answer
+    end
+
+    it 'render edit view' do
+      expect(response).to render_template :edit
+    end   
+  end
+
   describe "PATCH #update" do
     let(:answer) { create(:answer, question: question) }
     context 'valid attributes' do

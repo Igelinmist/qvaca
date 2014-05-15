@@ -5,9 +5,9 @@ feature 'Answer editing', %q{
   As an author of answer
   I want to be able edit answer
 } do
-  given(:user) { create(:user)}
-  given(:question) { create(:question) }
-  given(:answer) { create(:answer, question: question) }
+  given!(:user) { create(:user)}
+  given!(:question) { create(:question) }
+  given!(:answer) { create(:answer, question: question) }
 
   scenario "Unauthenticated user try to edit question" do
     visit question_path(question)

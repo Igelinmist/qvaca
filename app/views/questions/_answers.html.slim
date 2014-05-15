@@ -1,17 +1,8 @@
 -@question.answers.each do |answer|
-  = answer.body
-  -if user_signed_in?
-<<<<<<< HEAD
-    -if answer.persisted?
-      p= link_to 'Редактировать','', class: 'edit-answer-link', data: { answer_id: answer.id }
-      = form_for [@question, answer], remote: true, html: { id: "edit-answer-#{answer.id}" } do |f|
-        = f.label :body, 'Ответ'
-        = f.text_area :body
-        = f.submit 'Сохранить'
-=======
-    p= link_to 'Редактировать','', class: 'edit-answer-link', data: { answer_id: answer.id }
-    = form_for [@question, answer], remote: true, html: { id: "edit-answer-#{answer.id}" } do |f|
-      = f.label :body, 'Ответ'
-      = f.text_area :body
-      = f.submit 'Сохранить'
->>>>>>> 7d557d6cc272b00d56cb47dae850daca4600e4fe
+  .answer
+    = answer.body
+    .edit-answer*{ :id => "answer-#{answer.id}" }
+      -if user_signed_in?
+        -if answer.persisted?
+          = link_to 'Редактировать',edit_question_answer_path(answer.question.id, answer.id),remote: true
+

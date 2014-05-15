@@ -4,13 +4,10 @@
   <% end %>
 <% else %>
   $('.answers').html('<%= j render 'questions/answers' %>');
-<<<<<<< HEAD
   $('.edit-answer-link').click(function(e) { 
     e.preventDefault();
     $(this).hide();
     answer_id = $(this).data('answerId');
     $('form#edit-answer-'+answer_id).show();
     });
-=======
->>>>>>> 7d557d6cc272b00d56cb47dae850daca4600e4fe
 <% end %>
