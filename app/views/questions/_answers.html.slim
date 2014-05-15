@@ -2,7 +2,6 @@
   .answer
     = answer.body
     .edit-answer*{ :id => "answer-#{answer.id}" }
-      -if user_signed_in?
-        -if answer.persisted?
-          = link_to 'Редактировать',edit_question_answer_path(answer.question.id, answer.id),remote: true
+      -if user_signed_in? && answer.persisted?
+        = link_to 'Редактировать',edit_question_answer_path(answer.question, answer),remote: true
 

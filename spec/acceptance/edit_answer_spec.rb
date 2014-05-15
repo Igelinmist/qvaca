@@ -38,6 +38,14 @@ feature 'Answer editing', %q{
 
     end
 
+    scenario 'try to cancel edit answer', js: true do
+      click_on 'Редактировать'
+      within '.answers' do
+        click_on 'Отмена'
+        expect(page).to_not have_selector 'textarea'
+      end
+    end
+
     scenario "try to edit other user's question" 
   end
 

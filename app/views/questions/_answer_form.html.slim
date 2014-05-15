@@ -2,3 +2,4 @@
   = f.label :body, 'Ответ'
   = f.text_area :body
   = f.submit 'Сохранить'
+  = f.button "Отмена", controller: 'answer', action: 'cancel_answer'
