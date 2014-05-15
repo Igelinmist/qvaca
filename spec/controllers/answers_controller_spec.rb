@@ -30,7 +30,7 @@ describe AnswersController do
 
   describe 'GET #edit' do
     let(:answer) { create(:answer, question: question) }
-    before {get :edit, id: answer, question_id: question, format: :js}
+    before {xhr :get, :edit, id: answer, question_id: question, format: :js}
 
     it 'assigns the requested answer to @answer' do
       expect(assigns(:answer)).to eq answer

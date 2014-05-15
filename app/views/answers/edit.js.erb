@@ -1,2 +1,2 @@
-$(<%=="'#answer-#{@answer.id}'"%>).html('<%= j render 'questions/answer_form' %>');
+$("#answer-<%=@answer.id%>").html('<%= j render "questions/answer_form" %>');
 
