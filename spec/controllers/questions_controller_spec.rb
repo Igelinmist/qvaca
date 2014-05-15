@@ -109,7 +109,7 @@ describe QuestionsController do
       it 'does not change question attributes' do
         question.reload
         expect(question.title).to match /MyStringFifteenMin/
-        expect(question.body).to eq 'MyText'
+        expect(question.body).to eq 'Текст моего вопроса'
       end
 
       it 're-renders edit view ' do
