@@ -26,14 +26,14 @@ feature 'Answer editing', %q{
       end
     end
 
-    # scenario 'try to cancel edit answer', js: true do
-    #   click_on 'Редактировать'
-    #   within '.answers' do
-    #     fill_in 'Ответ', with: 'Исправленный ответ'
-    #     click_on 'Отмена'
-    #     expect(page).to_not have_content 'Исправленный ответ'
-    #   end
-    # end
+    scenario 'try to cancel edit answer', js: true do
+      click_on 'Редактировать'
+      within '.answers' do
+        fill_in 'Ответ', with: 'Исправленный ответ'
+        click_on 'Отмена'
+        expect(page).to_not have_content 'Исправленный ответ'
+      end
+    end
 
     scenario "try to edit his answer", js: true do
       click_on 'Редактировать'

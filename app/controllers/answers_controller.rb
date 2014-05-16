@@ -1,5 +1,4 @@
 class AnswersController < ApplicationController
-  before_filter :check_for_cancel, :only => [:create, :update]
 
   def create
     @question = Question.find(params[:question_id])
@@ -17,16 +16,15 @@ class AnswersController < ApplicationController
     @question = @answer.question
   end
 
+  def index
+    @question = Question.find(params[:question_id])
+    @answers = @question.answers
+  end
+
   private
 
   def answer_params
     params.require(:answer).permit(:question_id,:body)
   end
 
-  def check_for_cancel
-    if params[:commit] == 'Отмена'
-      @question = Question.find(params[:question_id])
-      render 'index'
-    end
-  end
 end

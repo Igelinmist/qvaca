@@ -67,4 +67,17 @@ describe AnswersController do
       end
     end
   end
+
+  before{ xhr :get, :index, question_id: question, format: :js }
+  describe 'GET #index' do
+    let(:answers) { create_pair(:answer, question: question ) }
+    
+    it 'populates an array of all answers on question'   do
+      expect(assigns(:answers)).to match_array(answers)
+    end 
+
+    it 'renders index view' do
+      expect(response).to render_template :index
+    end
+  end
 end
