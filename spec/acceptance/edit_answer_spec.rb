@@ -19,11 +19,21 @@ feature 'Answer editing', %q{
       sign_in(user)
       visit question_path(question)      
     end
+    
     scenario "can see link to Edit" do
       within '.answers' do
         expect(page).to have_link 'Редактировать'
       end
     end
+
+    # scenario 'try to cancel edit answer', js: true do
+    #   click_on 'Редактировать'
+    #   within '.answers' do
+    #     fill_in 'Ответ', with: 'Исправленный ответ'
+    #     click_on 'Отмена'
+    #     expect(page).to_not have_content 'Исправленный ответ'
+    #   end
+    # end
 
     scenario "try to edit his answer", js: true do
       click_on 'Редактировать'
@@ -35,16 +45,8 @@ feature 'Answer editing', %q{
         expect(page).to have_content 'Исправленный ответ'
         expect(page).to_not have_selector 'textarea'
       end
-
     end
 
-    scenario 'try to cancel edit answer', js: true do
-      click_on 'Редактировать'
-      within '.answers' do
-        click_on 'Отмена'
-        expect(page).to_not have_selector 'textarea'
-      end
-    end
 
     scenario "try to edit other user's question" 
   end

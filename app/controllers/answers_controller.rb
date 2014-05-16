@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_filter :check_for_cancel, :only => [:create, :update]
+
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.create(answer_params)
@@ -6,8 +8,8 @@ class AnswersController < ApplicationController
 
   def update
     @answer = Answer.find(params[:id])
-    @answer.update(answer_params)
     @question = @answer.question
+    @answer.update(answer_params)
   end
 
   def edit
@@ -19,5 +21,12 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:question_id,:body)
+  end
+
+  def check_for_cancel
+    if params[:commit] == 'Отмена'
+      @question = Question.find(params[:question_id])
+      render 'index'
+    end
   end
 end
