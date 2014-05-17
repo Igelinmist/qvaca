@@ -5,50 +5,60 @@ feature 'Answer editing', %q{
   As an author of answer
   I want to be able edit answer
 } do
-  given!(:user) { create(:user)}
+  given!(:users) { create_pair(:user)}
   given!(:question) { create(:question) }
-  given!(:answer) { create(:answer, question: question) }
+  given!(:answer1) { create(:answer, question: question, user: users[0]) }
+  given!(:answer2) { create(:answer, question: question, user: users[1]) }
 
-  scenario "Unauthenticated user try to edit question" do
+  scenario "Unauthenticated user try to edit answer" do
     visit question_path(question)
-
-    expect(page).to_not have_link 'Редактировать'
+    within '.answers' do
+      expect(page).to_not have_link 'Редактировать'
+    end
   end
+
   describe 'Authenticated user' do
     before do
-      sign_in(user)
+      sign_in(users[0])
       visit question_path(question)      
     end
     
-    scenario "can see link to Edit" do
-      within '.answers' do
+    scenario "can see link to Edit for his answers" do
+      within "#answer-#{answer1.id}" do
         expect(page).to have_link 'Редактировать'
       end
     end
 
     scenario 'try to cancel edit answer', js: true do
       click_on 'Редактировать'
-      within '.answers' do
+      within "#answer-#{answer1.id}" do
         fill_in 'Ответ', with: 'Исправленный ответ'
         click_on 'Отмена'
         expect(page).to_not have_content 'Исправленный ответ'
       end
     end
 
-    scenario "try to edit his answer", js: true do
+    scenario "try to edit his answer", js: true do      
       click_on 'Редактировать'
       within '.answers' do
-        fill_in 'Ответ', with: 'Исправленный ответ'        
+        fill_in 'Ответ', with: 'Исправленный ответ'
         click_on 'Сохранить'
-        
-        expect(page).to_not have_content answer.body
-        expect(page).to have_content 'Исправленный ответ'
+      end
+      within "#answer-#{answer2.id}" do
+        expect(page).to_not have_content answer1.body
         expect(page).to_not have_selector 'textarea'
       end
+      expect(page).to have_content 'Исправленный ответ'
     end
 
 
-    scenario "try to edit other user's question" 
+    scenario "other user not see an edit link" do
+      visit question_path question
+
+      within "#answer-#{answer2.id}" do
+        expect(page).to_not have_link 'Редактировать'
+      end
+    end
   end
 
 end
