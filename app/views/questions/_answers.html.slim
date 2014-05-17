@@ -2,6 +2,8 @@
   .answer
     = answer.body
     .edit-answer*{ :id => "answer-#{answer.id}" }
-      -if user_signed_in? && answer.persisted?
+      -if user_signed_in? && answer.persisted? && answer.user == current_user
         = link_to 'Редактировать',edit_question_answer_path(answer.question, answer),remote: true
+        ' |
+        =link_to 'Удалить', answer, data: {:confirm => 'Вы уверены, что хотите удалить ответ?'}, :method => :delete
 

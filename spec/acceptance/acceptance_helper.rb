@@ -7,6 +7,8 @@ RSpec.configure do |config|
 
   config.infer_base_class_for_anonymous_controllers = false
 
+  config.use_transactional_fixtures = false
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation) # Запускается перед корневым describe, обнуляет базу
   end
@@ -26,4 +28,5 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
 end

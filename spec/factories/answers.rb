@@ -4,7 +4,6 @@ FactoryGirl.define do
   factory :answer do
     body "Текст моего ответа"
     votes 1
-    user_id 1
   end
 
   factory :invalid_answer, class: 'Answer' do
