@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :question do
-    #title "MyStringFifteenMin"
     sequence(:title) {|n| "MyStringFifteenMin#{n}"}
     body "Текст моего вопроса"
+    user_id 1
   end
   factory :invalid_question, class: 'Question' do
     title nil

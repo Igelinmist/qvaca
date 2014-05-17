@@ -6,6 +6,8 @@ describe AnswersController do
   describe "POST #create" do
     
     context 'with valid attributes' do
+      login_user
+      
       it "save new answer in database" do
         expect { post :create, answer: attributes_for(:answer), question_id: question, format: :js }.to change(question.answers, :count).by(1)
       end
@@ -13,6 +15,11 @@ describe AnswersController do
       it "render create template" do
         post :create, answer: attributes_for(:answer), question_id: question, format: :js
         expect(response).to render_template :create        
+      end
+
+      it "assigns current user to answer" do
+        post :create, answer: attributes_for(:answer), question_id: question, format: :js
+        expect(assigns(:answer).user).to eq @user
       end
     end
 
@@ -73,7 +80,7 @@ describe AnswersController do
     let(:answers) { create_pair(:answer, question: question ) }
     
     it 'populates an array of all answers on question'   do
-      expect(assigns(:answers)).to match_array(answers)
+      expect(assigns(:question).answers).to match_array(answers)
     end 
 
     it 'renders index view' do

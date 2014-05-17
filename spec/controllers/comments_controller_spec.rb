@@ -5,6 +5,13 @@ describe CommentsController do
     let(:question) { create :question }
 
     context "with valid attributes" do
+      login_user
+
+      it "assign the current user to comment" do
+        post :create, comment: attributes_for(:comment), commentable_id: question, commentable_type: 'Question', question_id: question, format: :js
+        expect(assigns(:comment).user).to eq @user
+      end
+
       it "save new comment in dababase" do
         expect { post :create, comment: attributes_for(:comment), commentable_id: question, commentable_type: 'Question', question_id: question, format: :js }.to change(question.comments, :count).by(1)
       end

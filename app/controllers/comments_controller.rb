@@ -2,9 +2,13 @@ class CommentsController < ApplicationController
   before_filter :setup_class
   
   def create
+    @question = Question.find(params[:question_id])
     @commentable = @commentable_class.find(@commentable_id)
     @comment = @commentable.comments.create(comment_params)
-    @question = Question.find(params[:question_id])
+    @comment.user = current_user
+    if @comment.save
+      flash[:notice] = 'Коммент успешно добавлен.'
+    end
   end
 
   private

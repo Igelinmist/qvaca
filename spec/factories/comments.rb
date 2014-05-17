@@ -6,6 +6,7 @@ FactoryGirl.define do
     correction 1
     commentable_type "Question"
     commentable_id 1
+    user_id 1
   end
 
   factory :invalid_comment, class: 'Comment' do

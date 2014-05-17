@@ -21,6 +21,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.create(question_params)
+    @question.user = current_user
     if @question.save      
       flash[:notice] = 'Ваш вопрос успешно размещен.'
       redirect_to @question
