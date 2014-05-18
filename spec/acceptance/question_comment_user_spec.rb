@@ -18,14 +18,14 @@ feature 'User can comment question', %q{
      end
      
      expect(current_path).to eq question_path question
-     within '.question_comments' do
+     within '.js-question-comments' do
        expect(page).to have_content 'Мой комментарий'
      end
    end
 
    scenario "guest can't comment question" do
      visit question_path question
-     save_and_open_page     
+
      within '#js-question' do
        expect(page).to_not have_link 'Комментировать'
      end

@@ -3,10 +3,10 @@ class CommentsController < ApplicationController
   before_filter :setup_class
   
   def create
-    @comment = @commentable.comments.create(user: current_user)
+    @comment = @commentable.comments.create(comment_params)
+    @comment.user = current_user
     if @comment.save
       flash[:notice] = 'Комментарий успешно добавлен.'
-      render 'index.js'
     else
       flash[:notice] = 'Ошибка при добавлении комментария'
       redirect_to question_path @question

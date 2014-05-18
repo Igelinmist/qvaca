@@ -9,8 +9,8 @@ h1 =@question.title
     br
   -if user_signed_in?
     =link_to 'Комментировать', new_question_comment_path(@question), remote: true
-  #js-question-comment-form
-  .comments
+  .js-question-comment-form
+  .js-question-comments
     =render 'comments'
 .answers
   =render 'answers'

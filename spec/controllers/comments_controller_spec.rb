@@ -28,10 +28,6 @@ describe CommentsController do
         expect { post :create, comment: attributes_for(:invalid_comment), commentable_id: question, commentable_type: 'Question', question_id: question, format: :js }.to_not change(Comment, :count)
       end
 
-      it "render create template" do
-        post :create, comment: attributes_for(:invalid_comment), commentable_id: question, commentable_type: 'Question', question_id: question, format: :js
-        expect(response).to render_template :create 
-      end 
     end
   end
 

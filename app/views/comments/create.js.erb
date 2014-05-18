@@ -1,1 +1,9 @@
-$('#question_comments').html('<%= j render 'questions/comments' %>');
+<% if @comment.errors.present? %>
+  <% @comment.errors.full_messages.each do |message| %>
+    $('.comment-errors').before('<%= j message %>')
+  <% end %>
+<% else %>
+  $('.js-question-comments').html('<%= j render 'questions/comments' %>');
+  $('.js-question-comment-form').html('');
+<% end %>
+
