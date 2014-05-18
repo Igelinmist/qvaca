@@ -22,12 +22,6 @@ feature 'Answer editing', %q{
       sign_in(users[0])
       visit question_path(question)      
     end
-    
-    scenario "can see link to Edit for his answers" do
-      within "#answer-#{answer1.id}" do
-        expect(page).to have_link 'Редактировать'
-      end
-    end
 
     scenario 'try to cancel edit answer', js: true do
       click_on 'Редактировать'

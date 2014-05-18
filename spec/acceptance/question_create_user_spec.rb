@@ -15,7 +15,7 @@ feature 'Create question', %q{
     click_on 'Разместить вопрос'
     fill_in 'Заголовок', with: 'Test question 15'
     fill_in 'Содержание', with: 'test text'
-    click_on 'Разместить'    
+    click_on 'Сохранить'    
     
     expect(page).to have_content 'Ваш вопрос успешно размещен.'
   end
