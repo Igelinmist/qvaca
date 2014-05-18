@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe CommentsController do
   describe "POST #create" do
-    let(:question) { create :question }
+    let(:user) { create :user }
+    let(:question) { create :question, user: user }
 
     context "with valid attributes" do
       login_user
