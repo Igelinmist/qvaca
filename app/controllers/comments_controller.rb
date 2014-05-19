@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_filter :setup_class
-  
+
   def create
     @comment = @commentable.comments.create(comment_params)
     @comment.user = current_user
@@ -24,9 +24,9 @@ class CommentsController < ApplicationController
   end
 
   def setup_class
-    @resource,@commentable_id = request.path.split('/')[1,2]
-    @commentable_class = @resource.singularize.classify.constantize
+    resource, @commentable_id = request.path.split('/')[1, 2]
+    @commentable_class = resource.singularize.classify.constantize
     @commentable = @commentable_class.find(@commentable_id)
-    @resource =='questions' ? @question = @commentable : @question = @commentable.question
+    @question = resource == 'questions' ?  @commentable : @commentable.question
   end
 end

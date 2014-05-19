@@ -3,7 +3,14 @@
     $('.comment-errors').before('<%= j message %>')
   <% end %>
 <% else %>
-  $('.js-question-comments').html('<%= j render 'questions/comments' %>');
-  $('.js-question-comment-form').html('');
+  <%-if @commentable.class.name == 'Question'%>
+    $('.js-question-comments').html('<%= j render partial: 'questions/comment', collection: @commentable.comments %>');
+    $('.js-question-comment-form').html('');
+  <%-else%>
+    $("#js-answer-<%=@commentable.id%> .js-answer-comments").html('<%= j render partial: 'questions/comment', collection: @commentable.comments %>');
+    $("#js-answer-<%=@commentable.id%>  .js-answer-comment-form").html('');
+  <%-end%>
+
+  
 <% end %>
 

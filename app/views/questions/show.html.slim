@@ -11,7 +11,7 @@ h1 =@question.title
     =link_to 'Комментировать', new_question_comment_path(@question), remote: true
   .js-question-comment-form
   .js-question-comments
-    =render 'comments'
+    =render partial: 'comment', collection: @question.comments
 .answers
   =render 'answers'
 =form_for [@question,@answer], remote: true do |f|
