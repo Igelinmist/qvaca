@@ -12,7 +12,7 @@ feature 'Answering', %q(
     sign_in(user)
     visit question_path(question)
 
-    fill_in 'Ваш ответ', with: 'Some text'
+    fill_in 'Ответ', with: 'Some text'
     click_on 'Сохранить'
 
     expect(current_path).to eq question_path(question)

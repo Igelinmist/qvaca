@@ -1,9 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_action :load_question, only: [:show, :edit, :update, :destroy]
-  
+
   def index
-  	@questions = Question.all
+    @questions = Question.all
   end
 
   def new
@@ -21,15 +21,14 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.create(question_params)
     @question.user = current_user
-    if @question.save      
+    if @question.save
       flash[:notice] = 'Ваш вопрос успешно размещен.'
       redirect_to @question
     else
-      
       render :new
     end
   end
-  
+
   def update
     if @question.update(question_params)
       redirect_to @question
@@ -50,8 +49,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title,:body)
+    params.require(:question).permit(:title, :body)
   end
-
 end
-

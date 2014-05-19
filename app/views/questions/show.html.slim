@@ -11,14 +11,8 @@
         '|
         =link_to 'Удалить', @question, data: {:confirm => "Вы уверены, что хотите удалить вопрос\n и все, что с ним связано?"}, method: :delete
   .js-question-comment-form
-.js-question-comments.comments
+  .js-question-comments.comments
   =render partial: 'comment', collection: @question.comments
 .answers
   =render 'answers'
-=form_for [@question,@answer], remote: true do |f|
-  =f.label :body, 'Ваш ответ'
-  br
-  .js-answer-errors
-  =f.text_area :body
-  br
-  =f.submit 'Сохранить'
+=render 'answer_form'

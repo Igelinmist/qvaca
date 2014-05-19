@@ -16,8 +16,6 @@ feature 'User can comment question', %q(
       fill_in 'comment_body', with: 'Мой комментарий'
       click_on 'Сохранить'
     end
-    # within '#js-question-comment-form' do
-    # end
 
     expect(current_path).to eq question_path question
     within '.js-question-comments' do
