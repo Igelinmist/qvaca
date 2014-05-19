@@ -47,7 +47,6 @@ feature 'Answer editing', %q(
 
     scenario 'other user not see an edit link' do
       visit question_path question
-
       within "#js-answer-#{answer2.id}" do
         expect(page).to_not have_link 'Редактировать'
       end
