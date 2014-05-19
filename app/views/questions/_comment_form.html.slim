@@ -1,7 +1,7 @@
 =form_for [@commentable,@comment], remote: true do |f|
   .field
     =f.label :body, 'Ваш комментарий:'
-    br
+    .js-comment-errors
     =f.text_area :body
     br
   .submit

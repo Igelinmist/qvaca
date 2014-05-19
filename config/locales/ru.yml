@@ -1,4 +1,6 @@
 ru:
+  attributes:
+    body: "Содержание"
   activerecord:
     errors:
       messages:

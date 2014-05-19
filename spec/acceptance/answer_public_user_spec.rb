@@ -1,10 +1,10 @@
 require_relative 'acceptance_helper'
 
-feature 'Answering',%q{
+feature 'Answering', %q(
   In order to share my knowledge
   As an authenticate user
   I want to public an answer
-} do
+) do
   given!(:user) { create(:user) }
   given!(:question) { create(:question) }
 
@@ -21,13 +21,13 @@ feature 'Answering',%q{
     end
   end
 
-  scenario "User try to create invalid answer", js: true do
+  scenario 'User try to create invalid answer', js: true do
     sign_in user
     visit question_path(question)
 
     click_on 'Сохранить'
 
-    expect(page).to have_content "не может быть пустым"
+    expect(page).to have_content 'Содержание не может быть пустым'
   end
 
 end

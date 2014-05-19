@@ -5,12 +5,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.create(comment_params)
     @comment.user = current_user
-    if @comment.save
-      flash[:notice] = 'Комментарий успешно добавлен.'
-    else
-      flash[:notice] = 'Ошибка при добавлении комментария'
-      redirect_to question_path @question
-    end
+    @comment.save
   end
 
   def new

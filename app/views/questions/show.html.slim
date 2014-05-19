@@ -16,7 +16,8 @@ h1 =@question.title
   =render 'answers'
 =form_for [@question,@answer], remote: true do |f|
   =f.label :body, 'Ваш ответ'
-  .answer-errors
+  br
+  .js-answer-errors
   =f.text_area :body
   br
   =f.submit 'Сохранить'

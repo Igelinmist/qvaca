@@ -1,7 +1,6 @@
 -@question.answers.each do |answer|
   .answer
     = answer.body
-    .js-comments
     .edit-answer*{ :id => "js-answer-#{answer.id}" }
       -if answer.persisted? && user_signed_in?
         -if answer.user == current_user
@@ -9,7 +8,7 @@
           '|
           =link_to 'Удалить', answer, data: {:confirm => 'Вы уверены, что хотите удалить ответ?'}, :method => :delete
         .js-answer-comments
-          =render partial: 'comment', collection: answer.comments
+          =render partial: 'questions/comment', collection: answer.comments
         .js-answer-comment-form
           = link_to 'Комментировать', new_answer_comment_path(answer),remote: true
 

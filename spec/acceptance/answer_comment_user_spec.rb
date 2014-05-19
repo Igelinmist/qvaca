@@ -9,7 +9,7 @@ feature 'User can comment answer', %q(
   given!(:question) { create(:question, user: user) }
   given!(:answer) { create(:answer, user: user, question: question) }
 
-  scenario 'user can call the form for answer comment and save comment', js: true do
+  scenario 'user can public comment', js: true do
     sign_in(user)
     visit question_path question
     within "#js-answer-#{answer.id}" do
@@ -20,7 +20,6 @@ feature 'User can comment answer', %q(
       expect(page).to have_content 'Мой комментарий'
     end
 
-    expect(page).to have_content 'Комментарий добавлен.'
   end
 
   scenario "guest can't comment answer" do
