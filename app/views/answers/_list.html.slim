@@ -11,7 +11,7 @@
           '|
           =link_to 'Удалить', answer, data: {:confirm => 'Вы уверены, что хотите удалить ответ?'}, :method => :delete
     .js-answer-comments.comments
-      =render partial: 'questions/comment', collection: answer.comments
+      =render partial: 'comments/comment', collection: answer.comments
     .js-answer-comment-form
 
 

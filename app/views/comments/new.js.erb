@@ -1,5 +1,5 @@
 <%-if @commentable.class.name == 'Question'%>
-  $('.js-question-comment-form').html('<%= j render 'questions/comment_form' %>');
+  $('.js-question-comment-form').html('<%= j render 'form' %>');
 <%-else%>
-  $("#js-answer-<%=@commentable.id%> .js-answer-comment-form").html('<%= j render 'questions/comment_form' %>');
+  $("#js-answer-<%=@commentable.id%> .js-answer-comment-form").html('<%= j render 'form' %>');
 <%-end%>
