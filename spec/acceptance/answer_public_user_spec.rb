@@ -6,12 +6,12 @@ feature 'Answering', %q(
   I want to public an answer
 ) do
   given!(:user) { create(:user) }
-  given!(:question) { create(:question) }
+  given!(:question) { create(:question, user: user) }
 
   scenario 'Authenticate user public an answer', js: true do
     sign_in(user)
     visit question_path(question)
-
+    click_on 'Ответить'
     fill_in 'Ответ', with: 'Some text'
     click_on 'Сохранить'
 
@@ -24,7 +24,7 @@ feature 'Answering', %q(
   scenario 'User try to create invalid answer', js: true do
     sign_in user
     visit question_path(question)
-
+    click_on 'Ответить'
     click_on 'Сохранить'
 
     expect(page).to have_content 'Содержание не может быть пустым'

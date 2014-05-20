@@ -11,14 +11,14 @@ feature 'Question deleting', %q{
   scenario "User who isn't an author of question not see link on delete" do
     sign_in(users[1])
     visit question_path question
-    within '#js-question' do 
+    within '.js-question' do 
       expect(page).to_not have_link 'Удалить'
     end
   end
 
   scenario "Guest not see link on delete" do
     visit question_path question
-    within '#js-question' do
+    within '.js-question' do
       expect(page).to_not have_link 'Удалить'
     end
   end
@@ -28,7 +28,7 @@ feature 'Question deleting', %q{
     question_text = question.body
     sign_in(users[0])
     visit question_path(question)
-    within '#js-question' do
+    within '.js-question' do
       click_on 'Удалить'
     end
 
