@@ -1,2 +1,4 @@
 .comment
   = comment.body
+  .actions
+    =render partial: 'comments/actions', locals: { comment: comment }
