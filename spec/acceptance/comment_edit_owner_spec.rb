@@ -13,12 +13,80 @@ feature 'Comment editing', %q(
 
   scenario 'Unauthenticated user try to edit comment' do
     visit question_path(question)
-    save_and_open_page
-    within '.js-question-comments.comments' do
-      expect(page).to_not have_link 'Редактировать'
+
+    expect(find('.js-question')).to_not have_link 'Редактировать'
+    expect(find('.answers')).to_not have_link 'Редактировать'
+  end
+
+  describe 'User0 sign in' do
+    before do
+      sign_in(users[0])
+      visit question_path(question)
     end
-    within '.js-answer-comments.comments' do
-      expect(page).to_not have_link 'Редактировать'
+
+    scenario "can't see comment link for question" do
+      expect(find('.js-question').find('.comments'))
+        .to_not have_link 'Редактировать'
+    end
+
+    scenario 'edit comment' do
+      find('.answers').find('.comments').click_on('Редактировать')
+      fill_in 'comment_body', with: 'Исправленный комментарий'
+      click_on 'Сохранить'
+
+      expect(find('.answers')).find('.comments').to have_content 'Исправленный комментарий'
+    end
+
+    scenario "can't clear comment and save" do
+      find('.answers').find('.comments').click_on('Редактировать')
+      fill_in 'comment_body', with: ''
+      click_on 'Сохранить'
+
+      expect(page).to have_content 'Содержание не может быть пустым'
+    end
+
+    scenario "can cancel edit comment" do
+      find('.answers').find('.comments').click_on('Редактировать')
+      fill_in 'comment_body', with: 'Исправленный комментарий'
+      click_on 'Отмена'
+
+      expect(page).to_not have_content 'Исправленный комментарий'
     end
   end
+
+describe 'User1 sign in' do
+    before do
+      sign_in(users[1])
+      visit question_path(question)
+    end
+
+    scenario "can't see comment link for answers" do
+      expect(find('.answers').find('.comments'))
+        .to_not have_link 'Редактировать'
+    end
+
+    scenario 'edit comment' do
+      find('.js-question').find('.comments').click_on('Редактировать')
+      fill_in 'comment_body', with: 'Исправленный комментарий'
+      click_on 'Сохранить'
+
+      expect(find('.js-question')).find('.comments').to have_content 'Исправленный комментарий'
+    end
+
+    scenario "can't clear comment and save" do
+      find('.js-question').find('.comments').click_on('Редактировать')
+      fill_in 'comment_body', with: ''
+      click_on 'Сохранить'
+
+      expect(page).to have_content 'Содержание не может быть пустым'
+    end
+
+    scenario "can cancel edit comment" do
+      find('.js-question').find('.comments').click_on('Редактировать')
+      fill_in 'comment_body', with: 'Исправленный комментарий'
+      click_on 'Отмена'
+
+      expect(page).to_not have_content 'Исправленный комментарий'
+    end    
+  end  
 end
