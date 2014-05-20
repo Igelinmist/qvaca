@@ -5,11 +5,7 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
     @answer.user = current_user
-    if @answer.save
-      flash[:notice] = 'Ваш ответ успешно размещен.'
-    else
-      flash[:alert] = 'Ошибка при сохранении ответа.'
-    end
+    @answer.save
   end
 
   def update
@@ -21,10 +17,6 @@ class AnswersController < ApplicationController
   def edit
     @answer = Answer.find(params[:id])
     @question = @answer.question
-  end
-
-  def index
-    @question = Question.find(params[:question_id])
   end
 
   def destroy

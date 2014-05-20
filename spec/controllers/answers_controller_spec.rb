@@ -77,18 +77,18 @@ describe AnswersController do
     end
   end
 
-  before{ xhr :get, :index, question_id: question, format: :js }
-  describe 'GET #index' do
-    let(:answers) { create_pair(:answer, question: question, user: @user ) }
+  # before{ xhr :get, :index, question_id: question, format: :js }
+  # describe 'GET #index' do
+  #   let(:answers) { create_pair(:answer, question: question, user: @user ) }
     
-    it 'populates an array of all answers on question'   do
-      expect(assigns(:question).answers).to match_array(answers)
-    end 
+  #   it 'populates an array of all answers on question'   do
+  #     expect(assigns(:question).answers).to match_array(answers)
+  #   end 
 
-    it 'renders index view' do
-      expect(response).to render_template :index
-    end
-  end
+  #   it 'renders index view' do
+  #     expect(response).to render_template :index
+  #   end
+  # end
 
   describe 'DELETE #destroy' do
     let!(:answer) { create(:answer, question: question, user: @user) }
