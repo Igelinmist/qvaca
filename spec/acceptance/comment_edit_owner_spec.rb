@@ -29,7 +29,7 @@ feature 'Comment editing', %q(
         .to_not have_link 'Редактировать'
     end
 
-    scenario 'edit comment' do
+    scenario 'edit comment', js: true do
       find('.answers').find('.comments').click_on('Редактировать')
       fill_in 'comment_body', with: 'Исправленный комментарий'
       click_on 'Сохранить'
@@ -38,7 +38,7 @@ feature 'Comment editing', %q(
         .to have_content 'Исправленный комментарий'
     end
 
-    scenario "can't clear comment and save" do
+    scenario "can't clear comment and save", js: true do
       find('.answers').find('.comments').click_on('Редактировать')
       fill_in 'comment_body', with: ''
       click_on 'Сохранить'
@@ -46,7 +46,7 @@ feature 'Comment editing', %q(
       expect(page).to have_content 'Содержание не может быть пустым'
     end
 
-    scenario 'can cancel edit comment' do
+    scenario 'can cancel edit comment', js: true do
       find('.answers').find('.comments').click_on('Редактировать')
       fill_in 'comment_body', with: 'Исправленный комментарий'
       click_on 'Отмена'
@@ -66,7 +66,7 @@ feature 'Comment editing', %q(
         .to_not have_link 'Редактировать'
     end
 
-    scenario 'edit comment' do
+    scenario 'edit comment', js: true do
       find('.js-question').find('.comments').click_on('Редактировать')
       fill_in 'comment_body', with: 'Исправленный комментарий'
       click_on 'Сохранить'
@@ -75,7 +75,7 @@ feature 'Comment editing', %q(
         .to have_content 'Исправленный комментарий'
     end
 
-    scenario "can't clear comment and save" do
+    scenario "can't clear comment and save", js: true do
       find('.js-question').find('.comments').click_on('Редактировать')
       fill_in 'comment_body', with: ''
       click_on 'Сохранить'
@@ -83,7 +83,7 @@ feature 'Comment editing', %q(
       expect(page).to have_content 'Содержание не может быть пустым'
     end
 
-    scenario 'can cancel edit comment' do
+    scenario 'can cancel edit comment', js: true do
       find('.js-question').find('.comments').click_on('Редактировать')
       fill_in 'comment_body', with: 'Исправленный комментарий'
       click_on 'Отмена'

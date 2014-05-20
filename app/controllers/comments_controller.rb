@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy]
-  before_filter :setup_class, only: [:new, :create]
-  before_filter :setup_question, only: [:destroy, :update]
+  before_filter :setup_class, only: [:new, :create, :update]
+  before_filter :setup_comment, only: [:destroy, :edit]
 
   def create
     @comment = @commentable.comments.create(comment_params)
@@ -11,6 +11,14 @@ class CommentsController < ApplicationController
 
   def new
     @comment = @commentable.comments.build
+  end
+
+  def edit
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
   end
 
   def destroy
@@ -31,12 +39,13 @@ class CommentsController < ApplicationController
     @question = resource == 'questions' ?  @commentable : @commentable.question
   end
 
-  def setup_question
+  def setup_comment
     @comment = Comment.find(params[:id])
+    @commentable = @comment.commentable
     @question = if @comment.commentable_type == 'Question'
-                  @comment.commentable
+                  @commentable
                 else
-                  @comment.commentable.question
+                  @commentable.question
                 end
   end
 end

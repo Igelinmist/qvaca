@@ -5,7 +5,7 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build
   end
-  
+
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)

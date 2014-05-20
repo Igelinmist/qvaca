@@ -1,5 +1,6 @@
 <%-if @commentable.class.name == 'Question'%>
   $('.js-question .comment-form').html('<%= j render 'comments/form' %>');
+  $(".actions").hide();
 <%-else%>
   $("#js-answer-<%=@commentable.id%> .comment-form").html('<%= j render 'comments/form' %>');
   $(".actions").hide();
