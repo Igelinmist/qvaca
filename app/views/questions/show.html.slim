@@ -1,18 +1,11 @@
-.topic =@question.title
-#js-question
-  .body
-    =@question.body
+.js-question
+  .topic=@question.title
+  .body=@question.body
   .actions
-    -if user_signed_in?
-      =link_to 'Комментировать', new_question_comment_path(@question), remote: true
-      -if @question.user == current_user
-        '|
-        =link_to 'Редактировать', edit_question_path(@question)
-        '|
-        =link_to 'Удалить', @question, data: {:confirm => "Вы уверены, что хотите удалить вопрос\n и все, что с ним связано?"}, method: :delete
-  .js-question-comments.comments
-  =render partial: 'comments/comment', collection: @question.comments
-  .js-question-comment-form
-.answers
-  =render 'answers/list'
-=render 'answers/form'
+    =render 'actions'
+  .answer-form
+  .comment-form
+  .comments
+    =render partial: 'comments/comment', collection: @question.comments
+  .answers
+    =render partial: 'answers/answer', collection: @question.answers

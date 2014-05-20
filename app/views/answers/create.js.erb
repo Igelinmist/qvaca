@@ -3,6 +3,6 @@
     $('.js-answer-errors').before('<%= j message %>')
   <% end %>
 <% else %>
-  $('.answers').html('<%= j render 'list' %>');
-  $('#answer_body').val('');
+  $('.answers').html('<%= j render partial: 'answer', collection: @question.answers %>');
+  $(".answer-form").html('');
 <% end %>

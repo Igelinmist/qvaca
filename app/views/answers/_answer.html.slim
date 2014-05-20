@@ -1,0 +1,9 @@
+=answer.body
+.edit-answer*{ :id => "js-answer-#{answer.id}" }
+  .actions
+    =render partial: 'answers/actions', locals: { answer: answer }
+  .comment-form
+  .comments
+    =render partial: 'comments/comment', collection: answer.comments
+
+
