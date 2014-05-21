@@ -11,7 +11,7 @@ feature 'User can comment question', %q(
   scenario 'user can public comment for answer', js: true do
     sign_in(user)
     visit question_path question
-    within '.js-question .actions' do
+    within '.js-question' do
       click_on 'Комментировать'
     end
     fill_in 'comment_body', with: 'Мой комментарий'

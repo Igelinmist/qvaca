@@ -26,10 +26,6 @@ describe QuestionsController do
   		expect(response).to render_template :show
   	end
 
-    it 'assigns a new answer for question' do
-      expect(assigns(:answer)).to be_a_new(Answer)
-    end    
-
     it 'assigns a new comment for question' do
       expect(assigns(:comment)).to be_a_new(Comment)
     end
