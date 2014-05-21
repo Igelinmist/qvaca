@@ -45,13 +45,13 @@ feature 'Comment editing', %q(
       expect(page).to have_content 'Содержание не может быть пустым'
     end
 
-    # scenario 'can cancel edit comment', js: true do
-    #   find('.answers').find('.comments').click_on('Редактировать')
-    #   fill_in 'comment_body', with: 'Исправленный комментарий'
-    #   click_on 'Отмена'
+    scenario 'can cancel edit comment', js: true do
+      find('.answers').find('.comments').click_on('Редактировать')
+      fill_in 'comment_body', with: 'Исправленный комментарий'
+      click_on 'Отмена'
 
-    #   expect(page).to_not have_content 'Исправленный комментарий'
-    # end
+      expect(page).to_not have_content 'Исправленный комментарий'
+    end
   end
 
   describe 'User1 sign in' do
@@ -80,12 +80,12 @@ feature 'Comment editing', %q(
       expect(page).to have_content 'Содержание не может быть пустым'
     end
 
-    # scenario 'can cancel edit comment', js: true do
-    #   find('.js-question').find('.comments').click_on('Редактировать')
-    #   fill_in 'comment_body', with: 'Исправленный комментарий'
-    #   click_on 'Отмена'
+    scenario 'can cancel edit comment', js: true do
+      find('.js-question').find('.comments').click_on('Редактировать')
+      fill_in 'comment_body', with: 'Исправленный комментарий'
+      click_on 'Отмена'
 
-    #   expect(page).to_not have_content 'Исправленный комментарий'
-    # end
+      expect(page).to_not have_content 'Исправленный комментарий'
+    end
   end
 end

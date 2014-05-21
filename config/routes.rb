@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   concern :commentable do
-    resources :comments, only: [:new, :create, :update]
+    resources :comments, only: [:new, :create, :update, :index]
   end
 
   resources :questions do

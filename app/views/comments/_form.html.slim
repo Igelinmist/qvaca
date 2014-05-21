@@ -4,5 +4,8 @@
     .js-comment-errors
     =f.text_area :body
     br
-  .submit
-    =f.submit 'Сохранить'
+  =f.submit 'Сохранить'
+  -if @commentable.class.name == 'Question'
+    = button_to 'Отмена', question_comments_path(@question), remote: true
+  -else
+    = button_to 'Отмена', answer_comments_path(@commentable), remote: true

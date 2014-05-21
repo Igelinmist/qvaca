@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :destroy]
-  before_filter :setup_class, only: [:new, :create, :update]
+  before_filter :setup_class, only: [:new, :create, :update, :index]
   before_filter :setup_comment, only: [:destroy, :edit]
+
+  def index
+    @comments = @commentable.comments
+  end
 
   def create
     @comment = @commentable.comments.create(comment_params)

@@ -1,0 +1,9 @@
+<%-if @commentable.class.name == 'Question'%>
+    $('.js-question .comments').html('<%= j render partial: 'comments/comment', collection: @commentable.comments %>');
+    $('.js-question .comment-form').html('');
+    $(".actions").show();
+  <%-else%>
+    $("#js-answer-<%=@commentable.id%> .comments").html('<%= j render partial: 'comments/comment', collection: @commentable.comments %>');
+    $("#js-answer-<%=@commentable.id%>  .comment-form").html('');
+    $(".actions").show();
+  <%-end%>
