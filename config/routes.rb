@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :questions do
     concerns :commentable
-    resources :answers, only: [:new, :create, :edit, :update]
+    resources :answers, only: [:new, :create, :edit, :update, :index]
   end
 
   resources :answers, only: [:destroy] do
