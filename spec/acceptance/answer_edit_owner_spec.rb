@@ -12,7 +12,7 @@ feature 'Answer editing', %q(
 
   scenario 'Unauthenticated user try to edit answer' do
     visit question_path(question)
-    within '.answers' do
+    within '.js-answers' do
       expect(page).to_not have_link 'Редактировать'
     end
   end

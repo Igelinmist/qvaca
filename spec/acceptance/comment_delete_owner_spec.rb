@@ -14,8 +14,8 @@ feature 'Comment editing', %q(
   scenario 'Unauthenticated user try to delete comment' do
     visit question_path(question)
 
-    expect(find('.js-question-comments')).to_not have_link 'Удалить'
-    expect(find('.js-answers-comments')).to_not have_link 'Удалить'
+    expect(find('.js-question .comments')).to_not have_link 'Удалить'
+    expect(find('.js-answers .comments')).to_not have_link 'Удалить'
   end
 
   describe 'User0 sign in' do
@@ -25,11 +25,11 @@ feature 'Comment editing', %q(
     end
 
     scenario 'not see link Delete under question', js: true do
-      expect(find('.js-question-comments')).to_not have_link 'Удалить'
+      expect(find('.js-question .comments')).to_not have_link 'Удалить'
     end
 
     scenario 'see link Delete under answer', js: true do
-      expect(find('.js-answers-comments')).to have_link 'Удалить'
+      expect(find('.js-answers .comments')).to have_link 'Удалить'
     end
   end
 
@@ -40,11 +40,11 @@ feature 'Comment editing', %q(
     end
 
     scenario 'see link Delete under question', js: true do
-      expect(find('.js-question-comments')).to have_link 'Удалить'
+      expect(find('.js-question .comments')).to have_link 'Удалить'
     end
 
     scenario 'not see link Delete under answer', js: true do
-      expect(find('.js-answers-comments')).to_not have_link 'Удалить'
+      expect(find('.js-answers .comments')).to_not have_link 'Удалить'
     end
 
   end

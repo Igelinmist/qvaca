@@ -5,7 +5,7 @@
     =render 'actions'
   .answer-form
   .comment-form
-  .comments.js-question-comments
+  .comments
     =render partial: 'comments/comment', collection: @question.comments
-.answers
+.js-answers
   =render partial: 'answers/answer', collection: @question.answers

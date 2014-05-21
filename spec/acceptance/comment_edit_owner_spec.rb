@@ -14,8 +14,8 @@ feature 'Comment editing', %q(
   scenario 'Unauthenticated user try to edit comment' do
     visit question_path(question)
 
-    expect(find('.js-question-comments')).to_not have_link 'Редактировать'
-    expect(find('.js-answers-comments')).to_not have_link 'Редактировать'
+    expect(find('.js-question .comments')).to_not have_link 'Редактировать'
+    expect(find('.js-answers .comments')).to_not have_link 'Редактировать'
   end
 
   describe 'User0 sign in' do
@@ -25,16 +25,16 @@ feature 'Comment editing', %q(
     end
 
     scenario 'edit comment', js: true do
-      find('.js-answers-comments').click_on('Редактировать')
+      find('.js-answers .comments').click_on('Редактировать')
       fill_in 'comment_body', with: 'Исправленный комментарий'
       click_on 'Сохранить'
 
-      expect(find('.js-answers-comments'))
+      expect(find('.js-answers .comments'))
         .to have_content 'Исправленный комментарий'
     end
 
     scenario "can't clear comment and save", js: true do
-      find('.js-answers-comments').click_on('Редактировать')
+      find('.js-answers .comments').click_on('Редактировать')
       fill_in 'comment_body', with: ''
       click_on 'Сохранить'
 
@@ -42,7 +42,7 @@ feature 'Comment editing', %q(
     end
 
     scenario 'can cancel edit comment', js: true do
-      find('.js-answers-comments').click_on('Редактировать')
+      find('.js-answers .comments').click_on('Редактировать')
       fill_in 'comment_body', with: 'Исправленный комментарий'
       click_on 'Отмена'
 
@@ -57,16 +57,16 @@ feature 'Comment editing', %q(
     end
 
     scenario 'edit comment', js: true do
-      find('.js-question-comments').click_on('Редактировать')
+      find('.js-question .comments').click_on('Редактировать')
       fill_in 'comment_body', with: 'Исправленный комментарий'
       click_on 'Сохранить'
 
-      expect(find('.js-question-comments'))
+      expect(find('.js-question .comments'))
         .to have_content 'Исправленный комментарий'
     end
 
     scenario "can't clear comment and save", js: true do
-      find('.js-question-comments').click_on('Редактировать')
+      find('.js-question .comments').click_on('Редактировать')
       fill_in 'comment_body', with: ''
       click_on 'Сохранить'
 
@@ -74,7 +74,7 @@ feature 'Comment editing', %q(
     end
 
     scenario 'can cancel edit comment', js: true do
-      find('.js-question-comments').click_on('Редактировать')
+      find('.js-question .comments').click_on('Редактировать')
       fill_in 'comment_body', with: 'Исправленный комментарий'
       click_on 'Отмена'
 

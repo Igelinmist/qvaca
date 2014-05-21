@@ -8,26 +8,34 @@ feature 'Answering', %q(
   given!(:user) { create(:user) }
   given!(:question) { create(:question, user: user) }
 
-  scenario 'Authenticate user public an answer', js: true do
-    sign_in(user)
-    visit question_path(question)
-    click_on 'Ответить'
-    fill_in 'Ответ', with: 'Some text'
-    click_on 'Сохранить'
-
-    expect(current_path).to eq question_path(question)
-    within '.answers' do
-      expect(page).to have_content 'Some text'
+  describe 'Authenticate user' do
+    before do
+      sign_in(user)
+      visit question_path(question)
     end
-  end
 
-  scenario 'User try to create invalid answer', js: true do
-    sign_in user
-    visit question_path(question)
-    click_on 'Ответить'
-    click_on 'Сохранить'
+    scenario 'public an answer', js: true do
+      click_on 'Ответить'
+      fill_in 'Ответ', with: 'Мой новый ответ'
+      click_on 'Сохранить'
 
-    expect(page).to have_content 'Содержание не может быть пустым'
+      expect(page).to have_content 'Мой новый ответ'
+    end
+
+    scenario 'cancel public an answer', js: true do
+      click_on 'Ответить'
+      fill_in 'Ответ', with: 'Мой новый ответ'
+      click_on 'Отмена'
+
+      expect(page).to_not have_content 'Мой новый ответ'
+    end
+
+    scenario 'try to create invalid answer', js: true do
+      click_on 'Ответить'
+      click_on 'Сохранить'
+
+      expect(page).to have_content 'Содержание не может быть пустым'
+    end
   end
 
 end
