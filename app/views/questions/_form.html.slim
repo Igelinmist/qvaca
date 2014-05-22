@@ -5,4 +5,9 @@
   .field
     =f.label :body,'Содержание'
     =f.text_area :body
+  p Вложенные файлы:
+  p =f.fields_for :attachments do |a|
+    .field
+      =a.label :file, 'Файл'
+      =a.file_field :file
   =f.submit 'Сохранить'

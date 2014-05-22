@@ -11,4 +11,6 @@ describe Question do
   it { should have_many :attachments}
   it { should have_and_belong_to_many :tags }
   it { should accept_nested_attributes_for :answers }
+
+  it { should accept_nested_attributes_for :attachments }
 end

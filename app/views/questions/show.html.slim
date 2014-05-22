@@ -1,6 +1,10 @@
 .js-question
   .topic=@question.title
   .body=@question.body
+  p Вложенные файлы:
+  ul
+    -@question.attachments.each do |a|
+      li= link_to a.file.file.filename, a.file.url
   .actions
     =render 'actions'
   .answer-form
