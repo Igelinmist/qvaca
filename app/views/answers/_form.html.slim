@@ -4,5 +4,10 @@
     br
     .js-answer-errors
     = f.text_area :body
+  p Вложенные файлы:
+  p =f.fields_for :attachments do |a|
+    .field
+      =a.label :file, 'Файл'
+      =a.file_field :file
   = f.submit 'Сохранить'
   = link_to 'Отмена', question_answers_path, question: @question, remote: true

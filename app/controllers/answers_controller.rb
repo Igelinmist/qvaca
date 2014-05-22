@@ -7,6 +7,7 @@ class AnswersController < ApplicationController
   def new
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build
+    @answer.attachments.build
   end
 
   def create
@@ -38,6 +39,6 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    params.require(:answer).permit(:question_id, :body)
+    params.require(:answer).permit(:question_id, :body, attachments_attributes: [:file])
   end
 end
