@@ -9,6 +9,6 @@
   .answer-form
   .comment-form
   .comments
-    =render partial: 'comments/comment', collection: @question.comments
+    =render @question.comments
 .js-answers
-  =render partial: 'answers/answer', collection: @question.answers
+  =render @question.answers

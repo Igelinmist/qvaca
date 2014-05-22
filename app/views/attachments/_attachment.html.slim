@@ -1,1 +1,4 @@
-li =link_to attachment.file.identifier, attachment.file.url
+li 
+  =link_to attachment.file.identifier, attachment.file.url
+  '|
+  =link_to 'X', [attachment.attachmentable,attachment], method: :delete, data: { confirm: 'Уверены?' }
