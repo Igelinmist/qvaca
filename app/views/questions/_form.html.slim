@@ -1,13 +1,15 @@
-=form_for @question do |f|
+=nested_form_for @question do |f|
   .field
     =f.label :title, 'Заголовок'
     =f.text_field :title
   .field
     =f.label :body,'Содержание'
     =f.text_area :body
-  p Вложенные файлы:
-  p =f.fields_for :attachments do |a|
+  |Вложенные файлы:
+  =f.fields_for :attachments do |a|
     .field
-      =a.label :file, 'Файл'
+      =a.label :file
       =a.file_field :file
+      =a.link_to_remove 'Удалить'
+  = f.link_to_add "Добавить файл", :attachments
   =f.submit 'Сохранить'

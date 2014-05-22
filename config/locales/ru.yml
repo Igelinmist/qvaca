@@ -1,6 +1,7 @@
 ru:
   attributes:
     body: "Содержание"
+    file: "Файл"
   activerecord:
     errors:
       messages:
