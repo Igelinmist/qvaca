@@ -8,15 +8,14 @@ feature 'Add files to answer', %q(
   given!(:user) { create(:user) }
   given!(:question) { create(:question, user: user) }
 
-  background do
+  scenario 'User adds file when makes an answer', js: true  do
     sign_in(user)
     visit question_path(question)
-  end
-
-  scenario 'User adds file when makes an answer', js: true  do
+    
     click_on 'Ответить'
+    save_and_open_page
     fill_in 'Ответ', with: 'Мой новый ответ'
-    attach_file 'Файл', "#{Rails.root}/spec/spec_helper.rb"
+    attach_file 'File', "#{Rails.root}/spec/spec_helper.rb"
     click_on 'Сохранить'
 
     expect(page).to have_link 'spec_helper.rb', href: '/uploads/attachment/file/1/spec_helper.rb'

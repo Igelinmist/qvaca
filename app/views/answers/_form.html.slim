@@ -1,13 +1,19 @@
-= form_for [@question, @answer], remote: true do |f|
+= nested_form_for [@question, @answer], remote: true do |f|
   .field
     = f.label :body, 'Ответ'
     br
     .js-answer-errors
     = f.text_area :body
-  p Вложенные файлы:
-  p =f.fields_for :attachments do |a|
-    .field
-      =a.label :file, 'Файл'
-      =a.file_field :file
+  |Вложения:
+  br
+  =f.fields_for :attachments do |a|
+    =a.label :file
+    -if a.object.new_record?
+      =a.file_field :file, 'File'
+    -else
+      = link_to a.object.file.identifier, a.object.file.url
+    =a.link_to_remove 'Удалить'
+  =f.link_to_add "Добавить файл", :attachments
+  br
   = f.submit 'Сохранить'
   = link_to 'Отмена', question_answers_path, question: @question, remote: true
