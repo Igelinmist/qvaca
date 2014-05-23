@@ -6,10 +6,17 @@
     =f.label :body,'Содержание'
     =f.text_area :body
   |Вложенные файлы:
+
+
   =f.fields_for :attachments do |a|
-    .field
-      =a.label :file
-      =a.file_field :file
-      =a.link_to_remove 'Удалить'
-  = f.link_to_add "Добавить файл", :attachments
+    =a.label :file
+    -if a.object.new_record?
+      =a.file_field :file, id: 'File'
+    -else
+      = link_to a.object.file.identifier, a.object.file.url
+    =a.link_to_remove 'Удалить'
+    br
+  =f.link_to_add "Добавить файл", :attachments
+  br
+
   =f.submit 'Сохранить'

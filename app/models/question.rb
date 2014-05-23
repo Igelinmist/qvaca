@@ -11,5 +11,5 @@ class Question < ActiveRecord::Base
   has_and_belongs_to_many :tags
 
   accepts_nested_attributes_for :answers
-  accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :attachments, allow_destroy: true
 end

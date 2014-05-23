@@ -6,17 +6,13 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :update, :index]
   end
 
-  concern :attachmentable do
-    resources :attachments, only: [:destroy]
-  end
-
   resources :questions do
-    concerns :commentable, :attachmentable
+    concerns :commentable
     resources :answers, only: [:new, :create, :edit, :update, :index]
   end
 
   resources :answers, only: [:destroy] do
-    concerns :commentable, :attachmentable
+    concerns :commentable
   end
 
   resources :comments, only: [:edit, :destroy]
