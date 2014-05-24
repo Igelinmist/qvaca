@@ -8,7 +8,8 @@ class Question < ActiveRecord::Base
   has_many :answers, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :attachments, as: :attachmentable, dependent: :destroy
-  has_and_belongs_to_many :tags
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :attachments, allow_destroy: true

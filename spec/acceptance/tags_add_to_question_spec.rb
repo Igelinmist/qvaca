@@ -16,9 +16,9 @@ feature 'Add tags to question', %q(
   end
 
   scenario 'User create question and add  new tag' do
-    fill_in 'Метки', with: 'Ruby'
+    fill_in 'Метки', with: 'Ruby Rails'
     click_on 'Сохранить'
 
-    expect(find('.tag')).to have_content('Ruby')
+    expect(find('.tags')).to have_content('Ruby, Rails')
   end
 end
