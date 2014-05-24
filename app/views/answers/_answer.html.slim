@@ -1,12 +1,12 @@
-=answer.body
-.edit-answer*{ :id => "js-answer-#{answer.id}" }
-  p Вложенные файлы:
-  ul
-    = render answer.attachments
-  .actions
-    =render partial: 'answers/actions', locals: { answer: answer }
-  .comment-form
-  .comments
-    =render answer.comments
+.answer
+  =answer.body
+  .edit-answer*{ :id => "js-answer-#{answer.id}" }
+    ul
+      = render answer.attachments
+    .actions
+      =render partial: 'answers/actions', locals: { answer: answer }
+    .comment-form
+    .comments
+      =render answer.comments
 
 

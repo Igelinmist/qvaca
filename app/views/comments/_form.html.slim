@@ -6,6 +6,6 @@
     br
   =f.submit 'Сохранить'
   -if @commentable.class.name == 'Question'
-    = link_to 'Отмена', question_comments_path(@question), remote: true
+    = link_to 'Отмена', question_comments_path(@commentable), remote: true
   -else
     = link_to 'Отмена', answer_comments_path(@commentable), remote: true
