@@ -4,10 +4,10 @@ class AnswersController < ApplicationController
   def index
     @question = Question.find(params[:question_id])
   end
+
   def new
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build
-    @answer.attachments.build
   end
 
   def create
@@ -39,6 +39,6 @@ class AnswersController < ApplicationController
   private
 
   def answer_params
-    params.require(:answer).permit(:question_id, :body, attachments_attributes: [:file])
+    params.require(:answer).permit(:question_id, :body, attachments_attributes: [:id, :file, :_destroy])
   end
 end

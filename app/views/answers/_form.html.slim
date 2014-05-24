@@ -7,9 +7,9 @@
   |Вложения:
   br
   =f.fields_for :attachments do |a|
-    =a.label :file
     -if a.object.new_record?
-      =a.file_field :file, 'File'
+      =a.label :file, 'File'
+      =a.file_field :file
     -else
       = link_to a.object.file.identifier, a.object.file.url
     =a.link_to_remove 'Удалить'

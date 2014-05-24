@@ -11,10 +11,9 @@ feature 'Add files to answer', %q(
   scenario 'User adds file when makes an answer', js: true  do
     sign_in(user)
     visit question_path(question)
-    
     click_on 'Ответить'
-    save_and_open_page
     fill_in 'Ответ', with: 'Мой новый ответ'
+    click_on 'Добавить файл'
     attach_file 'File', "#{Rails.root}/spec/spec_helper.rb"
     click_on 'Сохранить'
 

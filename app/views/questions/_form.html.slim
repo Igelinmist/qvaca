@@ -9,7 +9,7 @@
   br
   =f.fields_for :attachments do |a|
     -if a.object.new_record?
-      =a.label :file, 'File'
+      =a.label :file, 'Файл'
       =a.file_field :file
     -else
       = link_to a.object.file.identifier, a.object.file.url

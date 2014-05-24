@@ -41,7 +41,7 @@ feature 'Comment editing', %q(
       expect(page).to have_content 'Содержание не может быть пустым'
     end
 
-    scenario 'can cancel edit comment', js: true do
+    scenario 'can cancel edit comment for answer', js: true do
       find('.js-answers .comments').click_on('Редактировать')
       fill_in 'comment_body', with: 'Исправленный комментарий'
       click_on 'Отмена'
@@ -73,7 +73,7 @@ feature 'Comment editing', %q(
       expect(page).to have_content 'Содержание не может быть пустым'
     end
 
-    scenario 'can cancel edit comment', js: true do
+    scenario 'can cancel edit comment for question', js: true do
       find('.js-question .comments').click_on('Редактировать')
       fill_in 'comment_body', with: 'Исправленный комментарий'
       click_on 'Отмена'

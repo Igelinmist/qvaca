@@ -77,16 +77,6 @@ describe AnswersController do
     end
   end
 
-  describe 'GET #new' do
-    login_user
-
-    before { xhr :get, :new, question_id: question,format: :js}
-
-    it 'builds a new Attachment for anwer' do
-      expect(assigns(:answer).attachments.first).to be_a_new(Attachment)
-    end
-  end
-
   before{ xhr :get, :index, question_id: question, format: :js }
   describe 'GET #index' do
     let(:answers) { create_pair(:answer, question: question, user: @user ) }
