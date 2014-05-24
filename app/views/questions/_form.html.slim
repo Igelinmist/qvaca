@@ -5,6 +5,9 @@
   .field
     =f.label :body,'Содержание'
     =f.text_area :body
+  .field
+    =f.label :tag_names,'Метки'
+    =f.text_field :tag_names
   |Вложения:
   br
   =f.fields_for :attachments do |a|

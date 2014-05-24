@@ -1,6 +1,9 @@
 .js-question
   .topic=@question.title
   .body=@question.body
+  .tags
+    |Метки:
+    = @question.tags.map(&:name).join(", ")
   ul
     = render @question.attachments
   .actions
