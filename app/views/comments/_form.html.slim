@@ -5,7 +5,4 @@
     =f.text_area :body
     br
   =f.submit 'Сохранить'
-  -if @commentable.class.name == 'Question'
-    = link_to 'Отмена', question_comments_path(@commentable), remote: true
-  -else
-    = link_to 'Отмена', answer_comments_path(@commentable), remote: true
+button(onclick="cancelForm()") Отмена

@@ -1,11 +1,12 @@
 .answer
   =answer.body
   .edit-answer*{ :id => "js-answer-#{answer.id}" }
+    .edit-form
     ul
       = render answer.attachments
     .actions
       =render partial: 'answers/actions', locals: { answer: answer }
-    .comment-form
+    .new-comment-form
     .comments
       =render answer.comments
 

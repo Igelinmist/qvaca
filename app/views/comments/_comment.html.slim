@@ -1,5 +1,6 @@
 .comment
   = comment.body
   .edit-comment*{ :id => "js-comment-#{comment.id}" }
+    .edit-form
   .actions
     =render partial: 'comments/actions', locals: { comment: comment }

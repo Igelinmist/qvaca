@@ -9,7 +9,7 @@
     $(".actions").show();
   <%-else%>
     $("#js-answer-<%=@commentable.id%> .comments").html('<%= j render @commentable.comments %>');
-    $("#js-answer-<%=@commentable.id%>  .comment-form").html('');
+    $("#js-answer-<%=@commentable.id%>  .new-comment-form").html('');
     $(".actions").show();
   <%-end%>
 
