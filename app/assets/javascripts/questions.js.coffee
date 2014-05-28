@@ -11,7 +11,8 @@
 $ ->
   $(document).bind 'ajax:success', (e, data, status, xhr) ->
     comment = $.parseJSON(xhr.responseText)
-    $('.js-question .comments').append('<p>' + comment.body + '</p>')
+    #$('.js-question .comments').append('<p>' + comment.body + '</p>')
+    $.tmpl("comment", { id: comment.id, body: comment.body }).appendTo('.js-question .comments')
     $('.new-comment-form').html('')
     $('.actions').show()
   .bind 'ajax:error', (e, xhr, status, error) ->

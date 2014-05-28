@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery-tmpl
+//= require_tree ./templates
 //= require jquery.remotipart
 //= require jquery_nested_form
 //= require turbolinks

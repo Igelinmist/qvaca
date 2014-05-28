@@ -1,4 +1,4 @@
 -if user_signed_in? && comment.user == current_user
   =link_to 'Редактировать', edit_comment_path(comment), remote: true
-  '|
+  | |
   =link_to 'Удалить', comment, data: {:confirm => 'Вы уверены, что хотите удалить комментарий?'}, :method => :delete
