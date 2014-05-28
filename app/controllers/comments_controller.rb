@@ -29,7 +29,14 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.update(comment_params)
+    respond_to do |format|
+      if @comment.update(comment_params)
+        format.js 
+        format.json { render json: @comment }
+      else
+        format.json { render json: @comment.errors.full_messages, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
