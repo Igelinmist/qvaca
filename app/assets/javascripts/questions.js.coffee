@@ -4,9 +4,9 @@
 
 @cancelForm = () ->
   $('.actions').show()
-  $('.edit-form').html('')
-  $('.new-answer-form').html('')
-  $('.new-comment-form').html('')
+  $('.edit-form').empty()
+  $('.new-answer-form').empty()
+  $('.new-comment-form').empty()
 
 $ ->
   $(document).bind 'ajax:success', (e, data, status, xhr) ->
@@ -14,10 +14,13 @@ $ ->
     if $("#js-comment-#{comment.id}").length
       $("#js-comment-#{comment.id}").replaceWith($($.tmpl("comment", { id: comment.id, body: comment.body })))
     else
-      $.tmpl("comment", { id: comment.id, body: comment.body }).appendTo('.js-question .comments')
-      $('.new-comment-form').html('')
+      if comment.commentable_type is 'Question'
+        $.tmpl("comment", { id: comment.id, body: comment.body }).appendTo('.js-question .comments')
+      else
+        $.tmpl("comment", { id: comment.id, body: comment.body }).appendTo("#js-answer-#{comment.commentable_id} .comments")
+      $('.new-comment-form').empty()
     $('.actions').show()
   .bind 'ajax:error', (e, xhr, status, error) ->
     errors = $.parseJSON(xhr.responseText)
     $.each errors, (index, value) ->
-      $('.comment-errors').append(value)
+      $('.js-comment-errors').append(value)
