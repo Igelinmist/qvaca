@@ -10,7 +10,14 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.create(comment_params)
     @comment.user = current_user
-    @comment.save
+    respond_to do |format|
+      if @comment.save
+        format.js 
+        format.json { render json: @comment }
+      else
+        format.json { render json: @comment.errors.full_messages, status: :unprocessable_entity }
+      end
+    end
   end
 
   def new
