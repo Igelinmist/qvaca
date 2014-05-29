@@ -31,7 +31,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     respond_to do |format|
       if @comment.update(comment_params)
-        format.js 
+        format.js
         format.json { render json: @comment }
       else
         format.json { render json: @comment.errors.full_messages, status: :unprocessable_entity }
