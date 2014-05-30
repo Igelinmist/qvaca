@@ -1,7 +1,7 @@
 require_relative 'acceptance_helper'
 
 feature 'Vote about question', %(
-  In order to keep my oppinion about question
+  In order to keep my like about question
   As an authenticate user
   I want to be able vote question
 ) do
@@ -23,7 +23,7 @@ feature 'Vote about question', %(
       visit question_path question
       within '.js-reputation' do
         click_on 'Не нравится'
-        expect(page).to_not have_link 'Нравится'
+        expect(page).to_not have_link 'Не нравится'
       end
     end
   end

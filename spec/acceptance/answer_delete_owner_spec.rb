@@ -14,7 +14,7 @@ feature 'Owner delete answer', %q(
     sign_in(users[0])
     visit question_path(question)
 
-    within "#js-answer-#{answer2.id}" do
+    within "#js-answer-#{answer2.id} .edit-answer" do
       expect(page).to_not have_link 'Удалить'
     end
   end
@@ -22,7 +22,7 @@ feature 'Owner delete answer', %q(
   scenario 'Authenticated user delete his answer' do
     sign_in(users[0])
     visit question_path(question)
-    within "#js-answer-#{answer1.id}" do
+    within "#js-answer-#{answer1.id} .edit-answer" do
       click_on 'Удалить'
     end
     expect(page).to have_content 'Ваш ответ удален.'

@@ -1,6 +1,8 @@
-.answer
+.answer*{ :id => "js-answer-#{answer.id}" }
   =answer.body
-  .edit-answer*{ :id => "js-answer-#{answer.id}" }
+  .js-reputation
+    = render partial: 'answers/reputation', locals: { answer: answer }
+  .edit-answer
     .edit-form
     ul
       = render answer.attachments
