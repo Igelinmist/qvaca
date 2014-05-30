@@ -15,6 +15,7 @@ class Question < ActiveRecord::Base
   has_many :attachments, as: :attachmentable, dependent: :destroy
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :votes, as: :votable, dependent: :destroy
 
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :attachments, allow_destroy: true
@@ -27,5 +28,15 @@ class Question < ActiveRecord::Base
     if @tag_names
       self.tags = @tag_names.split.map { |name| Tag.where(name: name).first_or_create! }
     end
+  end
+
+  def self.put_like(user)
+    vote = self.votes.build(user: user, voice: 1)
+    vote.save!
+  end
+
+  def self.put_dislike(user)
+    vote = self.votes.build(user: user, voice: -1)
+    vote.save!
   end
 end

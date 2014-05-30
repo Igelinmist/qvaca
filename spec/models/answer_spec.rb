@@ -7,6 +7,7 @@ describe Answer do
   it { should have_db_index :question_id }
   it { should have_many :comments }
   it { should have_many :attachments }
+  it { should have_many :votes }
 
   it { should validate_presence_of :user_id }
 

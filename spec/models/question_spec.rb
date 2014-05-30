@@ -11,6 +11,8 @@ describe Question do
   it { should have_many :attachments}
   it { should have_many(:taggings) }
   it { should have_many(:tags).through(:taggings) }
+  it { should have_many :votes }
+
   it { should accept_nested_attributes_for :answers }
 
   it { should accept_nested_attributes_for :attachments }
