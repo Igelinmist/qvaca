@@ -19,6 +19,7 @@ class Question < ActiveRecord::Base
 
   accepts_nested_attributes_for :answers
   accepts_nested_attributes_for :attachments, allow_destroy: true
+  has_many :votes, as: :votable, dependent: :destroy
 
   def tag_names
     @tag_names || tags.pluck(:name).join(' ')
@@ -30,12 +31,16 @@ class Question < ActiveRecord::Base
     end
   end
 
-  def self.put_like(user)
+  def voted_by?(user)
+    Vote.exists? user: user, votable: self
+  end
+
+  def get_like(user)
     vote = self.votes.build(user: user, voice: 1)
     vote.save!
   end
 
-  def self.put_dislike(user)
+  def get_dislike(user)
     vote = self.votes.build(user: user, voice: -1)
     vote.save!
   end

@@ -7,11 +7,15 @@ Rails.application.routes.draw do
   end
 
   resources :questions do
+    get 'like', on: :member, action: :vote, type: '+'
+    get 'dislike', on: :member, action: :vote, type: '-'
     concerns :commentable
     resources :answers, only: [:new, :create, :edit, :update, :index]
   end
 
   resources :answers, only: [:destroy] do
+    get 'like', on: :member, action: :vote, type: '+'
+    get 'dislike', on: :member, action: :vote, type: '-'
     concerns :commentable
   end
 

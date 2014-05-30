@@ -4,6 +4,8 @@
   .tags
     |Метки:
     = @question.tags.map(&:name).join(", ")
+  .js-reputation
+    = render 'questions/reputation'
   ul
     = render @question.attachments
   .actions

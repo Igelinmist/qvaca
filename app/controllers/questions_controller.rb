@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :load_question, only: [:show, :edit, :update, :destroy]
+  before_action :load_question, only: [:show, :edit, :update, :destroy, :vote]
 
   def index
     @questions = Question.all
@@ -39,6 +39,13 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     redirect_to questions_path
+  end
+
+  def vote
+    params[:type] == '+' ? @question.get_like(current_user) : @question.get_dislike(current_user)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

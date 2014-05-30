@@ -11,22 +11,20 @@ feature 'Vote about question', %(
   context 'User (not author)' do
     before { sign_in users[1] }
 
-    scenario 'User (not author) give like to question' do
+    scenario 'give like to question', js: true do
       visit question_path question
-      within '.js-question' do
+      within '.js-reputation' do
         click_on 'Нравится'
-        expect(page).to_not have_link 'Нравится'
+        expect(page).to_not have_link 'Нравится', href: like_question_path(question)
       end
-      expect(page).to have_content 'Ваш голос принят!'
     end
 
-    scenario 'User (not author) give dislike to question' do
+    scenario 'give dislike to question', js: true do
       visit question_path question
-      within '.js-question' do
+      within '.js-reputation' do
         click_on 'Не нравится'
         expect(page).to_not have_link 'Нравится'
       end
-      expect(page).to have_content 'Ваш голос принят!'
     end
   end
 
