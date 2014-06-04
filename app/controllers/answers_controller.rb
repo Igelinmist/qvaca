@@ -28,8 +28,8 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    question = answer.question
-    answer.destroy
+    question = @answer.question
+    @answer.destroy
     flash[:notice] = 'Ваш ответ удален.'
     redirect_to question_path question
   end
