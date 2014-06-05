@@ -25,6 +25,7 @@ gem 'slim-rails'
 gem 'jquery-turbolinks'
 gem 'jquery-tmpl-rails'
 gem 'simple_form'
+gem 'inherited_resources'
 
 group :development,:test do
   gem 'rspec-rails'

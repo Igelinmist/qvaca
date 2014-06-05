@@ -92,8 +92,14 @@ GEM
       childprocess (>= 0.2.3)
       guard (>= 1.1)
       spork (>= 0.8.4)
+    has_scope (0.6.0.rc)
+      actionpack (>= 3.2, < 5)
+      activesupport (>= 3.2, < 5)
     hike (1.2.3)
     i18n (0.6.9)
+    inherited_resources (1.5.0)
+      has_scope (~> 0.6.0.rc)
+      responders (~> 1.0)
     jbuilder (2.0.6)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -160,6 +166,8 @@ GEM
       json (~> 1.4)
     ref (1.0.5)
     remotipart (1.2.1)
+    responders (1.1.0)
+      railties (>= 3.2, < 5)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
@@ -257,6 +265,7 @@ DEPENDENCIES
   factory_girl_rails
   guard-rspec
   guard-spork
+  inherited_resources
   jbuilder (~> 2.0)
   jquery-rails
   jquery-tmpl-rails

@@ -1,18 +1,18 @@
 .js-question
-  .topic=@question.title
-  .body=@question.body
+  .topic=resource.title
+  .body=resource.body
   .tags
     |Метки:
-    = @question.tags.map(&:name).join(", ")
+    = resource.tags.map(&:name).join(", ")
   .js-reputation
     = render 'questions/reputation'
   ul
-    = render @question.attachments
+    = render resource.attachments
   .actions
     =render 'questions/actions'
   .new-answer-form
   .new-comment-form
   .comments
-    =render @question.comments
+    =render resource.comments
 .js-answers
-  =render @question.answers
+  =render resource.answers

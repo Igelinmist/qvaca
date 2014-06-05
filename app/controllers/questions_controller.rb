@@ -1,57 +1,24 @@
-class QuestionsController < ApplicationController
+class QuestionsController < InheritedResources::Base
+  respond_to :js
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :load_question, only: [:show, :edit, :update, :destroy, :vote]
-
-  def index
-    @questions = Question.all
-  end
-
-  def new
-    @question = Question.new
-  end
-
-  def show
-    @comment = @question.comments.build
-  end
-
-  def edit
-  end
+  before_action :set_author, only: [:create]
 
   def create
-    @question = Question.create(question_params)
-    @question.user = current_user
-    if @question.save
-      flash[:notice] = 'Ваш вопрос успешно размещен.'
-      redirect_to @question
-    else
-      render :new
-    end
-  end
-
-  def update
-    if @question.update(question_params)
-      redirect_to @question
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @question.destroy
-    redirect_to questions_path
+    create! notice: 'Ваш вопрос успешно размещен.'
   end
 
   def vote
-    params[:type] == '+' ? @question.get_like(current_user) : @question.get_dislike(current_user)
+    resource ||= Question.find(params[:id])
+    params[:type] == '+' ? resource.get_like(current_user) : resource.get_dislike(current_user)
     respond_to do |format|
       format.js
     end
   end
 
-  private
+  protected
 
-  def load_question
-    @question = Question.find(params[:id])
+  def set_author
+    build_resource.user = current_user
   end
 
   def question_params

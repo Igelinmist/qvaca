@@ -25,10 +25,6 @@ describe QuestionsController do
     it 'render show view' do
       expect(response).to render_template :show
     end
-
-    it 'assigns a new comment for question' do
-      expect(assigns(:comment)).to be_a_new(Comment)
-    end
   end
 
   describe 'GET #new' do

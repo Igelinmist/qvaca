@@ -1,7 +1,7 @@
 = link_to 'Разместить вопрос', new_question_path
 h1 Список вопросов
 table
-	-@questions.each do |q|
+	-collection.each do |q|
 	  tr
 	    td
 	      =link_to q.title, q
