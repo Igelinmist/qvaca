@@ -1,6 +1,4 @@
 -if user_signed_in?
-  =link_to 'Ответить', new_question_answer_path(resource), remote: true
-  '|
   =link_to 'Комментировать', new_question_comment_path(resource), remote: true
   -if resource.user == current_user
     '|

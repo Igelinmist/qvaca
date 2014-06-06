@@ -31,5 +31,6 @@ module Qvaca
     end
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.jquery_templates.prefix = "templates"
+    config.quiet_assets = true
   end
 end

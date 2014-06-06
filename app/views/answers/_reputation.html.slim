@@ -1,4 +1,4 @@
--if user_signed_in? && answer.user != current_user && !answer.voted_by?(current_user)
-  =link_to 'Нравится', like_answer_path(answer), remote: true
+-if user_signed_in? && resource.user != current_user && !resource.voted_by?(current_user)
+  =link_to 'Нравится', like_answer_path(resource), remote: true
   '|
-  =link_to 'Не нравится', dislike_answer_path(answer), remote: true
+  =link_to 'Не нравится', dislike_answer_path(resource), remote: true

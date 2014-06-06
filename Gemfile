@@ -12,7 +12,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'spring',        group: :development
+group :development do
+  gem 'spring'
+  gem 'quiet_assets'
+end
 
 gem 'bootstrap-sass'
 gem 'russian', '~> 0.6.0'

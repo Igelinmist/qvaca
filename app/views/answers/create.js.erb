@@ -1,8 +1,8 @@
-<% if @answer.errors.present? %>
-  <% @answer.errors.full_messages.each do |message| %>
+<% if resource.errors.present? %>
+  <% resource.errors.full_messages.each do |message| %>
     $('.js-answer-errors').before('<%= j message %>')
   <% end %>
 <% else %>
-  $('.js-answers').html('<%= j render @question.answers %>');
+  $('.js-answers').append("<%= j render 'answers/answer', answer: resource, resource: parent  %>");
   $('form.new_answer')[0].reset();
 <% end %>

@@ -1,13 +1,13 @@
 .answer*{ :id => "js-answer-#{answer.id}" }
   =answer.body
   .js-reputation
-    = render partial: 'answers/reputation', locals: { answer: answer }
+    = render 'answers/reputation', answer: answer
   .edit-answer
     .edit-form
     ul
       = render answer.attachments
     .actions
-      =render partial: 'answers/actions', locals: { answer: answer }
+      =render 'answers/actions', answer: answer, question: resource
     .new-comment-form
     .comments
       =render answer.comments

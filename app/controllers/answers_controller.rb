@@ -1,51 +1,28 @@
-class AnswersController < ApplicationController
+class AnswersController < InheritedResources::Base
+  respond_to :html, :js, :json
+  belongs_to :question
+  actions :all, except: [:new]
+
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
-  before_action :load_answer, only: [:update, :edit, :destroy, :vote]
-
-  def index
-    @question = Question.find(params[:question_id])
-  end
-
-  def new
-    @question = Question.find(params[:question_id])
-    @answer = @question.answers.build
-  end
-
-  def create
-    @question = Question.find(params[:question_id])
-    @answer = @question.answers.build(answer_params)
-    @answer.user = current_user
-    @answer.save
-  end
-
-  def update
-    @question = @answer.question
-    @answer.update(answer_params)
-  end
-
-  def edit
-    @question = @answer.question
-  end
 
   def destroy
-    question = @answer.question
-    @answer.destroy
-    flash[:notice] = 'Ваш ответ удален.'
-    redirect_to question_path question
+    destroy!(notice: 'Ваш ответ удален.') { parent_url }
   end
 
 
   def vote
+    @answer = Answer.find(params[:id])
     params[:type] == '+' ? @answer.get_like(current_user) : @answer.get_dislike(current_user)
     respond_to do |format|
       format.js
     end
   end
   
-  private
+  protected
 
-  def load_answer
-    @answer = Answer.find(params[:id])
+  def create_resource(object)
+    object.user = current_user
+    super
   end
 
   def answer_params
