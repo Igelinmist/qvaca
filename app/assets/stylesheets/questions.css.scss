@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .questions { 
   .topic { 
-    font-size: 1.5em;
+    font-size: 1.3em;
     letter-spacing: -1px;
     margin-bottom: 10px;
     text-align: left;
@@ -11,20 +11,25 @@
     color: navy;
   }
   .body { 
-    font-size: 1.2em;
+    font-size: 1em;
   }
   .comments { 
-    font-size: 1em;
+    font-size: 0.8em;
     font-style: italic;
     margin-left: 20px;
+    color: gray;
   }
   .answer { 
-    font-size: 1.2em;
+    font-size: 1em;
     margin-left: 10px;
   }
   .actions { 
     font-size: small;
     font-style: normal;
+  }
+  textarea { 
+    width: 600px;
+    height: 200px;
   }
 
 }

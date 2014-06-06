@@ -16,4 +16,5 @@
     =render resource.comments
   .new-comment-form
   .new-answer-form
-    =render 'answers/form', question: resource, answer: resource.answers.build
+    -if user_signed_in?
+      =render 'answers/form', question: resource, answer: resource.answers.build

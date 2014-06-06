@@ -4,6 +4,5 @@
   <% end %>
 <% else %>
   $('.js-answers').html('<%= j render @question.answers %>');
-  $(".new-answer-form").html('');
-  $(".actions").show();
+  $('form.new_answer')[0].reset();
 <% end %>

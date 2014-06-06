@@ -1,8 +1,11 @@
 = link_to 'Разместить вопрос', new_question_path
 h1 Список вопросов
 table
-	-collection.each do |q|
-	  tr
-	    td
-	      =link_to q.title, q
+  tbody
+  	-collection.each do |question|
+  	  tr
+  	    td=link_to question.title, question
+        td
+          -if user_signed_in? && question.user == current_user
+            =link_to 'Удалить', question, data: {:confirm => "Вы уверены, что хотите удалить вопрос\n и все, что с ним связано?"}, method: :delete, class: 'btn btn-mini btn-danger'
 
