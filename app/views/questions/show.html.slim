@@ -10,9 +10,10 @@
     = render resource.attachments
   .actions
     =render 'questions/actions'
-  .new-answer-form
-  .new-comment-form
+  .js-answers
+    =render resource.answers
   .comments
     =render resource.comments
-.js-answers
-  =render resource.answers
+  .new-comment-form
+  .new-answer-form
+    =render 'answers/form', question: resource, answer: resource.answers.build
