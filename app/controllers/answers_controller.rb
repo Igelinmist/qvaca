@@ -1,7 +1,7 @@
 class AnswersController < InheritedResources::Base
   respond_to :html, :js, :json
   belongs_to :question
-  actions :all, except: [:new]
+  actions :all, except: [:new, :index]
 
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 

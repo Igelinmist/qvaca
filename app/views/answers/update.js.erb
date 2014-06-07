@@ -1,9 +1,10 @@
-<% if @answer.errors.present? %>
-  <% @answer.errors.full_messages.each do |message| %>
+<% if resource.errors.present? %>
+  <% resource.errors.full_messages.each do |message| %>
     $('.js-answer-errors').before('<%= j message %>')
   <% end %>
 <% else %>
-  $('.js-answers').html('<%= j render @question.answers %>');
-  $(".answer-form").html('');
+  $('#js-answer-<%= resource.id %>').replaceWith("<%= j render 'answers/answer', answer: resource, question: parent %>");
+  $('#js-answer-<%= resource.id %> .edit-answer-form').empty();
   $(".actions").show();
+  $("form#new_answer").show();
 <% end %>

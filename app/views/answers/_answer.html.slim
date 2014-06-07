@@ -1,15 +1,14 @@
 .answer*{ :id => "js-answer-#{answer.id}" }
   =answer.body
+  ul
+    = render answer.attachments
   .js-reputation
     = render 'answers/reputation', answer: answer
-  .edit-answer
-    .edit-form
-    ul
-      = render answer.attachments
-    .actions
-      =render 'answers/actions', answer: answer, question: resource
-    .new-comment-form
-    .comments
-      =render answer.comments
+  .edit-answer-form
+  .actions
+    =render 'answers/actions', answer: answer, question: question
+  .new-comment-form
+  .comments
+    =render answer.comments
 
 

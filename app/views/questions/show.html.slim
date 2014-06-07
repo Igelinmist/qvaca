@@ -1,19 +1,19 @@
 .js-question
   .topic=resource.title
   .body=resource.body
+  ul
+    = render resource.attachments
   .tags
     |Метки:
     = resource.tags.map(&:name).join(", ")
   .js-reputation
     = render 'questions/reputation'
-  ul
-    = render resource.attachments
+  .comments
+    =render resource.comments
   .actions
     =render 'questions/actions'
   .js-answers
-    =render resource.answers
-  .comments
-    =render resource.comments
+    =render resource.answers, question: resource
   .new-comment-form
   .new-answer-form
     -if user_signed_in?

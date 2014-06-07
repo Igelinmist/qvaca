@@ -15,24 +15,28 @@ feature 'Answering', %q(
     end
 
     scenario 'public an answer', js: true do
-      click_on 'Ответить'
       fill_in 'Ответ', with: 'Мой новый ответ'
       click_on 'Сохранить'
 
       expect(page).to have_content 'Мой новый ответ'
+      within('form#new_answer') do
+        expect(page).to_not have_content 'Мой новый ответ'
+      end
     end
 
     scenario 'cancel public an answer', js: true do
-      click_on 'Ответить'
       fill_in 'Ответ', with: 'Мой новый ответ'
       click_on 'Отмена'
 
-      expect(page).to_not have_content 'Мой новый ответ'
+      within('form#new_answer') do
+        expect(page).to_not have_content 'Мой новый ответ'
+      end
     end
 
     scenario 'try to create invalid answer', js: true do
-      click_on 'Ответить'
-      click_on 'Сохранить'
+      within('form#new_answer') do
+        click_on 'Сохранить'
+      end
 
       expect(page).to have_content 'Содержание не может быть пустым'
     end
