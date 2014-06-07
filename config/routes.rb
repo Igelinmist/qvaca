@@ -3,23 +3,24 @@ Rails.application.routes.draw do
   devise_for :users
 
   concern :commentable do
-    resources :comments, only: [:new, :create, :update, :index]
+    resources :comments
+  end
+
+  concern :votable do
+    get 'like', on: :member, action: :vote, type: '+'
+    get 'dislike', on: :member, action: :vote, type: '-'
   end
 
   resources :questions do
-    get 'like', on: :member, action: :vote, type: '+'
-    get 'dislike', on: :member, action: :vote, type: '-'
     concerns :commentable
+    concerns :votable
     resources :answers
   end
 
   resources :answers, only: [] do
-    get 'like', on: :member, action: :vote, type: '+'
-    get 'dislike', on: :member, action: :vote, type: '-'
     concerns :commentable
+    concerns :votable
   end
-
-  resources :comments, only: [:edit, :destroy]
 
   root to: 'questions#index'
 

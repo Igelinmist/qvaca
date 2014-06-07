@@ -9,12 +9,12 @@
   .js-reputation
     = render 'questions/reputation'
   .comments
-    =render resource.comments
+    =render resource.comments, parent: resource
+  .new-comment-form
   .actions
     =render 'questions/actions'
 .js-answers
-  =render resource.answers, question: resource
-.new-comment-form
+  =render resource.answers, parent: resource
 .new-answer-form
   -if user_signed_in?
-    =render 'answers/form', question: resource, answer: resource.answers.build
+    =render 'answers/form', parent: resource, resource: resource.answers.build

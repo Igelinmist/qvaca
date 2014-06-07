@@ -17,6 +17,7 @@ group :development do
   gem 'quiet_assets'
 end
 
+gem 'rake', '~> 10.3.2'
 gem 'bootstrap-sass'
 gem 'russian', '~> 0.6.0'
 gem 'devise'

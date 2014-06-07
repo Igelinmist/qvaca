@@ -1,18 +1,16 @@
-<% if @comment.errors.present? %>
-  <% @comment.errors.full_messages.each do |message| %>
+<% if resource.errors.present? %>
+  <% resource.errors.full_messages.each do |message| %>
     $('.js-comment-errors').html('<%= j message %>')
   <% end %>
 <% else %>
-  <%-if @commentable.class.name == 'Question'%>
-    $('.js-question .comments').html('<%= j render @commentable.comments %>');
+  <%-if parent.class.name == 'Question'%>
+    $('.js-question .comments').html('<%= j render parent.comments %>');
     $('.js-question .comment-form').html('');
-    $(".actions").show();
   <%-else%>
-    $("#js-answer-<%=@commentable.id%> .comments").html('<%= j render @commentable.comments %>');
-    $("#js-answer-<%=@commentable.id%>  .new-comment-form").html('');
-    $(".actions").show();
+    $("#js-answer-<%=parent.id%> .comments").html('<%= j render parent.comments %>');
+    $("#js-answer-<%=parent.id%>  .new-comment-form").html('');
   <%-end%>
-
-  
+  $(".actions").show();
+  $("form#new_answer").show();
 <% end %>
 

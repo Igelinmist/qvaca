@@ -160,7 +160,7 @@ GEM
       activesupport (= 4.1.0)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.3.1)
+    rake (10.3.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.4)
       ffi (>= 0.5.0)
@@ -277,6 +277,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 4.1.0)
+  rake (~> 10.3.2)
   remotipart
   rspec-rails
   russian (~> 0.6.0)

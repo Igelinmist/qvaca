@@ -1,7 +1,7 @@
-<%-if @commentable.class.name == 'Question'%>
+ <%-if parent_class.name == 'Question'%>
   $('.js-question .new-comment-form').html('<%= j render 'comments/form' %>');
-  $(".actions").hide();
 <%-else%>
-  $("#js-answer-<%=@commentable.id%> .new-comment-form").html('<%= j render 'comments/form' %>');
-  $(".actions").hide();
+  $("#js-answer-<%=parent.id%> .new-comment-form").html('<%= j render 'comments/form' %>');
 <%-end%>
+$(".actions").hide();
+$("form#new_answer").hide();

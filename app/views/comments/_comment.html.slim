@@ -3,4 +3,4 @@
   .edit-comment
     .edit-form
   .actions
-    =render partial: 'comments/actions', locals: { comment: comment }
+    =render 'comments/actions', parent: parent, resource: comment

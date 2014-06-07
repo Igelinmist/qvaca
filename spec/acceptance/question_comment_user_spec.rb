@@ -28,8 +28,8 @@ feature 'User can comment question', %q(
     visit question_path question
     within '.js-question' do
       click_on 'Комментировать'
+      click_on 'Сохранить'
     end
-    click_on 'Сохранить'
 
     expect(page).to have_content 'Содержание не может быть пустым'
   end
