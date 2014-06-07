@@ -14,7 +14,7 @@ feature 'User can comment answer', %q(
     visit question_path question
     within "#js-answer-#{answer.id}" do
       click_on 'Комментировать'
-      fill_in 'comment_body', with: 'Мой комментарий'
+      fill_in 'Ваш комментарий:', with: 'Мой комментарий'
       click_on 'Сохранить'
 
       expect(page).to have_content 'Мой комментарий'

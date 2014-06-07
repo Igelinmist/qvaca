@@ -11,6 +11,7 @@
     $("#js-answer-<%=@commentable.id%> .comments").html('<%= j render @commentable.comments %>');
     $("#js-answer-<%=@commentable.id%>  .comment-form").html('');
     $(".actions").show();
+    $("form#new_answer").show();
   <%-end%>
 
   

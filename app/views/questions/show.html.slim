@@ -12,9 +12,9 @@
     =render resource.comments
   .actions
     =render 'questions/actions'
-  .js-answers
-    =render resource.answers, question: resource
-  .new-comment-form
-  .new-answer-form
-    -if user_signed_in?
-      =render 'answers/form', question: resource, answer: resource.answers.build
+.js-answers
+  =render resource.answers, question: resource
+.new-comment-form
+.new-answer-form
+  -if user_signed_in?
+    =render 'answers/form', question: resource, answer: resource.answers.build
