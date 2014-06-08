@@ -15,6 +15,7 @@
         $.tmpl("comment", { commentable: 'questions', commentableId: comment.commentable_id, id: comment.id, body: comment.body }).appendTo('.js-question .comments')
       else
         $.tmpl("comment", { commentable: 'answers', commentableId: comment.commentable_id, id: comment.id, body: comment.body }).appendTo("#js-answer-#{comment.commentable_id} .comments")
+      bind_delete_responce('#js-comment-'+comment.id)
       $('.new-comment-form').empty()
 
     $('.actions').show()
@@ -24,3 +25,13 @@
     errors = $.parseJSON(xhr.responseText)
     $.each errors, (index, value) ->
       $('.js-comment-errors').append(value)
+
+@bind_delete_responce = (comment_selector) ->
+  $(comment_selector).bind 'ajax:success', (e, data, status, xhr) ->
+    comment_id = $.parseJSON(xhr.responseText)
+    $('#js-comment-'+comment_id).hide()
+
+$ ->
+  $('.comment').bind 'ajax:success', (e, data, status, xhr) ->
+    comment_id = $.parseJSON(xhr.responseText)
+    $('#js-comment-'+comment_id).remove()

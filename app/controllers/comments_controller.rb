@@ -19,7 +19,9 @@ class CommentsController < InheritedResources::Base
   end
 
   def destroy
-    destroy! { redirect_to parent_url }
+    destroy! do |success, failure|
+      success.json { render json: resource.id}
+    end
   end
 
   protected
