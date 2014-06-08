@@ -3,5 +3,6 @@
 <%-else%>
   $("#js-answer-<%=parent.id%> .new-comment-form").html('<%= j render 'comments/form' %>');
 <%-end%>
+bind_ajax_responce('#new_comment');
 $(".actions").hide();
 $("form#new_answer").hide();

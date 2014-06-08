@@ -5,11 +5,12 @@
 <% else %>
   <%-if parent.class.name == 'Question'%>
     $('.js-question .comments').html('<%= j render parent.comments %>');
-    $('.js-question .comment-form').html('');
+    $('.js-question .comment-form').empty();
   <%-else%>
     $("#js-answer-<%=parent.id%> .comments").html('<%= j render parent.comments %>');
-    $("#js-answer-<%=parent.id%>  .new-comment-form").html('');
+    $("#js-answer-<%=parent.id%>  .new-comment-form").empty();
   <%-end%>
+  $("#new_comment").unbind();
   $(".actions").show();
   $("form#new_answer").show();
 <% end %>

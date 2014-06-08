@@ -2,8 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
-  $(document).bind 'ajax:success', (e, data, status, xhr) ->
+@bind_ajax_responce = (form_selector) ->
+  $(form_selector).bind 'ajax:success', (e, data, status, xhr) ->
     comment = $.parseJSON(xhr.responseText)
     if $("#js-comment-#{comment.id}").length
       if comment.commentable_type is 'Question'

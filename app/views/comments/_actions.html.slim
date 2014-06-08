@@ -1,4 +1,4 @@
 -if user_signed_in? && resource.user == current_user
   =link_to 'Редактировать', [:edit, parent, resource], remote: true
   | |
-  =link_to 'Удалить', [parent, resource], data: {:confirm => 'Вы уверены, что хотите удалить комментарий?'}, :method => :delete
+  =link_to 'Удалить', [parent, resource], data: {:confirm => 'Вы уверены, что хотите удалить комментарий?'}, :method => :delete, remote: true, data: { type: :json }

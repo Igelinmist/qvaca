@@ -1,3 +1,4 @@
 $("#js-comment-<%=@comment.id%> .edit-form").html('<%= j render "comments/form" %>');
+bind_ajax_responce("#edit_comment_<%=@comment.id%>");
 $(".actions").hide();
 $("form#new_answer").hide();

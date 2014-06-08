@@ -10,6 +10,7 @@
     $("#js-answer-<%=parent.id%> .comments").html('<%= j render parent.comments %>');
     $("#js-answer-<%=parent.id%>  .comment-form").html('');
   <%-end%>
+  $("#edit_comment_<%=resource.id%>").unbind();
   $(".actions").show();
   $("form#new_answer").show();
 <% end %>
