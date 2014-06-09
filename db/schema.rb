@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140530100734) do
+ActiveRecord::Schema.define(version: 20140609041355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,22 @@ ActiveRecord::Schema.define(version: 20140530100734) do
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
+  create_table "profiles", force: true do |t|
+    t.string   "display_name"
+    t.string   "real_name"
+    t.string   "website"
+    t.string   "location"
+    t.date     "birthday"
+    t.text     "about_me"
+    t.boolean  "weekly_email"
+    t.string   "avatar"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
   create_table "questions", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -60,11 +76,6 @@ ActiveRecord::Schema.define(version: 20140530100734) do
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
-
-  create_table "questions_tags", id: false, force: true do |t|
-    t.integer "question_id"
-    t.integer "tag_id"
-  end
 
   create_table "taggings", force: true do |t|
     t.integer  "question_id"

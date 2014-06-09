@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :comments
+  has_one :profile
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
