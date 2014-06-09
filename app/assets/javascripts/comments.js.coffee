@@ -29,7 +29,7 @@
 @bind_delete_responce = (comment_selector) ->
   $(comment_selector).bind 'ajax:success', (e, data, status, xhr) ->
     comment_id = $.parseJSON(xhr.responseText)
-    $('#js-comment-'+comment_id).hide()
+    $('#js-comment-'+comment_id).remove()
 
 $ ->
   $('.comment').bind 'ajax:success', (e, data, status, xhr) ->

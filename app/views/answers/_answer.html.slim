@@ -3,7 +3,7 @@
   ul
     = render answer.attachments
   .js-reputation
-    = render 'answers/reputation'
+    = render 'answers/reputation', parent: parent, resource: answer
   .edit-answer-form
   .actions
     =render 'answers/actions', parent: parent, resource: answer

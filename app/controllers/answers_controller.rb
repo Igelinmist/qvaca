@@ -3,7 +3,7 @@ class AnswersController < InheritedResources::Base
   belongs_to :question
   actions :all, except: [:new, :index]
 
-  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy, :vote]
 
   def destroy
     destroy!(notice: 'Ваш ответ удален.') { parent_url }
