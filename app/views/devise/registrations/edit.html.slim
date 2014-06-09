@@ -1,7 +1,7 @@
 h2 
  'Edit 
  =resource_name.to_s.humanize
-= simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put } do |f|
+= simple_form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' } do |f|
   = devise_error_messages!
   = f.input :email, autofocus: true
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
@@ -9,6 +9,13 @@ h2
   = f.input :password, autocomplete: "off"
   = f.input :password_confirmation, autocomplete: "off"
   = f.input :current_password, autocomplete: "off"
+  = f.simple_fields_for setup_ext_attr(resource) do |p|
+    = p.input :display_name
+    = p.input :real_name
+    = p.input :website
+    = p.input :location
+    = p.input :birthday
+    = p.input :about_me
   = f.button :submit
 h3 Cancel my account
 
