@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers
   has_many :comments
-  has_one :profile
+  has_many :votes, dependent: :destroy
+  has_one :profile, dependent: :destroy
 
   accepts_nested_attributes_for :profile
   

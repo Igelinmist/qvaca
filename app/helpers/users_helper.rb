@@ -1,5 +1,6 @@
 module UsersHelper
   def setup_ext_attr(user)
-    user.profile ||= Profile.new
+    user.profile ||= user.build_profile
+    user
   end
 end

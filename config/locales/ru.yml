@@ -2,6 +2,15 @@ ru:
   attributes:
     body: "Содержание"
     file: "Файл"
+    password: "Пароль"
+    password_confirmation: "Подтверджение пароля"
+    current_password: "Текущий пароль"
+    display_name: "Псевдоним"
+    real_name: "Реальное имя"
+    location: "Расположение"
+    birthday: "День рождения"
+    about_me: "Обо мне..."
+
   activerecord:
     errors:
       messages:

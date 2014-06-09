@@ -18,6 +18,11 @@ feature 'User edit his profile', %q(
     scenario 'edit profile data' do
       visit questions_path
       click_on 'Профиль'
+      fill_in 'Псевдодим', with: 'my_nick'
+      fill_in 'Текущий пароль', with: user.password
+      click_on 'Сохранить User'
+
+      expect(page).to have_content 'my_nick'
     end
 
   end
