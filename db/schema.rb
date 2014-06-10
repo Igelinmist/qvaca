@@ -77,6 +77,11 @@ ActiveRecord::Schema.define(version: 20140609041355) do
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
+  create_table "questions_tags", id: false, force: true do |t|
+    t.integer "question_id"
+    t.integer "tag_id"
+  end
+
   create_table "taggings", force: true do |t|
     t.integer  "question_id"
     t.integer  "tag_id"

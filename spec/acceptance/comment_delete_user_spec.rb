@@ -33,12 +33,12 @@ feature 'User can delete his comment', %q(
       end
     end
 
-    # scenario 'delete his comment' do
-    #   within "#js-comment-#{comment1.id}" do
-    #     expect { click_link 'Удалить' }.to change(Comment, :count).by(-1)
-    #     # expect(current_url).to eq question_path question
-    #   end
-    # end
+    scenario 'delete his comment', js: true do
+      within "#js-comment-#{comment1.id}" do
+        click_link 'Удалить'
+        expect(current_path).to eq question_path question
+      end
+    end
 
 
   end
