@@ -17,8 +17,10 @@ feature 'Signing in', %q{
   scenario 'Non-existing user try to sign in' do
     visit new_user_session_path
     fill_in 'Email', with: 'wrong@test.com'
-    fill_in 'Password', with: '12345'
-    click_on 'Sign in'
+    fill_in 'Пароль', with: '12345'
+    within 'form' do
+      click_on 'Вход'
+    end
 
     expect(page).to have_content 'Неверный email или пароль'
   end

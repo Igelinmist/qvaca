@@ -17,12 +17,24 @@ feature 'User edit his profile', %q(
 
     scenario 'edit profile data' do
       visit questions_path
-      click_on 'Профиль'
-      fill_in 'Псевдодим', with: 'my_nick'
+      click_on 'Batman'
+      fill_in 'Псевдоним', with: 'my_nick'
       fill_in 'Текущий пароль', with: user.password
       click_on 'Сохранить User'
+      within '.navbar' do
+        expect(page).to have_content 'my_nick'
+      end
+      expect(page).to have_content 'Данные учетной записи изменены'
+    end
 
-      expect(page).to have_content 'my_nick'
+    scenario 'edit profile data forget password' do
+      visit questions_path
+      click_on 'Batman'
+      fill_in 'Псевдоним', with: 'my_nick'
+
+      click_on 'Сохранить User'
+
+      expect(page).to have_content 'Текущий пароль не может быть пустым'
     end
 
   end

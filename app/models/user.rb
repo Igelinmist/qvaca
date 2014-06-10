@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
 
   accepts_nested_attributes_for :profile
+  delegate :display_name, to: :profile
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

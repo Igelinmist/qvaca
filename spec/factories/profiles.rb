@@ -2,10 +2,10 @@
 
 FactoryGirl.define do
   factory :profile do
-    display_name "MyString"
-    real_name "MyString"
-    website "MyString"
-    location "MyString"
+    display_name "Batman"
+    real_name "Smith"
+    website "www.night.com"
+    location "Underhil"
     birthday "2014-06-09"
     about_me "MyText"
     weekly_email false

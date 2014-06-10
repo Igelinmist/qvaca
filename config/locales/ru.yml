@@ -10,6 +10,8 @@ ru:
     location: "Расположение"
     birthday: "День рождения"
     about_me: "Обо мне..."
+    sign_in: "Вход"
+    remember_me: "Запомнить меня"
 
   activerecord:
     errors:
@@ -22,7 +24,7 @@ ru:
         inclusion: "недопустимое значение"
         exclusion: "is reserved"
         invalid: "содержит недопустимое значение"
-        confirmation: "doesn't match confirmation"
+        confirmation: "значение не совпадает"
         accepted: "must be accepted"
         empty: "не может быть пустым"
         blank: "не может быть пустым"
