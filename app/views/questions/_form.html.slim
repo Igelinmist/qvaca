@@ -21,4 +21,6 @@
   =f.link_to_add "Добавить файл", :attachments
   br
 
-  =f.submit 'Сохранить'
+  =f.submit 'Сохранить', :class => 'btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), questions_path, :class => 'btn'

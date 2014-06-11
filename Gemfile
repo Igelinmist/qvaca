@@ -3,9 +3,15 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.0'
 
 gem 'pg'
+
+
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
+gem "less-rails"
+gem 'twitter-bootstrap-rails'
+
+
 gem 'jquery-rails'
 
 gem 'turbolinks'
@@ -18,7 +24,6 @@ group :development do
 end
 
 gem 'rake', '~> 10.3.2'
-gem 'bootstrap-sass'
 gem 'russian', '~> 0.6.0'
 gem 'devise'
 gem 'carrierwave'

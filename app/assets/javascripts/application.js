@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require jquery-tmpl
 //= require_tree ./templates
 //= require jquery.remotipart
