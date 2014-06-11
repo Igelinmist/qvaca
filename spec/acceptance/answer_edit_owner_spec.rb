@@ -6,7 +6,7 @@ feature 'Answer editing', %q(
   I want to be able edit answer
 ) do
   given!(:users) { create_pair(:user) }
-  given!(:question) { create(:question) }
+  given!(:question) { create(:question, user: users[0]) }
   given!(:answer1) { create(:answer, question: question, user: users[0]) }
   given!(:answer2) { create(:answer, question: question, user: users[1]) }
 

@@ -37,6 +37,6 @@ class CommentsController < InheritedResources::Base
   end
 
   def comment_params
-    params.require(:comment).permit(:question_id, :body)
+    params.require(:comment).permit(:question_id, :answer_id, :body)
   end
 end

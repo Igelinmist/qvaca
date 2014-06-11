@@ -6,7 +6,7 @@ feature 'Owner delete answer', %q(
   I want be able to delete answer
 ) do
   given!(:users) { create_pair(:user) }
-  given!(:question) { create(:question) }
+  given!(:question) { create(:question, user: users[0]) }
   given!(:answer1) { create(:answer, question: question, user: users[0]) }
   given!(:answer2) { create(:answer, question: question, user: users[1]) }
 

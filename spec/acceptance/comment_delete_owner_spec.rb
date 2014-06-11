@@ -24,11 +24,11 @@ feature 'Comment editing', %q(
       visit question_path(question)
     end
 
-    scenario 'not see link Delete under question', js: true do
+    scenario "not see link Delete under question's comment", js: true do
       expect(find('.js-question .comments')).to_not have_link 'Удалить'
     end
 
-    scenario 'see link Delete under answer', js: true do
+    scenario "see link Delete under answer's comment", js: true do
       expect(find('.js-answers .comments')).to have_link 'Удалить'
     end
   end

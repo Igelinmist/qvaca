@@ -7,7 +7,7 @@ feature 'Vote about answer', %(
 ) do
 
   given!(:users) { create_pair(:user) }
-  given!(:question) { create(:question) }
+  given!(:question) { create(:question, user: users[0]) }
   given!(:answer) { create(:answer, question: question, user: users[0]) }
 
   context 'User (not author)' do
