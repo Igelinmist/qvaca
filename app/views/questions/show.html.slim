@@ -6,6 +6,8 @@
   .tags
     |Метки:
     = resource.tags.map(&:name).join(", ")
+  .js-author
+    = link_to resource.user.display_name, resource.user.profile
   .js-reputation
     = render 'questions/reputation'
   .comments
