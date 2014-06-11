@@ -27,7 +27,7 @@ feature 'User edit his profile', %q(
       expect(page).to have_content 'Данные учетной записи изменены'
     end
 
-    scenario 'edit profile data forget password' do
+    scenario 'edit profile data, but forgot password' do
       visit questions_path
       click_on 'Batman'
       fill_in 'Псевдоним', with: 'my_nick'
