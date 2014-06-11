@@ -1,8 +1,14 @@
 h1 =resource.display_name
-ul
-  li =resource.user.email
-  li =resource.real_name
-  li =resource.website
-  li =resource.location
-  li =resource.birthday
-  li =resource.about_me
+dl
+  dd =resource.real_name
+  dt Email:
+  dd =resource.user.email
+  dt Website:
+  dd =resource.website
+  dt Расположение:
+  dd =resource.location
+  dt Дата рождения:
+  dd =resource.birthday
+  dt О себе:
+  dd =resource.about_me
+=link_to 'Назад', :back

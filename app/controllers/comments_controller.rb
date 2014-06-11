@@ -6,7 +6,12 @@ class CommentsController < InheritedResources::Base
 
   def create
     create! do |success, failure|
-      success.json { render json: @comment }
+      success.json do
+        comment = resource.attributes
+        comment[:profile_id] = resource.user.profile.id
+        comment[:author_nick] =  resource.user.display_name
+        render json: comment
+      end
       failure.json { render json: @comment.errors.full_messages, status: :unprocessable_entity }
     end
   end

@@ -30,6 +30,7 @@ gem 'jquery-turbolinks'
 gem 'jquery-tmpl-rails'
 gem 'simple_form'
 gem 'inherited_resources'
+gem 'draper'
 
 group :development,:test do
   gem 'rspec-rails'

@@ -1,5 +1,7 @@
 .comment*{ :id => "js-comment-#{comment.id}" }
   = comment.body
+  .js-author
+    = link_to comment.user.display_name, comment.user.profile
   .edit-comment
     .edit-form
   .actions

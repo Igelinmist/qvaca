@@ -7,14 +7,14 @@
     comment = $.parseJSON(xhr.responseText)
     if $("#js-comment-#{comment.id}").length
       if comment.commentable_type is 'Question'
-        $("#js-comment-#{comment.id}").replaceWith($.tmpl("comment", { commentable: 'questions', commentableId: comment.commentable_id, id: comment.id, body: comment.body }))
+        $("#js-comment-#{comment.id}").replaceWith($.tmpl("comment", { commentable: 'questions', commentableId: comment.commentable_id, id: comment.id, body: comment.body, profileId: comment.profile_id, authorNick: comment.author_nick }))
       else
-        $("#js-comment-#{comment.id}").replaceWith($.tmpl("comment", { commentable: 'answers', commentableId: comment.commentable_id, id: comment.id, body: comment.body }))
+        $("#js-comment-#{comment.id}").replaceWith($.tmpl("comment", { commentable: 'answers', commentableId: comment.commentable_id, id: comment.id, body: comment.body, profileId: comment.profile_id, authorNick: comment.author_nick }))
     else
       if comment.commentable_type is 'Question'
-        $.tmpl("comment", { commentable: 'questions', commentableId: comment.commentable_id, id: comment.id, body: comment.body }).appendTo('.js-question .comments')
+        $.tmpl("comment", { commentable: 'questions', commentableId: comment.commentable_id, id: comment.id, body: comment.body, profileId: comment.profile_id, authorNick: comment.author_nick }).appendTo('.js-question .comments')
       else
-        $.tmpl("comment", { commentable: 'answers', commentableId: comment.commentable_id, id: comment.id, body: comment.body }).appendTo("#js-answer-#{comment.commentable_id} .comments")
+        $.tmpl("comment", { commentable: 'answers', commentableId: comment.commentable_id, id: comment.id, body: comment.body, profileId: comment.profile_id, authorNick: comment.author_nick }).appendTo("#js-answer-#{comment.commentable_id} .comments")
       bind_delete_responce('#js-comment-'+comment.id)
       $('.new-comment-form').empty()
 

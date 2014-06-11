@@ -12,6 +12,9 @@ ru:
     about_me: "Обо мне..."
     sign_in: "Вход"
     remember_me: "Запомнить меня"
+  date:
+    formats:
+      default: "%d.%m.%Y"
 
   activerecord:
     errors:

@@ -2,6 +2,8 @@
   =answer.body
   ul
     = render answer.attachments
+  .js-author
+    = link_to answer.user.display_name, answer.user.profile
   .js-reputation
     = render 'answers/reputation', parent: parent, resource: answer
   .edit-answer-form
