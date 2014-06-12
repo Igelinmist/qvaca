@@ -35,13 +35,8 @@ class Question < ActiveRecord::Base
     Vote.exists? user: user, votable: self
   end
 
-  def vote_up(user)
-    vote = self.votes.build(user: user, voice: 1)
-    vote.save!
-  end
-
-  def vote_down(user)
-    vote = self.votes.build(user: user, voice: -1)
+  def vote(user, rate)
+    vote = self.votes.build(user: user, voice: rate*2)
     vote.save!
   end
 end

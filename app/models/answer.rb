@@ -15,13 +15,8 @@ class Answer < ActiveRecord::Base
     Vote.exists? user: user, votable: self
   end
 
-  def get_like(user)
-    vote = self.votes.build(user: user, voice: 1)
-    vote.save
-  end
-
-  def get_dislike(user)
-    vote = self.votes.build(user: user, voice: -1)
-    vote.save
+  def vote(user, rate)
+    vote = self.votes.build(user: user, voice: rate)
+    vote.save!
   end
 end

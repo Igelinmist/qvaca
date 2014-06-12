@@ -12,7 +12,7 @@ class AnswersController < InheritedResources::Base
 
   def vote
     @answer = Answer.find(params[:id])
-    params[:type] == '+' ? @answer.get_like(current_user) : @answer.get_dislike(current_user)
+    @answer.vote(current_user, params[:rate])
   end
   
   protected

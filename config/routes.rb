@@ -8,19 +8,18 @@ Rails.application.routes.draw do
   end
 
   concern :votable do
-    get 'voteup', on: :member, action: :vote, type: '+'
-    get 'votedown', on: :member, action: :vote, type: '-'
+    get :voteup, on: :member, action: :vote, rate: 1
+    get :votedown, on: :member, action: :vote, rate: -1
   end
 
   resources :questions do
-    concerns :commentable
-    concerns :votable
+    concerns [:commentable, :votable]
     resources :answers
   end
 
   resources :answers, only: [] do
-    concerns :commentable
-    concerns :votable
+    concerns [:commentable, :votable]
+    get :thebest, on: :member, action: :vote, rate: 3
   end
 
   root to: 'questions#index'
