@@ -16,6 +16,7 @@ feature 'Vote about question', %(
       within '.js-reputation' do
         click_on 'Нравится'
         expect(page).to_not have_link 'Нравится', href: voteup_question_path(question)
+        expect(page).to have_content '2'
       end
     end
 

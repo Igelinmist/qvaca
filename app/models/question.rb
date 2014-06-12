@@ -39,4 +39,8 @@ class Question < ActiveRecord::Base
     vote = self.votes.build(user: user, voice: rate*2)
     vote.save!
   end
+
+  def summary_votes
+    self.votes.sum :voice
+  end
 end
