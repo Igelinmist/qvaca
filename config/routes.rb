@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   end
 
   concern :votable do
-    get 'like', on: :member, action: :vote, type: '+'
-    get 'dislike', on: :member, action: :vote, type: '-'
+    get 'voteup', on: :member, action: :vote, type: '+'
+    get 'votedown', on: :member, action: :vote, type: '-'
   end
 
   resources :questions do

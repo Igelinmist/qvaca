@@ -2,8 +2,10 @@ class ProfileDecorator < Draper::Decorator
   delegate_all
 
   def real_name
-    h.content_tag :strong do
+    if object.real_name.present?
       object.real_name
+    else
+      h.content_tag :span, 'Не представлено', class: 'none'
     end
   end
 

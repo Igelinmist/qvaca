@@ -1,14 +1,39 @@
-h1 =resource.display_name
-dl
-  dd =resource.real_name
-  dt Email:
-  dd =resource.user.email
-  dt Website:
-  dd =resource.website
-  dt Расположение:
-  dd =resource.location
-  dt Дата рождения:
-  dd =resource.birthday
-  dt О себе:
-  dd =resource.about_me
-=link_to 'Назад', :back
+- model_class = Profile
+div class="page-header"
+  h1=t '.title', :default => model_class.model_name.human.titleize
+
+p
+  strong= model_class.human_attribute_name(:display_name) + ':'
+  br
+  = resource.display_name
+p
+  strong= model_class.human_attribute_name(:real_name) + ':'
+  br
+  = resource.real_name
+p
+  strong= model_class.human_attribute_name(:website) + ':'
+  br
+  = resource.website
+p
+  strong= model_class.human_attribute_name(:location) + ':'
+  br
+  = resource.location
+p
+  strong= model_class.human_attribute_name(:birthday) + ':'
+  br
+  = resource.birthday
+p
+  strong= model_class.human_attribute_name(:about_me) + ':'
+  br
+  = resource.about_me
+p
+  strong= model_class.human_attribute_name(:weekly_email) + ':'
+  br
+  = resource.weekly_email
+p
+  strong= model_class.human_attribute_name(:avatar) + ':'
+  br
+  = resource.avatar
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), :back, :class => 'btn'

@@ -19,9 +19,10 @@ feature 'Owner delete answer', %q(
     end
   end
 
-  scenario 'Authenticated user delete his answer' do
+  scenario 'Authenticated user delete his answer', js: true do
     sign_in(users[0])
     visit question_path(question)
+
     within "#js-answer-#{answer1.id}" do
       click_on 'Удалить'
     end

@@ -1,6 +1,7 @@
 class QuestionsController < InheritedResources::Base
   respond_to :js
-  before_action :authenticate_user!, only: [:new, :create]
+  custom_actions resource: [:vote]
+  before_action :authenticate_user!, only: [:new, :create, :vote]
   before_action :set_author, only: [:create]
 
   def create
@@ -8,11 +9,7 @@ class QuestionsController < InheritedResources::Base
   end
 
   def vote
-    resource ||= Question.find(params[:id])
     params[:type] == '+' ? resource.get_like(current_user) : resource.get_dislike(current_user)
-    respond_to do |format|
-      format.js
-    end
   end
 
   protected
