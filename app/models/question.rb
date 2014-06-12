@@ -35,12 +35,12 @@ class Question < ActiveRecord::Base
     Vote.exists? user: user, votable: self
   end
 
-  def get_like(user)
+  def vote_up(user)
     vote = self.votes.build(user: user, voice: 1)
     vote.save!
   end
 
-  def get_dislike(user)
+  def vote_down(user)
     vote = self.votes.build(user: user, voice: -1)
     vote.save!
   end

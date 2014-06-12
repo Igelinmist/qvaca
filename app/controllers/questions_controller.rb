@@ -9,7 +9,7 @@ class QuestionsController < InheritedResources::Base
   end
 
   def vote
-    params[:type] == '+' ? resource.get_like(current_user) : resource.get_dislike(current_user)
+    params[:type] == '+' ? resource.vote_up(current_user) : resource.vote_down(current_user)
   end
 
   protected

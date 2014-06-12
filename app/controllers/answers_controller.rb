@@ -2,7 +2,6 @@ class AnswersController < InheritedResources::Base
   respond_to :html, :js, :json
   belongs_to :question
   actions :all, except: [:new, :index]
-  custom_actions resource: [:vote]
 
   before_action :authenticate_user!, only: [:create, :update, :destroy, :vote]
 
@@ -12,7 +11,8 @@ class AnswersController < InheritedResources::Base
 
 
   def vote
-    params[:type] == '+' ? resource.get_like(current_user) : resource.get_dislike(current_user)
+    @answer = Answer.find(params[:id])
+    params[:type] == '+' ? @answer.get_like(current_user) : @answer.get_dislike(current_user)
   end
   
   protected
