@@ -15,6 +15,9 @@ ru:
   date:
     formats:
       default: "%d.%m.%Y"
+  helpers:
+    links:
+      back: "Назад"
 
   activerecord:
     errors:

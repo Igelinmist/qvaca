@@ -19,7 +19,7 @@ feature 'Vote about answer', %(
     scenario 'give like to answer', js: true do
       within "#js-answer-#{answer.id}" do
         click_on 'Нравится'
-        expect(page).to_not have_link 'Нравится', href: like_answer_path(answer)
+        expect(page).to_not have_link 'Нравится', href: voteup_answer_path(answer)
       end
     end
 

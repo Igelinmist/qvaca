@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :profile do
-    sequence(:display_name) { |n| "batman{n}" }
+    display_name "Batman"
     real_name "Smith"
     website "www.night.com"
     location "Underhil"

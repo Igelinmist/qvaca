@@ -18,35 +18,37 @@ html lang="en"
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = javascript_include_tag "application"
 
-body class=controller.controller_name
-  .navbar.navbar-fixed-top
-    .navbar-inner
-      .container
-        a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-          span.icon-bar
-          span.icon-bar
+  body class=controller.controller_name
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+            span.icon-bar
+            span.icon-bar
 
-        =link_to "QVACA", "/", class: "brand"
-        .container.nav-collapse
-          nav
-            ul.nav.pull-right
-              -if user_signed_in?
-                li=link_to current_user.display_name, edit_user_registration_path
-                li=link_to 'Выход', destroy_user_session_path, method: :delete
-              -else
-                li=link_to 'Вход', new_user_session_path
-                li=link_to 'Регистрация', new_user_registration_path
-  .container
-    .row
-      .span9
-        =bootstrap_flash
-          .notice=notice
-          .alert=alert
-        =yield
-      .span3
-        .well.sidebar-nav
-          h3 О проекте
-          p Это учебный проект, предназначенный для освоение особенностей построения RubyOnRails приложений.
+          =link_to "QVACA", "/", class: "brand"
+          .container.nav-collapse
+            nav
+              ul.nav.pull-right
+                -if user_signed_in?
+                  li=link_to current_user.display_name, edit_user_registration_path
+                  li=link_to 'Выход', destroy_user_session_path, method: :delete
+                -else
+                  li=link_to 'Вход', new_user_session_path
+                  li=link_to 'Регистрация', new_user_registration_path
+    .container
+      .row
+        .span9
+          /.notice=notice
+          /.alert=alert
+          =bootstrap_flash
+          -flash.each do |key, value|
+            = content_tag(:div, value, class: "alert alert-#{key}")
+          =yield
+        .span3
+          .well.sidebar-nav
+            h3 О проекте
+            p Это учебный проект, предназначенный для освоение особенностей построения RubyOnRails приложений.
 
-    footer
-      p &copy; Company 2014
+      footer
+        p &copy; Company 2014

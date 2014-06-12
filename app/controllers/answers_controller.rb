@@ -6,7 +6,7 @@ class AnswersController < InheritedResources::Base
   before_action :authenticate_user!, only: [:create, :update, :destroy, :vote]
 
   def destroy
-    destroy!(notice: 'Ваш ответ удален.') { parent_url }
+    destroy!{flash[:success] = "Ваш ответ удален."; parent_url }
   end
 
 
