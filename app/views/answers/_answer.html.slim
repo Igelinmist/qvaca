@@ -1,17 +1,18 @@
-.row.answer*{ :id => "js-answer-#{answer.id}" }
-  .span1.js-reputation
-    = render 'answers/reputation', parent: parent, resource: answer
-  .span8
-    =answer.body
-    ul
-      = render answer.attachments
-    .js-author
-      = link_to answer.user.display_name, answer.user.profile
-    .edit-answer-form
-    .actions
-      =render 'answers/actions', parent: parent, resource: answer
-    .new-comment-form
-    .comments
-      =render answer.comments, parent: answer
+.answer*{ :id => "js-answer-#{answer.id}" }
+  .row
+    .span1.js-reputation
+      = render 'answers/reputation', parent: parent, resource: answer
+    .span8
+      =answer.body
+      ul
+        = render answer.attachments
+      .js-author
+        = link_to answer.user.display_name, answer.user.profile
+      .edit-answer-form
+      .actions
+        =render 'answers/actions', parent: parent, resource: answer
+      .new-comment-form
+      .comments
+        =render answer.comments, parent: answer
 
 

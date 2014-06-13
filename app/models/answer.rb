@@ -19,4 +19,9 @@ class Answer < ActiveRecord::Base
     vote = self.votes.build(user: user, voice: rate)
     vote.save!
   end
+
+  
+  def summary_votes
+    self.votes.sum :voice
+  end
 end

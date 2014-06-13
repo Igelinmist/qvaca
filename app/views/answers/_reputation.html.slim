@@ -1,4 +1,8 @@
--if user_signed_in? && resource.user != current_user && !resource.voted_by?(current_user)
-  =link_to 'Нравится', voteup_answer_path(resource), remote: true
-  '|
-  =link_to 'Не нравится', votedown_answer_path(resource), remote: true
+-if can_vote(resource)
+  =link_to voteup_answer_path(resource), remote: true, id: "answer-vote-up-#{resource.id}", title: 'Оценить вопрос, как полезный' do
+      i.icon-sort-up.icon-2x
+.rating
+  =resource.summary_votes
+-if can_vote(resource)
+  =link_to votedown_answer_path(resource), remote: true, id: "answer-vote-down-#{resource.id}", title: 'Оценить вопрос, как бесполезный' do
+      i.icon-sort-down.icon-2x

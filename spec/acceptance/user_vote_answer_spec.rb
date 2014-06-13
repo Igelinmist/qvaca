@@ -18,15 +18,15 @@ feature 'Vote about answer', %(
 
     scenario 'give like to answer', js: true do
       within "#js-answer-#{answer.id}" do
-        click_on 'Нравится'
-        expect(page).to_not have_link 'Нравится', href: voteup_answer_path(answer)
+        click_link "answer-vote-up-#{answer.id}"
+        expect(page).to_not have_link "answer-vote-up-#{answer.id}", href: voteup_answer_path(answer)
       end
     end
 
     scenario 'give dislike to question', js: true do
       within "#js-answer-#{answer.id}" do
-        click_on 'Не нравится'
-        expect(page).to_not have_link 'Не нравится'
+        click_link "answer-vote-down-#{answer.id}"
+        expect(page).to_not have_link "answer-vote-down-#{answer.id}"
       end
     end
   end
@@ -36,8 +36,8 @@ feature 'Vote about answer', %(
     visit question_path question
 
     within "#js-answer-#{answer.id}" do
-      expect(page).to_not have_link 'Нравится'
-      expect(page).to_not have_link 'Не нравится'
+      expect(page).to_not have_link "answer-vote-up-#{answer.id}"
+      expect(page).to_not have_link "answer-vote-down-#{answer.id}"
     end
   end
 end
