@@ -1,13 +1,8 @@
-/= link_to new_question_path do
-/  i class="icon-camera-retro icon-4x"
 -if can_vote(resource)
-  .js-vote-up
-    =link_to voteup_question_path(resource), remote: true, title: 'Оценить вопрос, как полезный' do
+  =link_to voteup_question_path(resource), remote: true, id: 'question-vote-up', title: 'Оценить вопрос, как полезный' do
       i.icon-sort-up.icon-2x
 .rating
   =resource.summary_votes
 -if can_vote(resource)
-  .js-vote-down
-    =link_to votedown_question_path(resource), remote: true, title: 'Оценить вопрос, как бесполезный' do
+  =link_to votedown_question_path(resource), remote: true, id: 'question-vote-down', title: 'Оценить вопрос, как бесполезный' do
       i.icon-sort-down.icon-2x
-

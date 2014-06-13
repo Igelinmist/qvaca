@@ -1,23 +1,24 @@
-.row.js-question
-  .span8.offset1.topic=resource.title
-.row
-  .span1
-    .js-reputation
-      = render 'questions/reputation'
-  .span8
-    .body=resource.body
-    ul
-      = render resource.attachments
-    .tags
-      |Метки:
-      = resource.tags.map(&:name).join(", ")
-    .js-question-author
-      = link_to resource.user.display_name, resource.user.profile
-    .comments
-      =render resource.comments, parent: resource
-    .new-comment-form
-    .actions
-      =render 'questions/actions', resource: resource
+.js-question
+  .row
+    .span8.offset1.topic=resource.title
+  .row
+    .span1
+      .js-reputation
+        = render 'questions/reputation'
+    .span8
+      .body=resource.body
+      ul
+        = render resource.attachments
+      .tags
+        |Метки:
+        = resource.tags.map(&:name).join(", ")
+      .js-question-author
+        = link_to resource.user.display_name, resource.user.profile
+      .comments
+        =render resource.comments, parent: resource
+      .new-comment-form
+      .actions
+        =render 'questions/actions', resource: resource
 .js-answers
   =render resource.answers, parent: resource
 .row.new-answer-form

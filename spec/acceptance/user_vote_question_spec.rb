@@ -14,8 +14,8 @@ feature 'Vote about question', %(
     scenario 'give like to question', js: true do
       visit question_path question
       within '.js-reputation' do
-        click_on 'Нравится'
-        expect(page).to_not have_link 'Нравится', href: voteup_question_path(question)
+        click_link 'question-vote-up'
+        expect(page).to_not have_link 'question-vote-up', href: voteup_question_path(question)
         expect(page).to have_content '2'
       end
     end
@@ -23,8 +23,8 @@ feature 'Vote about question', %(
     scenario 'give dislike to question', js: true do
       visit question_path question
       within '.js-reputation' do
-        click_on 'Не нравится'
-        expect(page).to_not have_link 'Не нравится'
+        click_link 'question-vote-down'
+        expect(page).to_not have_link 'question-vote-down'
       end
     end
   end
@@ -34,8 +34,8 @@ feature 'Vote about question', %(
     visit question_path question
 
     within '.js-question' do
-      expect(page).to_not have_link 'Нравится'
-      expect(page).to_not have_link 'Не нравится'
+      expect(page).to_not have_link 'question-vote-up'
+      expect(page).to_not have_link 'question-vote-down'
     end
   end
 end
