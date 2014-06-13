@@ -1,9 +1,10 @@
 .row.js-question
+  .span8.offset1.topic=resource.title
+.row
   .span1
     .js-reputation
       = render 'questions/reputation'
   .span8
-    .topic=resource.title
     .body=resource.body
     ul
       = render resource.attachments
