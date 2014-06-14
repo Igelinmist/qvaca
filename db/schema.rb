@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614043337) do
+ActiveRecord::Schema.define(version: 20140614092003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,14 @@ ActiveRecord::Schema.define(version: 20140614043337) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "best_graid",  default: 0
+    t.integer  "the_first",   default: 0
+    t.integer  "self_answer", default: 0
   end
 
   add_index "answers", ["best_graid"], name: "index_answers_on_best_graid", using: :btree
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+  add_index "answers", ["self_answer"], name: "index_answers_on_self_answer", using: :btree
+  add_index "answers", ["the_first"], name: "index_answers_on_the_first", using: :btree
   add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
   create_table "attachments", force: true do |t|

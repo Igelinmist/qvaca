@@ -1,6 +1,6 @@
 require_relative 'acceptance_helper'
 
-feature 'Comment editing', %q(
+feature 'Comment deleting', %q(
   In order to hide stupidity
   As an author of Comment
   I want to be able to delete Comment
@@ -18,18 +18,33 @@ feature 'Comment editing', %q(
     expect(find('.js-answers .comments')).to_not have_link 'Удалить'
   end
 
+  scenario "User0 can delete answer comment, not question comment" do
+    sign_in(users[0])
+    visit question_path(question)
+    expect(find('.js-answers .comments')).to have_link 'Удалить'
+    expect(find('.js-question .comments')).to_not have_link 'Удалить'
+  end
+
+  scenario "User1 can delete question comment, not answer comment" do
+    sign_in(users[1])
+    visit question_path(question)
+    expect(find('.js-answers .comments')).to_not have_link 'Удалить'
+    expect(find('.js-question .comments')).to have_link 'Удалить'
+  end
+
   describe 'User0 sign in' do
     before do
       sign_in(users[0])
       visit question_path(question)
     end
 
-    scenario "not see link Delete under question's comment", js: true do
-      expect(find('.js-question .comments')).to_not have_link 'Удалить'
-    end
 
     scenario "see link Delete under answer's comment", js: true do
-      expect(find('.js-answers .comments')).to have_link 'Удалить'
+      within '.js-answers .comments' do
+        click_on 'Удалить'
+        
+        expect(page).to_not have_content(comment2.body)
+      end
     end
   end
 
@@ -40,11 +55,11 @@ feature 'Comment editing', %q(
     end
 
     scenario 'see link Delete under question', js: true do
-      expect(find('.js-question .comments')).to have_link 'Удалить'
-    end
+      within '.js-question .comments' do
+        click_on 'Удалить'
 
-    scenario 'not see link Delete under answer', js: true do
-      expect(find('.js-answers .comments')).to_not have_link 'Удалить'
+        expect(page).to_not have_content(comment1.body)
+      end
     end
 
   end

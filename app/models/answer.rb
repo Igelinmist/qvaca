@@ -11,6 +11,10 @@ class Answer < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :votes
 
+  default_scope { order(best_graid: :desc, created_at: :asc) }
+
+  scope :the_best, -> { (where best_graid: 3).first }
+
   def voted_by?(user)
     Vote.exists? user: user, votable: self
   end
@@ -29,5 +33,11 @@ class Answer < ActiveRecord::Base
     self.save!
   end
 
-  scope :the_best, -> { where best_graid: 3}
+  def check_the_first
+    self.the_first = 1 if self.question.answers.count == 0
+  end
+
+  def check_the_self_answer(user)
+    self.self_answer = 1 if self.question.user == user
+  end
 end

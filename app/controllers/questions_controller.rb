@@ -13,7 +13,7 @@ class QuestionsController < InheritedResources::Base
   end
 
   def show
-    show! { @best_answer = resource.best_answer.first }
+    show! { @best_answer = resource.best_answer }
   end
 
   protected

@@ -40,11 +40,12 @@ class Question < ActiveRecord::Base
     vote.save!
   end
 
-  def summary_votes
-    self.votes.sum :voice
-  end
-
   def best_answer
     self.answers.the_best
   end
+
+  def summary_votes
+    votes.sum :voice
+  end
+
 end
