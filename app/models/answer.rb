@@ -20,8 +20,14 @@ class Answer < ActiveRecord::Base
     vote.save!
   end
 
-  
   def summary_votes
     self.votes.sum :voice
   end
+
+  def make_the_best
+    self.best_graid = 3
+    self.save!
+  end
+
+  scope :the_best, -> { where best_graid: 3}
 end

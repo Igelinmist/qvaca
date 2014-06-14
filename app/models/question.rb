@@ -43,4 +43,8 @@ class Question < ActiveRecord::Base
   def summary_votes
     self.votes.sum :voice
   end
+
+  def best_answer
+    self.answers.the_best
+  end
 end
