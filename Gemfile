@@ -38,6 +38,7 @@ gem 'inherited_resources'
 gem 'draper'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 group :development,:test do
   gem 'rspec-rails'
