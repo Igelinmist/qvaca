@@ -36,6 +36,8 @@ gem 'jquery-tmpl-rails'
 gem 'simple_form'
 gem 'inherited_resources'
 gem 'draper'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development,:test do
   gem 'rspec-rails'
