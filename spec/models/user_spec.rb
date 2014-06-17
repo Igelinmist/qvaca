@@ -8,6 +8,7 @@ describe User do
   it { should have_one :profile }
   it { should have_many :authorizations }
   it { should accept_nested_attributes_for :profile }
+  it { should accept_nested_attributes_for :authorizations }
 
   describe '.find_for_oauth' do
     let!(:user) { create :user }

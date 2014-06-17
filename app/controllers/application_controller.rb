@@ -10,8 +10,9 @@ class ApplicationController < ActionController::Base
     
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit({ 
       profile_attributes: [:display_name, :real_name, :website,
-      :location, :birthday, :about_me, :weekly_email, :avatar]
-      }, :email, :password, :password_confirmation) }
+      :location, :birthday, :about_me, :weekly_email, :avatar], 
+      authorizations_attributes: [:provider, :uid] },
+      :email, :password, :password_confirmation) }
 
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit({ 
       profile_attributes: [:display_name, :real_name, :website, :location,
