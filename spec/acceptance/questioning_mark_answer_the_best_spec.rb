@@ -13,6 +13,8 @@ feature 'Questioning mark the best answer', %q(
   scenario "User (not questioning) not see 'the best' button" do
     sign_in users[1]
     visit question_path question
+    answer1
+    answer2
 
     expect(find("#js-answer-#{answer1.id}")).to_not have_link("the-best-#{answer1.id}")
     expect(find("#js-answer-#{answer2.id}")).to_not have_link("the-best-#{answer2.id}")
@@ -25,16 +27,17 @@ feature 'Questioning mark the best answer', %q(
     end
 
     scenario "see button 'the best' with every answer" do
-      expect(find("#js-answer-#{answer1.id}")).to have_link("the-best-#{answer1.id}")
-      expect(find("#js-answer-#{answer2.id}")).to have_link("the-best-#{answer2.id}")
+      save_and_open_page
+      expect(page).to have_link("the-best-#{answer1.id}")
+      expect(page).to have_link("the-best-#{answer2.id}")
     end
 
     scenario "select the best answer" do
       click_link("the-best-#{answer2.id}")
 
       expect(current_path).to eq question_path question
-      expect(find("#js-answer-#{answer1.id}")).to_not have_link("the-best-#{answer1.id}")
-      expect(find("#js-answer-#{answer2.id}")).to_not have_link("the-best-#{answer2.id}")
+      expect(page).to_not have_link("the-best-#{answer1.id}")
+      expect(page).to_not have_link("the-best-#{answer2.id}")
       expect(page).to have_selector('#the-best-answer')
 
     end

@@ -20,21 +20,27 @@ feature 'Comment deleting', %q(
 
   scenario "User0 can delete answer comment, not question comment" do
     sign_in(users[0])
+    comment1
+    comment2
     visit question_path(question)
-    expect(find('.js-answers .comments')).to have_link 'Удалить'
+
     expect(find('.js-question .comments')).to_not have_link 'Удалить'
   end
 
   scenario "User1 can delete question comment, not answer comment" do
     sign_in(users[1])
+    comment1
+    comment2
     visit question_path(question)
+
     expect(find('.js-answers .comments')).to_not have_link 'Удалить'
-    expect(find('.js-question .comments')).to have_link 'Удалить'
   end
 
   describe 'User0 sign in' do
     before do
       sign_in(users[0])
+      comment1
+      comment2
       visit question_path(question)
     end
 
@@ -42,7 +48,7 @@ feature 'Comment deleting', %q(
     scenario "see link Delete under answer's comment", js: true do
       within '.js-answers .comments' do
         click_on 'Удалить'
-        
+
         expect(page).to_not have_content(comment2.body)
       end
     end
@@ -51,6 +57,8 @@ feature 'Comment deleting', %q(
   describe 'User1 sign in' do
     before do
       sign_in(users[1])
+      comment1
+      comment2
       visit question_path(question)
     end
 
