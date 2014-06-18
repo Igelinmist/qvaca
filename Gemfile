@@ -39,6 +39,7 @@ gem 'draper'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'cancan'
 
 group :development,:test do
   gem 'rspec-rails'

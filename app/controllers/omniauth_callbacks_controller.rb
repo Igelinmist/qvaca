@@ -20,7 +20,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session[:nickname] = auth_params.info[:nickname]
       session[:name] = auth_params.info[:name]
       redirect_to new_user_registration_url, resource: User.create, 
-        notice: 'Для полноценной работы с приложением нужно зарегистрировать email и пароль. Это необходимо сделать один раз.'
+        notice: %q(
+          Для полноценной работы с приложением нужно зарегистрировать email и пароль.
+          Это необходимо сделать один раз. В дальнейшем вход будет осуществлен автоматически.)
     end
   end
 end
