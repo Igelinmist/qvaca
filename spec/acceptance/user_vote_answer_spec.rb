@@ -23,7 +23,7 @@ feature 'Vote about answer', %(
       end
     end
 
-    scenario 'give dislike to question', js: true do
+    scenario 'give dislike to answer', js: true do
       within "#js-answer-#{answer.id}" do
         click_link "answer-vote-down-#{answer.id}"
         expect(page).to_not have_link "answer-vote-down-#{answer.id}"

@@ -16,11 +16,17 @@ class Ability
   def user_abilities(user)
     can :read, :all
     can :create, [Question, Answer, Comment]
+
     can :update, Question, user_id: user.id
-    can :update, Answer, user_id: user.id
-    can :update, Comment, user_id: user.id
     can :destroy, Question, user_id: user.id
+    can :vote, Question
+    cannot :vote, Question, user_id: user.id
+
+    can :update, Answer, user_id: user.id
     can :destroy, Answer, user_id: user.id
+    can :is_the_best, Answer, user_id: user.id
+
+    can :update, Comment, user_id: user.id
     can :destroy, Comment, user_id: user.id
   end
 

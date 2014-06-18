@@ -9,6 +9,7 @@ module UsersHelper
       user.authorizations.build(provider: session[:provider], uid: session[:uid])
       user.profile.display_name = session[:nickname]
       user.profile.real_name = session[:name]
+      session[:provider] = session[:uid] = session[:nickname] = session[:name] = nil
     end
   end
 end

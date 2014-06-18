@@ -4,6 +4,8 @@ class CommentsController < InheritedResources::Base
 
   before_action :authenticate_user!, only: [:create, :update, :destroy]
 
+  load_and_authorize_resource
+
   def create
     create! do |success, failure|
       success.json do

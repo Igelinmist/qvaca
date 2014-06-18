@@ -24,7 +24,7 @@ feature 'User edit his profile', %q(
       within '.navbar' do
         expect(page).to have_content 'my_nick'
       end
-      expect(page).to have_content 'Данные учетной записи изменены'
+      expect(page).to have_content 'Ваша учётная запись изменена'
     end
 
     scenario 'edit profile data, but forgot password' do

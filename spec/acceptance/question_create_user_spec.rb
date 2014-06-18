@@ -11,7 +11,7 @@ feature 'Create question', %q{
   scenario "Authenticated user create the question" do
     sign_in(user)
     
-    visit '/questions'
+    visit questions_path
     click_on 'Разместить вопрос'
     fill_in 'Заголовок', with: 'Test question 15'
     fill_in 'Содержание', with: 'test text'
@@ -24,7 +24,7 @@ feature 'Create question', %q{
     visit '/questions'
     click_on 'Разместить вопрос'
 
-    expect(page).to have_content 'Вам необходимо войти или зарегистрироваться.'
+    expect(page).to have_content 'Вам необходимо войти в систему или зарегистрироваться'
   end
 
 end
