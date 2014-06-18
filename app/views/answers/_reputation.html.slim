@@ -1,4 +1,4 @@
--if can_vote(resource)
+-if can_vote? resource
   =link_to voteup_answer_path(resource), remote: true, id: "answer-vote-up-#{resource.id}", title: 'Оценить ответ, как полезный' do
       i.icon-sort-up.icon-2x
 .the-best
@@ -11,6 +11,6 @@
           i.icon-check-empty.icon-2x
 .rating
   =resource.summary_votes
--if can_vote(resource)
+-if can_vote? resource
   =link_to votedown_answer_path(resource), remote: true, id: "answer-vote-down-#{resource.id}", title: 'Оценить ответ, как бесполезный' do
       i.icon-sort-down.icon-2x

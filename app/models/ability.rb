@@ -24,6 +24,8 @@ class Ability
 
     can :update, Answer, user_id: user.id
     can :destroy, Answer, user_id: user.id
+    can :vote, Answer
+    cannot :vote, Answer, user_id: user.id
     can :is_the_best, Answer, user_id: user.id
 
     can :update, Comment, user_id: user.id
