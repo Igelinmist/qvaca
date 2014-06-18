@@ -13,7 +13,7 @@ class Answer < ActiveRecord::Base
 
   default_scope { order(best_graid: :desc, created_at: :asc) }
 
-  scope :the_best, -> { (where best_graid: 3).first }
+  scope :the_best, -> { (where best_graid: 3) }
 
   def voted_by?(user)
     Vote.exists? user: user, votable: self

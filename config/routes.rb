@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :answers, only: [] do
     concerns [:commentable, :votable]
-    get :thebest, on: :member, action: :make_the_best
+    get :thebest, on: :member, action: :mark_the_best
   end
 
   root to: 'questions#index'

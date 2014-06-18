@@ -41,7 +41,7 @@ class Question < ActiveRecord::Base
   end
 
   def best_answer
-    self.answers.the_best
+    answers.the_best.first
   end
 
   def summary_votes
