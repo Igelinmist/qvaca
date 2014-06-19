@@ -20,27 +20,31 @@ describe Ability do
   describe "for user" do
     let(:user) { create(:user) }
     let(:other) { create(:user) }
+    let(:question_for_answer) { create :question, user: user }
 
     it { should_not be_able_to :manage, :all }
     it { should be_able_to :read, :all }
+
     it { should be_able_to :create, Question }
-    it { should be_able_to :create, Answer }
-    it { should be_able_to :create, Comment }
 
     it { should be_able_to :update, create(:question, user: user), user_id: user.id }
     it { should_not be_able_to :update, create(:question, user: other), user_id: user.id }
 
-    it { should be_able_to :update, create(:answer, user: user), user_id: user.id }
-    it { should_not be_able_to :update, create(:answer, user: other), user_id: user.id }
-
-    it { should be_able_to :update, create(:comment, user: user), user_id: user.id }
-    it { should_not be_able_to :update, create(:comment, user: other), user_id: user.id }
-
     it { should be_able_to :destroy, create(:question, user: user), user_id: user.id }
     it { should_not be_able_to :destroy, create(:question, user: other), user_id: user.id }
 
-    it { should be_able_to :destroy, create(:answer, user: user), user_id: user.id }
-    it { should_not be_able_to :destroy, create(:answer, user: other), user_id: user.id }
+    it { should be_able_to :create, Answer }
+
+    it { should be_able_to :update, create(:answer, question: question_for_answer, user: user), user_id: user.id }
+    it { should_not be_able_to :update, create(:answer, question: question_for_answer, user: other), user_id: user.id }
+
+    it { should be_able_to :destroy, create(:answer, question: question_for_answer, user: user), user_id: user.id }
+    it { should_not be_able_to :destroy, create(:answer, question: question_for_answer, user: other), user_id: user.id }
+
+    it { should be_able_to :create, Comment }
+
+    it { should be_able_to :update, create(:comment, user: user), user_id: user.id }
+    it { should_not be_able_to :update, create(:comment, user: other), user_id: user.id }
 
     it { should be_able_to :destroy, create(:comment, user: user), user_id: user.id }
     it { should_not be_able_to :destroy, create(:comment, user: other), user_id: user.id }

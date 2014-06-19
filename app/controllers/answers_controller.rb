@@ -27,8 +27,6 @@ class AnswersController < InheritedResources::Base
 
   def create_resource(object)
     object.user = current_user
-    object.check_the_first
-    object.check_the_self_answer current_user
     super
   end
 

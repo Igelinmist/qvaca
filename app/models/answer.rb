@@ -2,6 +2,8 @@ class Answer < ActiveRecord::Base
   validates :body, presence: true
   validates :user_id, presence: true
 
+  before_save :init_points
+
   belongs_to :user
   belongs_to :question
   has_many :comments, as: :commentable, dependent: :destroy
@@ -25,19 +27,26 @@ class Answer < ActiveRecord::Base
   end
 
   def summary_votes
-    self.votes.sum :voice
+    votes.sum :voice
   end
 
   def make_the_best
     self.best_graid = 3
-    self.save!
+    save!
+  end
+
+  protected
+
+  def init_points
+    check_the_first
+    check_the_self_answer user
   end
 
   def check_the_first
     self.the_first = 1 if self.question.answers.count == 0
   end
 
-  def check_the_self_answer(user)
-    self.self_answer = 1 if self.question.user == user
+  def check_the_self_answer(user_id)
+    self.self_answer = 1 if self.question.user == self.user
   end
 end

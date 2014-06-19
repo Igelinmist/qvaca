@@ -19,15 +19,15 @@ class User < ActiveRecord::Base
   
 
   def points_for_answer
-    self.answers.count
+    answers.count
   end
 
   def points_for_first_answer
-    self.answers.sum :the_first
+    answers.sum :the_first
   end
 
   def points_for_answer_own_question
-    self.answers.sum :self_answer
+    answers.sum :self_answer
   end
 
   def answers_rating
