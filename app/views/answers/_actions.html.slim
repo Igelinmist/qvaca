@@ -1,7 +1,3 @@
--if user_signed_in?
-  = link_to 'Комментировать', new_answer_comment_path(resource),remote: true
-  -if resource.user == current_user
-    '|
-    = link_to 'Редактировать',edit_question_answer_path(parent, resource),remote: true
-    '|
-    =link_to 'Удалить', [parent, resource], data: {:confirm => 'Вы уверены, что хотите удалить ответ?'}, method: :delete
+= link_to('Комментировать', new_answer_comment_path(resource),remote: true) if can? :create, Comment
+= link_to(' | Редактировать',edit_question_answer_path(parent, resource),remote: true) if can? :update, resource
+= link_to(' | Удалить', [parent, resource], data: {:confirm => 'Вы уверены, что хотите удалить ответ?'}, method: :delete) if can? :destroy, resource

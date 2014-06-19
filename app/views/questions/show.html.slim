@@ -23,5 +23,5 @@
   =render resource.answers, parent: resource
 .row.new-answer-form
   .span8.offset1
-    -if user_signed_in?
+    -if can? :create, Answer
       =render 'answers/form', parent: resource, resource: resource.answers.build

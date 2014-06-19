@@ -5,7 +5,4 @@ table
   	-collection.each do |question|
   	  tr
   	    td=link_to question.title, question
-        td
-          -if user_signed_in? && question.user == current_user
-            =link_to 'Удалить', question, data: {:confirm => "Вы уверены, что хотите удалить вопрос\n и все, что с ним связано?"}, method: :delete, class: 'btn btn-mini btn-danger'
-
+        td=link_to('Удалить', question, data: {:confirm => "Вы уверены, что хотите удалить вопрос\n и все, что с ним связано?"}, method: :delete, class: 'btn btn-mini btn-danger') if can? :destroy, question
