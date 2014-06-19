@@ -1,5 +1,5 @@
-h2 
- 'Edit 
+h2
+ 'Edit
  =resource_name.to_s.humanize
 = simple_form_for setup_ext_attr(resource), as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' } do |f|
   = devise_error_messages!
@@ -19,8 +19,8 @@ h2
   = f.button :submit
 h3 Cancel my account
 
-p 
-  'Unhappy? 
+p
+  'Unhappy?
   =button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
 
 = link_to "Back", :back

@@ -2,10 +2,10 @@
   =link_to voteup_answer_path(resource), remote: true, id: "answer-vote-up-#{resource.id}", title: 'Оценить ответ, как полезный' do
       i.icon-sort-up.icon-2x
 .the-best
-  -if @best_answer
-    -if @best_answer == resource
+  -if ba = parent.best_answer
+    -if ba == resource
       i.icon-check.icon-2x#the-best-answer
-  -else 
+  -else
     -if sign_in_author? parent
       =link_to thebest_answer_path(resource), id: "the-best-#{resource.id}", title: 'Оценить ответ, как лучшее решение вопроса' do
           i.icon-check-empty.icon-2x

@@ -14,10 +14,6 @@ class QuestionsController < InheritedResources::Base
     resource.vote(current_user, params[:rate])
   end
 
-  def show
-    show! { @best_answer = resource.best_answer }
-  end
-
   protected
 
   def set_author

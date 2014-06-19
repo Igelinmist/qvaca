@@ -7,5 +7,5 @@ class ProfilesController < InheritedResources::Base
   def resource
     @profile ||= end_of_association_chain.find(params[:id]).decorate
   end
-  
+
 end

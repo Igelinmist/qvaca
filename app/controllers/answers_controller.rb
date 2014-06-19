@@ -8,11 +8,9 @@ class AnswersController < InheritedResources::Base
   load_and_authorize_resource :answer, only: [:vote, :mark_the_best]
   load_and_authorize_resource :answer, through: :question, except: [:vote, :mark_the_best]
 
-
   def destroy
     destroy!{flash[:success] = "Ваш ответ удален."; parent_url }
   end
-
 
   def vote
     resource.vote(current_user, params[:rate])
@@ -22,7 +20,7 @@ class AnswersController < InheritedResources::Base
     resource.make_the_best
     redirect_to resource.question
   end
-  
+
   protected
 
   def create_resource(object)

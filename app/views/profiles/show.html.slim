@@ -36,13 +36,13 @@ p
   = resource.avatar
 br
 p
-  strong= model_class.human_attribute_name('Баллов за ответы') + ':'
-  = resource.user.points_for_answer
+  strong= model_class.human_attribute_name('Баллов за ответы всего') + ':'
+  = resource.user.answers_rating
 p
-  strong= model_class.human_attribute_name('Дополнительно за первые ответы') + ':'
+  strong= model_class.human_attribute_name('В том числе за первые ответы') + ':'
   = resource.user.points_for_first_answer
 p
-  strong= model_class.human_attribute_name('Дополнительно за ответы на свои вопросы') + ':'
+  strong= model_class.human_attribute_name('В том числе за ответы на свои вопросы') + ':'
   = resource.user.points_for_answer_own_question
 
 .form-actions

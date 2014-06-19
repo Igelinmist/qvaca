@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook, :twitter]
 
@@ -8,15 +6,13 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :comments
   has_many :votes, dependent: :destroy
-  
+
   has_many :authorizations, dependent: :destroy
   accepts_nested_attributes_for :authorizations
 
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
   delegate :display_name, to: :profile
-
-  
 
   def points_for_answer
     answers.count
