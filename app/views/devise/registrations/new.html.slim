@@ -2,7 +2,6 @@ h2 Введите данные для регистрации на сайте
 
 = simple_form_for(setup_ext_attr(resource), as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal' }) do |f|
   = devise_error_messages!
-  - build_oauth_for resource
   = f.input :email, autofocus: true
   = f.input :password, autocomplete: "off"
   = f.input :password_confirmation, autocomplete: "off"

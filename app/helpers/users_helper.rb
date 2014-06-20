@@ -12,4 +12,5 @@ module UsersHelper
       session[:provider] = session[:uid] = session[:nickname] = session[:name] = nil
     end
   end
+
 end

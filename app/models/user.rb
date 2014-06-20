@@ -44,4 +44,17 @@ class User < ActiveRecord::Base
     user
   end
 
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session['devise.omniauth']
+        user.email = data[:email]
+        # user.authorizations.build(provider: data[:provider], uid: data[:uid])
+        # profile = user.build_profile
+        # profile.display_name = data[:display_name]
+        # profile.real_name = data[:real_name]
+        # profile.avatar = data[:avatar]
+      end
+    end
+  end
+
 end
