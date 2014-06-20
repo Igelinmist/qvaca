@@ -3,7 +3,7 @@ class QuestionsController < InheritedResources::Base
   respond_to :js
   custom_actions resource: [:vote]
   before_action :set_author, only: [:create]
-
+  
   load_and_authorize_resource
 
   def create
