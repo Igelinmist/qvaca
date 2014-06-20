@@ -6,7 +6,7 @@
     -if ba == resource
       i.icon-check.icon-2x#the-best-answer
   -else
-    -if sign_in_author? parent
+    -if can? :mark_the_best, resource
       =link_to thebest_answer_path(resource), id: "the-best-#{resource.id}", title: 'Оценить ответ, как лучшее решение вопроса' do
           i.icon-check-empty.icon-2x
 .rating

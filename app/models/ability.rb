@@ -26,7 +26,7 @@ class Ability
     can :destroy, Answer, user_id: user.id
     can :vote, Answer
     cannot :vote, Answer, user_id: user.id
-    can :mark_the_best, Answer
+    can :mark_the_best, Answer, { question: { user_id: user.id } }
 
     can :update, Comment, user_id: user.id
     can :destroy, Comment, user_id: user.id

@@ -25,3 +25,9 @@
   .span8.offset1
     -if can? :create, Answer
       =render 'answers/form', parent: resource, resource: resource.answers.build
+    -else
+      br
+      'Если Вы хотите ответить и оставить комментарий Вам следует 
+      =link_to 'авторизоваться', new_user_session_path
+      '&nbsp;или&nbsp;
+      =link_to 'пройти регистрацию', new_user_registration_path
