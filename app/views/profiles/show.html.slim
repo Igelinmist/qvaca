@@ -1,7 +1,8 @@
 - model_class = Profile
 div class="page-header"
   h1=t '.title', :default => model_class.model_name.human.titleize
-
+p
+  =image_tag resource.avatar
 p
   strong= model_class.human_attribute_name(:display_name) + ':'
   br

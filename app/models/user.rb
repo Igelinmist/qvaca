@@ -12,7 +12,14 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
-  delegate :display_name, to: :profile
+
+  def display_name=(name)
+    profile.display_name = name
+  end
+
+  def display_name
+    profile.display_name
+  end
 
   def points_for_answer
     answers.count
@@ -33,27 +40,37 @@ class User < ActiveRecord::Base
   def self.find_for_oauth(auth)
     authorization = Authorization.where(provider: auth.provider, uid: auth.uid.to_s).first
     return authorization.user if authorization
-    email = auth.info[:email]
-    return nil unless email
-    user = User.where(email: email).first
-    unless user
-      password = Devise.friendly_token[0, 20]
-      user = User.create!(email: email, password: password, password_confirmation: password)
+
+    if email = auth.info[:email]
+      if user = User.where(email: email).first
+        user.authorizations.create!(auth.slice(:provider, :uid))
+      else
+        password = Devise.friendly_token[0, 20]
+        user = User.create!(email: email, password: password, password_confirmation: password)
+      end
+    else
+      user = User.create
     end
-    user.authorizations.create(provider: auth.provider, uid: auth.uid)
+    user.authorizations.build(auth.slice(:provider, :uid))
+    user.build_profile(
+      display_name: auth.info['nickname'],
+      real_name: auth.info['name'],
+      location: auth.info['location'],
+      avatar: auth.info['image'],
+      about_me: auth.info['description'])
     user
   end
 
   def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session['devise.omniauth']
-        user.email = data[:email]
-        # user.authorizations.build(provider: data[:provider], uid: data[:uid])
-        # profile = user.build_profile
-        # profile.display_name = data[:display_name]
-        # profile.real_name = data[:real_name]
-        # profile.avatar = data[:avatar]
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"]) do |user|
+        user.build_profile(session["devise.profile_attributes"])
+        user.authorizations.build(session["devise.authorization_attributes"])
+        user.attributes = params
+        user.valid?
       end
+    else
+      super
     end
   end
 

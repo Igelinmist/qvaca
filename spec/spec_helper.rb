@@ -26,6 +26,7 @@ Spork.prefork do
     config.include Devise::TestHelpers, type: :controller
 
     config.extend ControllerMacros, type: :controller
+    config.include OmniauthMacros
     # ## Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -53,6 +54,8 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
   end
+
+  OmniAuth.config.test_mode = true
 
 end
 

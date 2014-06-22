@@ -101,12 +101,6 @@ describe User do
           expect(authorization.uid).to eq auth.uid
         end
       end
-      context "provider doesn't give an email address" do
-        let(:auth) { OmniAuth::AuthHash.new(provider: 'facebook', uid: '123456', info: {}) }
-        it 'must return nil value for user' do
-          expect(User.find_for_oauth(auth)).to eq nil
-        end
-      end
     end
   end
 end
