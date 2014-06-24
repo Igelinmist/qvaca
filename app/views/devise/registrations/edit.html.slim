@@ -3,7 +3,7 @@ h2
  =resource_name.to_s.humanize
 = simple_form_for setup_ext_attr(resource), as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' } do |f|
   = devise_error_messages!
-  = f.input :email, autofocus: true
+  = f.input :email, required: true, autofocus: true
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
     div Currently waiting confirmation for: = resource.unconfirmed_email
   = f.input :password, autocomplete: "off"

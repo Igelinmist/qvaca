@@ -7,5 +7,7 @@ FactoryGirl.define do
     password "12345678"
     password_confirmation "12345678"
     association  :profile
+
+    after(:create) { |user| user.confirm! }
   end
 end

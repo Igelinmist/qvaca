@@ -128,6 +128,8 @@ GEM
     less-rails (2.5.0)
       actionpack (>= 3.1)
       less (~> 2.5.0)
+    letter_opener (1.2.0)
+      launchy (~> 2.2)
     libv8 (3.16.14.3)
     listen (2.7.4)
       celluloid (>= 0.15.2)
@@ -320,6 +322,7 @@ DEPENDENCIES
   jquery-turbolinks
   launchy
   less-rails
+  letter_opener
   nested_form
   omniauth
   omniauth-facebook

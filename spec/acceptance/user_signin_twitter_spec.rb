@@ -11,14 +11,12 @@ feature 'Sign in with twitter', %(
       visit '/'
       click_on 'Разместить вопрос'
       click_on 'Sign in with Twitter'
-      # save_and_open_page
-      fill_in 'Email', with: 'test@mock.com'
-      fill_in 'Пароль', with: '12345678'
-      fill_in 'Подтверджение пароля', with: '12345678'
+      fill_in '* Email', with: 'test@mock.com'
+      fill_in '* Пароль', with: '12345678'
+      fill_in '* Подтверджение пароля', with: '12345678'
       click_on 'Создать User'
 
-      expect(page).to have_content 'mockuser'
-      expect(page).to have_link 'Выход'
+      expect(page).to have_content 'В течение нескольких минут вы получите письмо с инструкциями'
     end
   end
 end

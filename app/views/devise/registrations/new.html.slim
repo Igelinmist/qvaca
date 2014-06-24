@@ -2,9 +2,9 @@ h2 Введите данные для регистрации на сайте
 
 = simple_form_for(setup_ext_attr(resource), as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal' }) do |f|
   = devise_error_messages!
-  = f.input :email, autofocus: true
-  = f.input :password, autocomplete: "off"
-  = f.input :password_confirmation, autocomplete: "off"
+  = f.input :email, autofocus: true, required: true
+  = f.input :password, required: true, autocomplete: "off"
+  = f.input :password_confirmation, required: true, autocomplete: "off"
   = f.simple_fields_for :authorizations do |a|
     = a.input :provider, as: :hidden
     = a.input :uid, as: :hidden

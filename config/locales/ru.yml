@@ -1,4 +1,6 @@
 ru:
+  labels:
+    sign_in: "Вход"
   attributes:
     body: "Содержание"
     file: "Файл"

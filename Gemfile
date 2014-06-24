@@ -21,6 +21,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 group :development do
   gem 'spring'
   gem 'quiet_assets'
+  gem 'letter_opener'
 end
 
 gem 'rake', '~> 10.3.2'
