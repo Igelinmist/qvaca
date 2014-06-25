@@ -9,6 +9,7 @@ h2 Введите данные для регистрации на сайте
     = a.input :provider, as: :hidden
     = a.input :uid, as: :hidden
   = f.simple_fields_for :profile do |p|
+    = p.input :avatar
     = p.input :display_name
     = p.input :real_name
     = p.input :website

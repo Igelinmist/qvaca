@@ -13,7 +13,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         authorization: oauth.slice(:provider, :uid) }.
           each { |key, value| session["devise.#{key}_attributes"] = value}
 
-      redirect_to new_user_registration_url, resource: User.create,
+      redirect_to new_user_registration_url,
         notice: %q(
           Для полноценной работы с приложением нужно зарегистрировать email и пароль.
           Это необходимо сделать один раз. В дальнейшем вход будет осуществлен автоматически.)

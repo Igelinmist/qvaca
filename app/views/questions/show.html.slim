@@ -13,6 +13,7 @@
         |Метки:
         = resource.tags.map(&:name).join(", ")
       .js-question-author
+        = link_to image_tag(resource.user.profile.avatar_url(:thumb)), resource.user.profile
         = link_to resource.user.display_name, resource.user.profile
       .comments
         =render resource.comments, parent: resource

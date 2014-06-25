@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
+  delegate :avatar, to: :profile
+
   def display_name=(name)
     profile.display_name = name
   end

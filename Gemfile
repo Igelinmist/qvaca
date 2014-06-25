@@ -27,6 +27,7 @@ end
 gem 'rake', '~> 10.3.2'
 gem 'russian', '~> 0.6.0'
 gem 'devise'
+gem 'rmagick', '2.13.2'
 gem 'carrierwave'
 gem 'remotipart'
 gem 'nested_form'

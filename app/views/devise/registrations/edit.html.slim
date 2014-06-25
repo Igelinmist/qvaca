@@ -9,6 +9,7 @@ h2
   = f.input :password, autocomplete: "off"
   = f.input :password_confirmation, autocomplete: "off"
   = f.simple_fields_for :profile do |p|
+    = p.input :avatar
     = p.input :display_name
     = p.input :real_name
     = p.input :website
