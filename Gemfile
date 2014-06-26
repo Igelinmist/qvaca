@@ -25,7 +25,6 @@ group :development do
 end
 
 gem 'rake', '~> 10.3.2'
-gem 'russian', '~> 0.6.0'
 gem 'devise'
 gem 'rmagick', '2.13.2'
 gem 'carrierwave'
@@ -42,6 +41,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'cancan'
+gem 'doorkeeper'
 
 group :development,:test do
   gem 'rspec-rails'
@@ -56,5 +56,9 @@ group :development,:test do
   gem 'database_cleaner'
 end
 
-gem 'shoulda', group: :test
+group :test do
+  gem 'shoulda'
+  gem 'json_spec'
+end
+
 

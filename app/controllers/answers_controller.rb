@@ -1,11 +1,10 @@
 class AnswersController < InheritedResources::Base
   before_action :authenticate_user!, only: [:create, :update, :destroy, :vote, :mark_the_best]
+  load_and_authorize_resource
   respond_to :html, :js, :json
   belongs_to :question, optional: true
   actions :all, except: [:new, :index]
 
-  load_and_authorize_resource
-  
   def destroy
     destroy!{flash[:success] = "Ваш ответ удален."; parent_url }
   end
