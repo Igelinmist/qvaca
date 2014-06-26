@@ -14,7 +14,7 @@ feature 'Sign in with twitter', %(
       fill_in '* Email', with: 'test@mock.com'
       fill_in '* Пароль', with: '12345678'
       fill_in '* Подтверджение пароля', with: '12345678'
-      click_on 'Создать User'
+      click_on 'Create User'
 
       expect(page).to have_content 'В течение нескольких минут вы получите письмо с инструкциями'
     end

@@ -20,7 +20,7 @@ feature 'User edit his profile', %q(
       click_on 'Batman'
       fill_in 'Псевдоним', with: 'my_nick'
       fill_in 'Текущий пароль', with: user.password
-      click_on 'Сохранить User'
+      click_on 'Update User'
 
       within '.navbar' do
         expect(page.find('img')['alt']).to eq 'my_nick'
@@ -32,7 +32,7 @@ feature 'User edit his profile', %q(
       visit questions_path
       click_on 'Batman'
       fill_in 'Псевдоним', with: 'my_nick'
-      click_on 'Сохранить User'
+      click_on 'Update User'
 
       expect(page).to have_content 'Текущий пароль не может быть пустым'
     end
