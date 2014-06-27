@@ -1,0 +1,12 @@
+= simple_form_for resource, :html => { :class => "form-horizontal" } do |f|
+  = f.input :display_name
+  = f.input :real_name
+  = f.input :website
+  = f.input :location
+  = f.input :birthday
+  = f.input :about_me
+  = f.input :weekly_email
+  = f.input :avatar
+  = f.input :user_id
+  .form-actions
+    = f.button :submit, :class => 'btn-primary'

@@ -10,11 +10,11 @@ feature 'Sign in with twitter', %(
       mock_auth_hash
       visit '/'
       click_on 'Разместить вопрос'
-      click_on 'Sign in with Twitter'
+      click_on 'Вход через учётку Twitter'
       fill_in '* Email', with: 'test@mock.com'
       fill_in '* Пароль', with: '12345678'
-      fill_in '* Подтверджение пароля', with: '12345678'
-      click_on 'Создать User'
+      fill_in '* Подтверждение пароля', with: '12345678'
+      click_on 'Зарегистрировать'
 
       expect(page).to have_content 'В течение нескольких минут вы получите письмо с инструкциями'
     end

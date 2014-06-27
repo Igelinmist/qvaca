@@ -13,14 +13,28 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
-  delegate :avatar, to: :profile
+  def display_name
+    profile.display_name
+  end
 
   def display_name=(name)
     profile.display_name = name
   end
 
-  def display_name
-    profile.display_name
+  def real_name
+    profile.real_name
+  end
+
+  def real_name=(name)
+    profile.real_name = name
+  end
+
+  def avatar
+    profile.avatar
+  end
+
+  def avatar=(name)
+    profile.avatar = name
   end
 
   def points_for_answer
@@ -40,40 +54,38 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_oauth(auth)
-    authorization = Authorization.where(provider: auth.provider, uid: auth.uid.to_s).first
-    return authorization.user if authorization
-
-    if email = auth.info[:email]
-      if user = User.where(email: email).first
-        user.authorizations.create!(auth.slice(:provider, :uid))
-      else
-        password = Devise.friendly_token[0, 20]
-        user = User.create!(email: email, password: password, password_confirmation: password)
-      end
+    if authorization = Authorization.where(provider: auth.provider, uid: auth.uid.to_s).first
+      authorization.user
     else
-      user = User.create
+      if email = auth.info[:email]
+        if user = User.where(email: email).first
+          user.authorizations.create!(auth.slice(:provider, :uid))
+        else
+          password = Devise.friendly_token[0, 20]
+          user = User.create!(email: email, password: password, password_confirmation: password)
+          user.authorizations.build(auth.slice(:provider, :uid))
+          user.build_profile
+        end
+      else
+        user = User.create
+      end
+      user
     end
-    user.authorizations.build(auth.slice(:provider, :uid))
-    user.build_profile(
-      display_name: auth.info['nickname'],
-      real_name: auth.info['name'],
-      location: auth.info['location'],
-      avatar: auth.info['image'],
-      about_me: auth.info['description'])
-    user
   end
 
   def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"]) do |user|
-        user.build_profile(session["devise.profile_attributes"])
-        user.authorizations.build(session["devise.authorization_attributes"])
-        user.attributes = params
-        user.valid?
+    if oauth = session["devise.oauth_attributes"]
+      if params && params[:email]
+        user = User.find_or_create_by(email: params[:email])
+      else
+        user = User.create
       end
+      user.profile ||= user.build_profile
+      user.authorizations.build(provider: oauth['provider'], uid: oauth['uid'].to_s)
+      user.attributes = params
+      user
     else
       super
     end
   end
-
 end

@@ -2,16 +2,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def all
     oauth = request.env['omniauth.auth']
-    # render json: oauth.to_yaml
-    user = User.find_for_oauth(oauth)
 
+    user = User.find_for_oauth(oauth)
     if user.persisted?
       sign_in_and_redirect user, event: :authentication
       set_flash_message(:notice, :success, kind: oauth.provider.capitalize) if is_navigational_format?
     else
-      { user: user.attributes, profile: user.profile.attributes,
-        authorization: oauth.slice(:provider, :uid) }.
-          each { |key, value| session["devise.#{key}_attributes"] = value}
+      session['devise.oauth_attributes'] = oauth.except('extra')
 
       redirect_to new_user_registration_url,
         notice: %q(
