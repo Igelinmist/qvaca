@@ -15,7 +15,7 @@ feature 'User add avatar', %q(
       end
       attach_file 'Avatar', "#{Rails.root}/spec/factories/default_user.jpeg"
       fill_in 'Текущий пароль', with: '12345678'
-      click_on 'Update User'
+      click_on 'Сохранить User'
 
       expect(page.find('.navbar img')['src']).to eq "/img/profile/avatar/#{user.profile.id}/thumb_default_user.jpeg"
     end
@@ -30,7 +30,7 @@ feature 'User add avatar', %q(
       end
       attach_file 'Avatar', "#{Rails.root}/spec/factories/test_bad.bmp"
       fill_in 'Текущий пароль', with: '12345678'
-      click_on 'Update User'
+      click_on 'Сохранить User'
 
       expect(page).to have_content 'Profile avatar translation missing'
     end
