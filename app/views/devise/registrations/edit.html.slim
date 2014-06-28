@@ -8,14 +8,6 @@ h2
     div Currently waiting confirmation for: = resource.unconfirmed_email
   = f.input :password, autocomplete: "off"
   = f.input :password_confirmation, autocomplete: "off"
-  = f.simple_fields_for :profile do |p|
-    = p.input :avatar
-    = p.input :display_name
-    = p.input :real_name
-    = p.input :website
-    = p.input :location
-    = p.input :birthday, as: :string
-    = p.input :about_me
   = f.input :current_password, autocomplete: "off"
   = f.button :submit
 h3 Cancel my account

@@ -1,11 +1,11 @@
 class ProfilesController < InheritedResources::Base
   respond_to :html
-  actions only: [:show]
+  actions only: [:show, :edit, :update]
 
-  protected
+  # protected
 
-  def resource
-    @profile ||= end_of_association_chain.find(params[:id]).decorate
-  end
+  # def resource
+  #   @profile ||= end_of_association_chain.find(params[:id]).decorate
+  # end
 
 end

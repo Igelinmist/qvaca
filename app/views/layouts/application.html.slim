@@ -32,10 +32,11 @@ html lang="en"
               ul.nav.pull-right
                 -if user_signed_in?
                   li
-                    -if current_user.profile.avatar
-                      =link_to image_tag(current_user.profile.avatar_url(:thumb), alt: current_user.display_name),edit_user_registration_path
+                    -if current_user.display_name.blank?
+                      =link_to 'Профиль', edit_profile_path(current_user.profile)
                     -else
-                      =link_to current_user.profile.display_name, edit_user_registration_path
+                      =link_to image_tag(current_user.profile.avatar_url(:thumb), alt: current_user.display_name),edit_profile_path(current_user.profile)
+                    
                   li=link_to 'Выход', destroy_user_session_path, method: :delete
                 -else
                   li=link_to 'Вход', new_user_session_path
