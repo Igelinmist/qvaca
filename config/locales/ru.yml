@@ -9,11 +9,15 @@ ru:
     current_password: "Текущий пароль"
     display_name: "Псевдоним"
     real_name: "Реальное имя"
+    avatar: "Аватар"
     location: "Расположение"
     birthday: "День рождения"
     about_me: "Обо мне..."
     sign_in: "Вход"
     remember_me: "Запомнить меня"
+  errors:
+    messages:
+      extension_white_list_error: "Недопустимый формат"
   date:
     abbr_day_names:
     - Вс

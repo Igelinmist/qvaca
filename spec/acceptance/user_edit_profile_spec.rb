@@ -19,23 +19,12 @@ feature 'User edit his profile', %q(
       visit questions_path
       click_on 'Batman'
       fill_in 'Псевдоним', with: 'my_nick'
-      fill_in 'Текущий пароль', with: user.password
-      click_on 'Сохранить User'
+      click_on 'Сохранить Profile'
 
       within '.navbar' do
         expect(page.find('img')['alt']).to eq 'my_nick'
       end
-      expect(page).to have_content 'Ваша учётная запись изменена'
+      expect(page).to have_content 'Ваш профиль успешно обновлен.'
     end
-
-    scenario 'edit profile data, but forgot password' do
-      visit questions_path
-      click_on 'Batman'
-      fill_in 'Псевдоним', with: 'my_nick'
-      click_on 'Сохранить User'
-
-      expect(page).to have_content 'Текущий пароль не может быть пустым'
-    end
-
   end
 end

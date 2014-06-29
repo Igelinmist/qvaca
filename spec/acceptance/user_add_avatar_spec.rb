@@ -13,9 +13,8 @@ feature 'User add avatar', %q(
       within '.navbar' do
         click_on 'Batman'
       end
-      attach_file 'Avatar', "#{Rails.root}/spec/factories/default_user.jpeg"
-      fill_in 'Текущий пароль', with: '12345678'
-      click_on 'Сохранить User'
+      attach_file 'Аватар', "#{Rails.root}/spec/factories/default_user.jpeg"
+      click_on 'Сохранить Profile'
 
       expect(page.find('.navbar img')['src']).to eq "/img/profile/avatar/#{user.profile.id}/thumb_default_user.jpeg"
     end
@@ -28,11 +27,10 @@ feature 'User add avatar', %q(
       within '.navbar' do
         click_on 'Batman'
       end
-      attach_file 'Avatar', "#{Rails.root}/spec/factories/test_bad.bmp"
-      fill_in 'Текущий пароль', with: '12345678'
-      click_on 'Сохранить User'
+      attach_file 'Аватар', "#{Rails.root}/spec/factories/test_bad.bmp"
+      click_on 'Сохранить Profile'
 
-      expect(page).to have_content 'Profile avatar translation missing'
+      expect(page).to have_content 'Недопустимый формат'
     end
   end
 

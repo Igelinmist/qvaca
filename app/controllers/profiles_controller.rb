@@ -8,7 +8,10 @@ class ProfilesController < InheritedResources::Base
   end
 
   def update
-    update! { session.delete(:return_to) }
+    update! do |success, failure|
+      success.html { flash[:success] = "Ваш профиль успешно обновлен."; redirect_to session.delete(:return_to) }
+      failure.html { render :edit}
+    end
   end
 
   protected
