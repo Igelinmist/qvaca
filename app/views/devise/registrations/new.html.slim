@@ -5,6 +5,8 @@ h2 Введите данные для регистрации на сайте
   = f.input :email, autofocus: true, required: true
   = f.input :password, required: true, autocomplete: "off"
   = f.input :password_confirmation, required: true, autocomplete: "off"
+  = f.simple_fields_for :profile do |p|
+    = p.input :display_name, as: :hidden
   = f.button :submit
 
 = render "devise/shared/links"

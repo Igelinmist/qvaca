@@ -15,7 +15,10 @@ class Ability
 
   def user_abilities(user)
     can :read, :all
-    can :create, [Question, Answer, Comment]
+
+    can :create, [Profile, Question, Answer, Comment]
+
+    can :update, Profile, user_id: user.id
 
     can :update, Question, user_id: user.id
     can :destroy, Question, user_id: user.id
@@ -33,6 +36,6 @@ class Ability
   end
 
   def guest_abilities
-    can :read, [Question, Answer, Comment]
+    can :read, [Question, Answer, Comment, Profile]
   end
 end

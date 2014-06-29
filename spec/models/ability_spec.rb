@@ -5,6 +5,7 @@ describe Ability do
   describe "for guest" do
     let(:user) { nil }
 
+    it { should be_able_to :read, Profile}
     it { should be_able_to :read, Question}
     it { should be_able_to :read, Answer}
     it { should be_able_to :read, Comment}
@@ -24,6 +25,9 @@ describe Ability do
 
     it { should_not be_able_to :manage, :all }
     it { should be_able_to :read, :all }
+
+    it { should be_able_to :create, Profile }
+    it { should be_able_to :update, user.profile, user_id: user.id }
 
     it { should be_able_to :create, Question }
 

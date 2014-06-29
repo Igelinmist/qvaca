@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   use_doorkeeper
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
-  resources :profiles, only: [:show, :edit]
+  resources :profiles, only: [:show, :edit, :update]
 
   concern :commentable do
     resources :comments

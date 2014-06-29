@@ -42,6 +42,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'cancan'
 gem 'doorkeeper'
+gem 'russian'
 
 group :development,:test do
   gem 'rspec-rails'

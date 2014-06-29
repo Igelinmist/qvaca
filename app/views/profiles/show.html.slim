@@ -1,47 +1,20 @@
-- model_class = Profile
-div class="page-header"
-  h1=t '.title', :default => model_class.model_name.human.titleize
+#profile
+  =resource.avatar
+  h1 =resource.display_name
+  dl
+    dt Имя пользователя:
+    dd = resource.real_name
+    dt Возраст:
+    dd = resource.age
+    dt Место нахождения:
+    dd = resource.location
+    dt Сайт:
+    dd = resource.website
+    dt Зарегистрирован:
+    dd = resource.member_since
+    dt О себе:
+    dd = resource.about_me
 
-p
-  strong= model_class.human_attribute_name(:display_name) + ':'
-  br
-  = @profile.display_name
-p
-  strong= model_class.human_attribute_name(:real_name) + ':'
-  br
-  = @profile.real_name
-p
-  strong= model_class.human_attribute_name(:website) + ':'
-  br
-  = @profile.website
-p
-  strong= model_class.human_attribute_name(:location) + ':'
-  br
-  = @profile.location
-p
-  strong= model_class.human_attribute_name(:birthday) + ':'
-  br
-  = @profile.birthday
-p
-  strong= model_class.human_attribute_name(:about_me) + ':'
-  br
-  = @profile.about_me
-p
-  strong= model_class.human_attribute_name(:weekly_email) + ':'
-  br
-  = @profile.weekly_email
-p
-  strong= model_class.human_attribute_name(:avatar) + ':'
-  br
-  = @profile.avatar
-p
-  strong= model_class.human_attribute_name(:user_id) + ':'
-  br
-  = @profile.user_id
-
-.form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), profiles_path, :class => 'btn'
-  '
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_profile_path(@profile), :class => 'btn'
-  '
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), profile_path(@profile), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+- if can? :update, resource
+  .form-actions
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_profile_path(resource), :class => 'btn'
