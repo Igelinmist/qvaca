@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   end
 
   concern :votable do
-    get :voteup, on: :member, action: :vote, rate: 1
-    get :votedown, on: :member, action: :vote, rate: -1
+    post :voteup, on: :member, action: :vote, rate: 1
+    post :votedown, on: :member, action: :vote, rate: -1
   end
 
   resources :questions do
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :answers, only: [] do
     concerns [:commentable, :votable]
-    get :thebest, on: :member, action: :mark_the_best
+    patch :thebest, on: :member, action: :mark_the_best
   end
 
   namespace :api do

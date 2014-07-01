@@ -1,8 +1,8 @@
 -if can_vote? resource
-  =link_to voteup_question_path(resource), remote: true, id: 'question-vote-up', title: 'Оценить вопрос, как полезный' do
+  =link_to voteup_question_path(resource), remote: true, id: 'question-vote-up', title: 'Оценить вопрос, как полезный', method: 'POST' do
       i.icon-sort-up.icon-2x
 .rating
   =resource.summary_votes
 -if can_vote? resource
-  =link_to votedown_question_path(resource), remote: true, id: 'question-vote-down', title: 'Оценить вопрос, как бесполезный' do
+  =link_to votedown_question_path(resource), remote: true, id: 'question-vote-down', title: 'Оценить вопрос, как бесполезный', method: 'POST' do
       i.icon-sort-down.icon-2x

@@ -1,5 +1,5 @@
 -if can_vote? resource
-  =link_to voteup_answer_path(resource), remote: true, id: "answer-vote-up-#{resource.id}", title: 'Оценить ответ, как полезный' do
+  =link_to voteup_answer_path(resource), remote: true, id: "answer-vote-up-#{resource.id}", title: 'Оценить ответ, как полезный', method: 'POST' do
       i.icon-sort-up.icon-2x
 .the-best
   -if ba = parent.best_answer
@@ -7,10 +7,10 @@
       i.icon-check.icon-2x#the-best-answer
   -else
     -if can? :mark_the_best, resource
-      =link_to thebest_answer_path(resource), id: "the-best-#{resource.id}", title: 'Оценить ответ, как лучшее решение вопроса' do
+      =link_to thebest_answer_path(resource), id: "the-best-#{resource.id}", title: 'Оценить ответ, как лучшее решение вопроса', method: 'PATCH' do
           i.icon-check-empty.icon-2x
 .rating
   =resource.summary_votes
 -if can_vote? resource
-  =link_to votedown_answer_path(resource), remote: true, id: "answer-vote-down-#{resource.id}", title: 'Оценить ответ, как бесполезный' do
+  =link_to votedown_answer_path(resource), remote: true, id: "answer-vote-down-#{resource.id}", title: 'Оценить ответ, как бесполезный', method: 'POST' do
       i.icon-sort-down.icon-2x
