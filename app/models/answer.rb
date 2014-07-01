@@ -22,8 +22,10 @@ class Answer < ActiveRecord::Base
   end
 
   def vote(user, rate)
-    vote = self.votes.build(user: user, voice: rate)
-    vote.save!
+    unless voted_by? user
+      vote = self.votes.build(user: user, voice: rate)
+      vote.save!
+    end
   end
 
   def summary_votes

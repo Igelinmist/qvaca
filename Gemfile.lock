@@ -201,6 +201,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.0)
       sprockets-rails (~> 2.0)
+    rails-observers (0.1.2)
+      activemodel (~> 4.0)
     railties (4.1.0)
       actionpack (= 4.1.0)
       activesupport (= 4.1.0)
@@ -338,6 +340,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 4.1.0)
+  rails-observers
   rake (~> 10.3.2)
   remotipart
   rmagick (= 2.13.2)

@@ -36,8 +36,10 @@ class Question < ActiveRecord::Base
   end
 
   def vote(user, rate)
-    vote = self.votes.build(user: user, voice: rate*2)
-    vote.save!
+    unless voted_by? user
+      vote = self.votes.build(user: user, voice: rate*2)
+      vote.save!
+    end
   end
 
   def best_answer

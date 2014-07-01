@@ -13,45 +13,25 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
-  def display_name
-    profile.display_name
-  end
+  def display_name() profile.display_name end
 
-  def display_name=(name)
-    profile.display_name = name
-  end
+  def display_name=(name) profile.display_name = name end
 
-  def real_name
-    profile.real_name
-  end
+  def real_name() profile.real_name end
 
-  def real_name=(name)
-    profile.real_name = name
-  end
+  def real_name=(name) profile.real_name = name end
 
-  def avatar
-    profile.avatar
-  end
+  def avatar() profile.avatar end
 
-  def avatar=(name)
-    profile.avatar = name
-  end
+  def avatar=(name) profile.avatar = name end
 
-  def points_for_answer
-    answers.count
-  end
+  def points_for_answer() answers.count end
 
-  def points_for_first_answer
-    answers.sum :the_first
-  end
+  def points_for_first_answer() answers.sum :the_first end
 
-  def points_for_answer_own_question
-    answers.sum :self_answer
-  end
+  def points_for_answer_own_question() answers.sum :self_answer end
 
-  def answers_rating
-    points_for_answer + points_for_first_answer + points_for_answer_own_question
-  end
+  def answers_rating() points_for_answer + points_for_first_answer + points_for_answer_own_question end
 
   def self.find_for_oauth(auth)
     if authorization = Authorization.where(provider: auth.provider, uid: auth.uid.to_s).first
