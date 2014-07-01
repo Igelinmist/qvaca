@@ -32,5 +32,7 @@ module Qvaca
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     config.jquery_templates.prefix = "templates"
     config.quiet_assets = true
+
+    config.active_record.observers = [:vote_observer, :answer_observer]
   end
 end

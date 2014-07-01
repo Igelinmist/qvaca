@@ -31,7 +31,9 @@ class User < ActiveRecord::Base
 
   def points_for_answer_own_question() answers.sum :self_answer end
 
-  def answers_rating() points_for_answer + points_for_first_answer + points_for_answer_own_question end
+  def points_for_best_answer() answers.sum :best_graid end
+
+  def answers_rating() points_for_answer + points_for_first_answer + points_for_answer_own_question + points_for_best_answer end
 
   def self.find_for_oauth(auth)
     if authorization = Authorization.where(provider: auth.provider, uid: auth.uid.to_s).first

@@ -16,14 +16,14 @@ feature 'Vote about answer', %(
       visit question_path question
     end
 
-    scenario 'give like to answer', js: true do
+    scenario 'give like to answer and button disappear', js: true do
       within "#js-answer-#{answer.id}" do
         click_link "answer-vote-up-#{answer.id}"
         expect(page).to_not have_link "answer-vote-up-#{answer.id}", href: voteup_answer_path(answer)
       end
     end
 
-    scenario 'give dislike to answer', js: true do
+    scenario 'give dislike to answer and button disappear', js: true do
       within "#js-answer-#{answer.id}" do
         click_link "answer-vote-down-#{answer.id}"
         expect(page).to_not have_link "answer-vote-down-#{answer.id}"
@@ -40,4 +40,5 @@ feature 'Vote about answer', %(
       expect(page).to_not have_link "answer-vote-down-#{answer.id}"
     end
   end
+
 end
