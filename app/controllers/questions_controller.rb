@@ -1,10 +1,10 @@
 class QuestionsController < InheritedResources::Base
   before_action :authenticate_user!, only: [:new, :create, :vote]
+  impressionist actions: [:show], unique: [:impressionable_type, :impressionable_id ,:session_hash]
   load_and_authorize_resource
   respond_to :js
   custom_actions resource: [:vote]
   before_action :set_author, only: [:create]
-  
 
   def create
     create! notice: 'Ваш вопрос успешно размещен.'

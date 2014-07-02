@@ -21,6 +21,8 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :attachments, allow_destroy: true
   has_many :votes, as: :votable, dependent: :destroy
 
+  is_impressionable counter_cache: true, column_name: :unique_views, unique: :all
+
   def tag_names
     @tag_names || tags.pluck(:name).join(' ')
   end

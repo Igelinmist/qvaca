@@ -64,7 +64,7 @@ describe "Profiles API" do
         expect(response).to be_success
       end
 
-      %w(id email created_at).each do |attr|
+      %w(id email).each do |attr|
         it "returns some user #{attr}" do
           expect(response.body).to be_json_eql(user.send(attr.to_sym).to_json).at_path("1/#{attr}")
         end

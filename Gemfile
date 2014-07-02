@@ -44,6 +44,7 @@ gem 'cancan'
 gem 'doorkeeper'
 gem 'russian'
 gem 'rails-observers'
+gem 'impressionist'
 
 group :development,:test do
   gem 'rspec-rails'

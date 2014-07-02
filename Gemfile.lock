@@ -106,7 +106,11 @@ GEM
       activesupport (>= 3.2, < 5)
     hashie (2.1.2)
     hike (1.2.3)
+    httpclient (2.4.0)
     i18n (0.6.9)
+    impressionist (1.5.1)
+      httpclient (~> 2.2)
+      nokogiri (~> 1.5)
     inherited_resources (1.5.0)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0)
@@ -324,6 +328,7 @@ DEPENDENCIES
   factory_girl_rails
   guard-rspec
   guard-spork
+  impressionist
   inherited_resources
   jbuilder (~> 2.0)
   jquery-rails
