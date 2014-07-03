@@ -5,7 +5,7 @@ class Vote < ActiveRecord::Base
   belongs_to :question, -> { where(votes: { votable_type: 'Question' }) }, foreign_key: 'votable_id'
   belongs_to :answer, -> { where(votes: { votable_type: 'Answer' }) }, foreign_key: 'votable_id'
 
-  validates_inclusion_of :voice, in: [-2, -1, 1, 2, 3]
+  validates :voice, inclusion: { in: [-2, -1, 1, 2, 3] }
 
   def self.questions_vote_rate(user)
     Vote.includes(:question).where(questions: { user_id: user.id }).sum(:voice)

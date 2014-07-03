@@ -5,10 +5,14 @@ table
   	-collection.each do |question|
   	  tr*{ :id => "question-summary-#{question.id}" }
   	    td
-          .views
-            .mini-counts
-              span
-                =question.impressionist_count
-            div смотрели
+          .views.mini-counts
+            span*{ :title => "#{question.unique_views} #{Russian.p(question.unique_views, 'просмотр', 'просмотра', 'просмотров')}"}
+              =question.unique_views
+          .answers_stat.mini-counts
+            span*{ :title => "#{question.answers_stat} ответов"}
+              =question.answers_stat
+          .votes_stat.mini-counts
+            span*{ :title => "#{question.votes_stat} голосов"}
+              =question.votes_stat
         td=link_to question.title, question
         td=link_to('Удалить', question, data: {:confirm => "Вы уверены, что хотите удалить вопрос\n и все, что с ним связано?"}, method: :delete, class: 'btn btn-mini btn-danger') if can? :destroy, question

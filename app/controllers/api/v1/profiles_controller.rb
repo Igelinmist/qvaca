@@ -5,14 +5,14 @@ class Api::V1::ProfilesController < Api::V1::BaseController
     respond_with current_resource_owner
   end
 
-  def index
-    respond_with profiles
+def index
+    respond_with profiles.to_json(include: :profile)
   end
 
   protected
 
   def profiles
-    @profiles ||= User.all.to_json(include: :profile)
+    @profiles ||= User.all.includes :profile
   end
 
 end

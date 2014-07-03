@@ -23,18 +23,22 @@ class Question < ActiveRecord::Base
 
   is_impressionable counter_cache: true, column_name: :unique_views, unique: :all
 
-  def tag_names
-    @tag_names || tags.pluck(:name).join(' ')
+  def tag_names() @tag_names || tags.pluck(:name).join(' ') end
+
+  def voted_by?(user) Vote.exists? user: user, votable: self end
+
+  def best_answer() answers.the_best.first end
+
+  def summary_votes() votes.sum :voice end
+
+  def update_answers_stat
+    self.answers_stat = answers.size
+    self.save!
   end
 
-  def save_tag_names
-    if @tag_names
-      self.tags = @tag_names.split.map { |name| Tag.where(name: name).first_or_create! }
-    end
-  end
-
-  def voted_by?(user)
-    Vote.exists? user: user, votable: self
+  def update_votes_stat
+    self.votes_stat = summary_votes
+    self.save!
   end
 
   def vote(user, rate)
@@ -44,12 +48,9 @@ class Question < ActiveRecord::Base
     end
   end
 
-  def best_answer
-    answers.the_best.first
+  def save_tag_names
+    if @tag_names
+      self.tags = @tag_names.split.map { |name| Tag.where(name: name).first_or_create! }
+    end
   end
-
-  def summary_votes
-    votes.sum :voice
-  end
-
 end

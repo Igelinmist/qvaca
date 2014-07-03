@@ -20,8 +20,8 @@ I want to see the title and body of question
     click_on questions[1].title
     click_on 'К вопросам'
 
-    expect(page.find("#question-summary-#{questions[1].id} .views .mini-counts")).to have_content '1'
-    expect(page.find("#question-summary-#{questions[0].id} .views .mini-counts")).to have_content '0'
+    expect(page.find("#question-summary-#{questions[1].id} .views.mini-counts")).to have_content '1'
+    expect(page.find("#question-summary-#{questions[0].id} .views.mini-counts")).to have_content '0'
   end
 
   scenario 'View the details of question increment counter of views only one time per session' do
@@ -31,7 +31,7 @@ I want to see the title and body of question
     click_on questions[1].title
     click_on 'К вопросам'
 
-    expect(page.find("#question-summary-#{questions[1].id} .views .mini-counts")).to have_content '1'
-    expect(page.find("#question-summary-#{questions[0].id} .views .mini-counts")).to have_content '0'
+    expect(page.find("#question-summary-#{questions[1].id} .views.mini-counts")).to have_content '1'
+    expect(page.find("#question-summary-#{questions[0].id} .views.mini-counts")).to have_content '0'
   end
 end

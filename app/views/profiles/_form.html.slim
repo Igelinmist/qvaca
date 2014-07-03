@@ -2,7 +2,7 @@
   = f.input :display_name
   = f.input :real_name
   = f.input :avatar, as: :file
-  = f.input :birthday, as: :date, start_year: Date.today.year - 90,
+  = f.input :birthday, class: "span1", as: :date, start_year: Date.today.year - 90,
                               end_year: Date.today.year - 12,
                               order: [:day, :month, :year]
   = f.input :website
