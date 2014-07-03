@@ -3,6 +3,6 @@ class VoteObserver < ActiveRecord::Observer
     user = vote.votable.user
     user.profile.rating = Vote.vote_rate(user) + user.answers_rating
     user.save!
-    vote.votable.update_votes_stat if vote.votable_type = 'Question'
+    vote.votable.update_votes_stat if vote.votable_type == 'Question'
   end
 end

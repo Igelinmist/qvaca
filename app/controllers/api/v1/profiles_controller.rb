@@ -16,5 +16,4 @@ class Api::V1::ProfilesController < Api::V1::BaseController
   def collection
     collection ||= User.all.includes :profile
   end
-
 end
