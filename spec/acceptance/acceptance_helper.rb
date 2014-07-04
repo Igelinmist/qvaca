@@ -5,8 +5,6 @@ RSpec.configure do |config|
 
   config.include AcceptanceMacros, type: :feature
 
-  config.infer_base_class_for_anonymous_controllers = false
-
   config.use_transactional_fixtures = false
 
   config.before(:suite) do
@@ -28,5 +26,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
 end

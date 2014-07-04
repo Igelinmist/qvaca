@@ -45,6 +45,9 @@ gem 'doorkeeper'
 gem 'russian'
 gem 'rails-observers'
 gem 'impressionist'
+gem 'active_model_serializers'
+gem 'oj'
+gem 'oj_mimic_json'
 
 group :development,:test do
   gem 'rspec-rails'

@@ -9,8 +9,6 @@ describe Answer do
   it { should have_many :attachments }
   it { should have_many :votes }
 
-  it { should validate_presence_of :user_id }
-
   it { should accept_nested_attributes_for :attachments }
 
   describe '#make_the_best_answer' do

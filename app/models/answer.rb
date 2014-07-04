@@ -1,6 +1,5 @@
 class Answer < ActiveRecord::Base
   validates :body, presence: true
-  validates :user_id, presence: true
 
   before_save :init_points
 
