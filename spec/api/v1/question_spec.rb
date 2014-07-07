@@ -58,6 +58,10 @@ describe 'Question API' do
 
   describe 'GET question' do
     let!(:question) { create(:question) }
+    let!(:comments) { create_pair(:comment, commentable: question) }
+    let(:comment) { comments.first }
+    let!(:attachments) { create_pair(:attachment, attachmentable: question) }
+    let(:attachment) { attachments.first }
 
     context 'unauthorized' do
       it 'returns 401 status code if there is no access_token' do
@@ -80,6 +84,34 @@ describe 'Question API' do
       it 'returns 200 status code' do
         expect(response.status).to eq 200
       end
+
+      context 'comments' do
+        it 'returns full list' do
+          expect(response.body).to have_json_size(2).at_path('question/comments')
+        end
+
+        %w(id body created_at updated_at).each do |attr|
+          it "object contains #{attr}" do
+            expect(response.body).to be_json_eql(comment.send(attr.to_sym).to_json).at_path("question/comments/0/#{attr}")
+          end
+        end
+      end
+
+      context 'attachments' do
+        it 'returns list' do
+          expect(response.body).to have_json_size(2).at_path('question/attachments')
+        end
+
+        it "object contains url" do
+          expect(response.body).to be_json_eql(attachment.file.url.to_json).at_path("question/attachments/0/file/url")
+        end
+
+      end
+
+      it 'not returns answers' do
+        
+      end
+
     end
   end
 end
