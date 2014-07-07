@@ -27,7 +27,7 @@ describe "Profiles API" do
 
       %w(id email).each do |attr|
         it "returns user #{attr}" do
-          expect(response.body).to be_json_eql(me.send(attr.to_sym).to_json).at_path(attr)
+          expect(response.body).to be_json_eql(me.send(attr.to_sym).to_json).at_path("user/#{attr}")
         end
       end
 
@@ -66,19 +66,19 @@ describe "Profiles API" do
 
       %w(id email).each do |attr|
         it "returns some user #{attr}" do
-          expect(response.body).to be_json_eql(user.send(attr.to_sym).to_json).at_path("1/#{attr}")
+          expect(response.body).to be_json_eql(user.send(attr.to_sym).to_json).at_path("profiles/1/#{attr}")
         end
       end
 
       %w(display_name real_name).each do |attr|
         it "returns some user's profile data #{attr}" do
-          expect(response.body).to be_json_eql(user.profile.send(attr.to_sym).to_json).at_path("1/profile/#{attr}")
+          expect(response.body).to be_json_eql(user.profile.send(attr.to_sym).to_json).at_path("profiles/1/profile/#{attr}")
         end
       end
 
       %w(password encrypted_password).each do |attr|
         it "does not contain some user #{attr}" do
-          expect(response.body).to_not have_json_path("1/#{attr}")
+          expect(response.body).to_not have_json_path("profiles/1/#{attr}")
         end
       end
 

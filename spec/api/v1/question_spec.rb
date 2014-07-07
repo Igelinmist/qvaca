@@ -15,12 +15,11 @@ describe 'Question API' do
     end
 
     context 'authorized' do
-      
+
       let!(:questions) { create_list(:question, 2) }
       let(:question) { questions.first }
-      let(:access_token) { create(:access_token) }
       let!(:answer) { create(:answer, question: question) }
-
+      let!(:access_token) { create(:access_token) }
       before do
         get '/api/v1/questions', format: :json, access_token: access_token.token
       end
@@ -53,6 +52,33 @@ describe 'Question API' do
             expect(response.body).to be_json_eql(answer.send(attr.to_sym).to_json).at_path("questions/0/answers/0/#{attr}")
           end
         end
+      end
+    end
+  end
+
+  describe 'GET question' do
+    let!(:question) { create(:question) }
+
+    context 'unauthorized' do
+      it 'returns 401 status code if there is no access_token' do
+        get "/api/v1/questions/#{question.id}", format: :json
+        expect(response.status).to eq 401
+      end
+
+      it 'returns 401 status code if access_token is invalid' do
+        get "/api/v1/questions/#{question.id}", format: :json, access_token: '1234'
+        expect(response.status).to eq 401
+      end
+    end
+
+    context 'authorized' do
+      let(:access_token) { create(:access_token) }
+      before do
+        get "/api/v1/questions/#{question.id}", format: :json, access_token: access_token.token
+      end
+
+      it 'returns 200 status code' do
+        expect(response.status).to eq 200
       end
     end
   end

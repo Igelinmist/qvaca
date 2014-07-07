@@ -22,6 +22,8 @@ class Question < ActiveRecord::Base
 
   is_impressionable counter_cache: true, column_name: :unique_views, unique: :all
 
+  default_scope { order(created_at: :asc) }
+
   def tag_names() @tag_names || tags.pluck(:name).join(' ') end
 
   def voted_by?(user) Vote.exists? user: user, votable: self end
