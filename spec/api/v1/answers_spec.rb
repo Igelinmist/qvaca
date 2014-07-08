@@ -43,4 +43,61 @@ describe 'Answers API' do
       end
     end
   end
+
+  describe 'GET show' do
+    context 'unauthorized' do
+      it 'returns 401 status code if there is no access_token' do
+        get '/api/v1/questions/1/answers/1', format: :json
+        expect(response.status).to eq 401
+      end
+
+      it 'returns 401 status code if access_token is invalid' do
+        get '/api/v1/questions/1/answers/1', format: :json, access_token: '1234'
+        expect(response.status).to eq 401
+      end
+    end
+
+    context 'authorized' do
+      let!(:question) { create(:question) }
+      let!(:answer) { create(:answer, question: question) }
+      let!(:comments) { create_pair(:comment, commentable: answer) }
+      let(:comment) { comments.first }
+      let!(:attachments) { create_pair(:attachment, attachmentable: answer) }
+      let(:attachment) { attachments.first }
+      let!(:access_token) { create(:access_token) }
+
+      before do
+        get "/api/v1/questions/#{question.id}/answers/#{answer.id}", format: :json, access_token: access_token.token
+      end
+
+      it 'returns 200 status code' do
+        expect(response.status).to eq 200
+      end
+
+      it 'returns list of comments' do
+        expect(response.body).to have_json_size(2).at_path('answer/comments')
+      end
+
+      %w(id body created_at updated_at).each do |attr|
+        it "comment object contains #{attr}" do
+          expect(response.body).to be_json_eql(comment.send(attr.to_sym).to_json).at_path("answer/comments/0/#{attr}")
+        end
+      end
+
+      it 'returns list of attachments' do
+        expect(response.body).to have_json_size(2).at_path('answer/attachments')
+      end
+
+      %w(id created_at updated_at).each do |attr|
+        it "attachment object contains #{attr}" do
+          expect(response.body).to be_json_eql(attachment.send(attr.to_sym).to_json).at_path("answer/attachments/0/#{attr}")
+        end
+      end
+
+      it 'attachment object contains file url' do
+        expect(response.body).to be_json_eql(attachment.file.url.to_json).at_path('answer/attachments/0/file/url')
+      end
+
+    end
+  end
 end
