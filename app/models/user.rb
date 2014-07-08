@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
+  default_scope { order :created_at }
+
   def display_name() profile.display_name end
 
   def display_name=(name) profile.display_name = name end
