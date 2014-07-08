@@ -62,6 +62,7 @@ describe 'Question API' do
     let(:comment) { comments.first }
     let!(:attachments) { create_pair(:attachment, attachmentable: question) }
     let(:attachment) { attachments.first }
+    let!(:answers) { create_pair(:answer, question: question) }
 
     context 'unauthorized' do
       it 'returns 401 status code if there is no access_token' do
@@ -109,7 +110,7 @@ describe 'Question API' do
       end
 
       it 'not returns answers' do
-        
+        expect(response.body).to_not have_json_path('question/answers')
       end
 
     end
