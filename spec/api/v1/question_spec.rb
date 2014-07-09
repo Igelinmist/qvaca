@@ -115,4 +115,57 @@ describe 'Question API' do
 
     end
   end
+
+  describe 'POST question' do
+    context 'unauthorized' do
+      it 'returns 401 status code if there is no access_token' do
+        post "/api/v1/questions", format: :json
+        expect(response.status).to eq 401
+      end
+
+      it 'returns 401 status code if access_token is invalid' do
+        post "/api/v1/questions", format: :json, access_token: '1234'
+        expect(response.status).to eq 401
+      end
+    end
+
+    context 'authorized' do
+      let(:access_token) { create(:access_token) }
+      let!(:user) { create(:user) }
+      
+      it 'create valid question' do
+        question = create(:question)
+        post '/api/v1/questions',
+          question: { title: question.title, body: question.body },
+          access_token: access_token.token,
+          format: :json
+
+        %w(title body).each do |attr|
+            expect(response.body).to be_json_eql(question.send(attr.to_sym).to_json).at_path("question/#{attr}")
+        end
+      end
+
+      context 'not create invalid question' do
+        let(:question) { create(:question) }
+
+        it 'have short title' do
+          post '/api/v1/questions',
+            question: { title: 'short', body: question.body },
+            access_token: access_token.token,
+            format: :json
+          
+          expect(response.body).to have_json_path('errors')
+        end
+
+        it 'have nil body' do
+          post '/api/v1/questions',
+            question: { title: question.title, body: nil },
+            access_token: access_token.token,
+            format: :json
+          
+          expect(response.body).to have_json_path('errors')
+        end
+      end
+    end
+  end
 end

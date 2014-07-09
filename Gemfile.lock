@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/andreareginato/redis-throttle.git
+  remote: https://github.com/andreareginato/redis-throttle.git
   revision: e551ac6067b980da873fd6fa81dbf7fa6198aee4
   specs:
     redis-throttle (0.0.1)

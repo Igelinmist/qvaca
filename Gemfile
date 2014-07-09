@@ -48,7 +48,7 @@ gem 'impressionist'
 gem 'active_model_serializers'
 gem 'oj'
 gem 'oj_mimic_json'
-gem 'redis-throttle', git: 'git://github.com/andreareginato/redis-throttle.git'
+gem 'redis-throttle', git: 'https://github.com/andreareginato/redis-throttle.git'
 
 
 group :development,:test do
