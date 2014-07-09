@@ -131,8 +131,7 @@ describe 'Question API' do
 
     context 'authorized' do
       let(:access_token) { create(:access_token) }
-      let!(:user) { create(:user) }
-      
+
       it 'create valid question' do
         question = create(:question)
         post '/api/v1/questions',

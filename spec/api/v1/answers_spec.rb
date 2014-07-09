@@ -97,7 +97,44 @@ describe 'Answers API' do
       it 'attachment object contains file url' do
         expect(response.body).to be_json_eql(attachment.file.url.to_json).at_path('answer/attachments/0/file/url')
       end
+    end
+  end
 
+  describe 'POST answer' do
+    context 'unauthorized' do
+      it 'returns 401 status code if there is no access_token' do
+        post '/api/v1/questions/1/answers', format: :json
+        expect(response.status).to eq 401
+      end
+
+      it 'returns 401 status code if access_token is invalid' do
+        post '/api/v1/questions/1/answers', format: :json, access_token: '1234'
+        expect(response.status).to eq 401
+      end
+    end
+
+    context 'authorized' do
+      let(:access_token) { create(:access_token) }
+      let!(:question) { create(:question) }
+
+      it 'create valid answer' do
+        answer = create(:answer, question: question)
+        post "/api/v1/questions/#{question.id}/answers",
+          answer: { body: question.body },
+          access_token: access_token.token,
+          format: :json
+
+        expect(response.body).to be_json_eql(question.body.to_json).at_path("answer/body")
+      end
+
+      it 'have nil body' do
+        post "/api/v1/questions/#{question.id}/answers",
+          answer: { body: nil },
+          access_token: access_token.token,
+          format: :json
+        
+        expect(response.body).to have_json_path('errors')
+      end
     end
   end
 end
