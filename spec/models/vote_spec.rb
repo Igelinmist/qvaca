@@ -13,27 +13,33 @@ describe Vote do
 
     it 'author takes +2 poits for positive question vote' do
       question.vote(users[1], 1)
-      
+
       expect(Vote.vote_rate(users[0])).to eq 2
     end
 
     it 'author takes -2 poits for negative question vote' do
       question.vote(users[1], -1)
-      
+
       expect(Vote.vote_rate(users[0])).to eq -2
     end
 
     it 'author takes +1 poits for positive answer vote' do
       answer.vote(users[0], 1)
-      
+
       expect(Vote.vote_rate(users[1])).to eq 1
     end
 
     it 'author takes -1 poits for negative answer vote' do
       answer.vote(users[0], -1)
-      
+
       expect(Vote.vote_rate(users[1])).to eq -1
     end
+
+    # subject { build(:vote) }
+    # it 'changes reputation on save' do
+    #   expect(Reputation).to receive(:calculate)
+    #   subject.save!
+    # end
 
   end
 end
