@@ -2,17 +2,9 @@ require 'spec_helper'
 
 describe "Profiles API" do
   describe "Resource Owner Profile" do
-    context 'unathorized' do
-      it 'returns 401 status code if there is no access_token' do
-        get '/api/v1/profiles/me', format: :json
-        expect(response.status).to eq 401
-      end
+    let(:api_path) { '/api/v1/profiles/me' }
 
-      it 'returns 401 status code if access_token is invalid' do
-        get '/api/v1/profiles/me', format: :json, access_token: '1234'
-        expect(response.status).to eq 401
-      end
-    end
+    it_behaves_like "API Authenticable"
 
     context 'authorized' do
       let(:me) { create(:user) }
@@ -40,17 +32,9 @@ describe "Profiles API" do
   end
 
   describe "All profiles" do
-    context 'unathorized' do
-      it 'returns 401 status code if there is no access_token' do
-        get '/api/v1/profiles', format: :json
-        expect(response.status).to eq 401
-      end
+    let(:api_path) { '/api/v1/profiles' }
 
-      it 'returns 401 status code if access_token is invalid' do
-        get '/api/v1/profiles', format: :json, access_token: '1234'
-        expect(response.status).to eq 401
-      end
-    end
+    it_behaves_like "API Authenticable"
 
     context 'authorized' do
       let!(:me) { create(:user) }
@@ -86,6 +70,6 @@ describe "Profiles API" do
   end
 
   def do_request(options={  })
-    get :api_path, { format: :json }.merge(options)
+    get api_path, { format: :json }.merge(options)
   end
 end
