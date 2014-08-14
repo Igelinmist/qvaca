@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Questions API" do
-
+  let(:api_path){ '/api/v1/questions' }
   it_behaves_like "API Authenticable"
 
   context 'authorized' do
@@ -155,5 +155,9 @@ describe "Questions API" do
         end
       end
     end
+  end
+
+  def do_request(options={})
+    get api_path, { format: :json }.merge(options)
   end
 end

@@ -84,4 +84,8 @@ describe "Profiles API" do
 
     end
   end
+
+  def do_request(options={  })
+    get :api_path, { format: :json }.merge(options)
+  end
 end
