@@ -141,7 +141,7 @@ describe "Questions API" do
             question: { title: 'short', body: question.body },
             access_token: access_token.token,
             format: :json
-          
+
           expect(response.body).to have_json_path('errors')
         end
 
@@ -150,7 +150,7 @@ describe "Questions API" do
             question: { title: question.title, body: nil },
             access_token: access_token.token,
             format: :json
-          
+
           expect(response.body).to have_json_path('errors')
         end
       end

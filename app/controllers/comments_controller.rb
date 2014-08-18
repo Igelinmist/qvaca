@@ -18,8 +18,8 @@ class CommentsController < InheritedResources::Base
 
   def update
     update! do |success, failure|
-      success.json { render json: @comment }
-      failure.json { render json: @comment.errors.full_messages, status: :unprocessable_entity }
+      success.json { render json: resource.attributes }
+      failure.json { render json: resource.errors.full_messages, status: :unprocessable_entity }
     end
   end
 

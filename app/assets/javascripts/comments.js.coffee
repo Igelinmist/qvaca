@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 @bind_ajax_responce = (form_selector) ->
   $(form_selector).bind 'ajax:success', (e, data, status, xhr) ->
     comment = $.parseJSON(xhr.responseText)
