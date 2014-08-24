@@ -1,0 +1,201 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Ability	app/models/ability.rb	/^class Ability$/;"	c
+AcceptanceMacros	spec/support/acceptance_macros.rb	/^module AcceptanceMacros$/;"	m
+AddAdminFlagToUsers	db/migrate/20140618032509_add_admin_flag_to_users.rb	/^class AddAdminFlagToUsers < ActiveRecord::Migration$/;"	c
+AddConfirmableToUser	db/migrate/20140623083119_add_confirmable_to_user.rb	/^class AddConfirmableToUser < ActiveRecord::Migration$/;"	c
+AddIndexToQuestionsTags	db/migrate/20140619044919_add_index_to_questions_tags.rb	/^class AddIndexToQuestionsTags < ActiveRecord::Migration$/;"	c
+AddIndexToVotes	db/migrate/20140530030015_add_index_to_votes.rb	/^class AddIndexToVotes < ActiveRecord::Migration$/;"	c
+AddRatingToProfile	db/migrate/20140630031735_add_rating_to_profile.rb	/^class AddRatingToProfile < ActiveRecord::Migration$/;"	c
+AddSelfAnswerToAnswers	db/migrate/20140614092003_add_self_answer_to_answers.rb	/^class AddSelfAnswerToAnswers < ActiveRecord::Migration$/;"	c
+AddTheBestToAnswers	db/migrate/20140614043337_add_the_best_to_answers.rb	/^class AddTheBestToAnswers < ActiveRecord::Migration$/;"	c
+AddTheFirstToAnswers	db/migrate/20140614090345_add_the_first_to_answers.rb	/^class AddTheFirstToAnswers < ActiveRecord::Migration$/;"	c
+AddUniqueViewsToQuestion	db/migrate/20140702055602_add_unique_views_to_question.rb	/^class AddUniqueViewsToQuestion < ActiveRecord::Migration$/;"	c
+AddUserReference	db/migrate/20140517014325_add_user_reference.rb	/^class AddUserReference < ActiveRecord::Migration$/;"	c
+AddVotesStatAnswersStatToQuestion	db/migrate/20140702075905_add_votes_stat_answers_stat_to_question.rb	/^class AddVotesStatAnswersStatToQuestion < ActiveRecord::Migration$/;"	c
+Answer	app/models/answer.rb	/^class Answer < ActiveRecord::Base$/;"	c
+AnswerObserver	app/models/answer_observer.rb	/^class AnswerObserver < ActiveRecord::Observer$/;"	c
+AnswerSerializer	app/serializers/answer_serializer.rb	/^class AnswerSerializer < ActiveModel::Serializer$/;"	c
+AnswersController	app/controllers/answers_controller.rb	/^class AnswersController < InheritedResources::Base$/;"	c
+Api	app/controllers/api/v1/answers_controller.rb	/^class Api::V1::AnswersController < Api::V1::BaseController$/;"	c
+Api	app/controllers/api/v1/base_controller.rb	/^class Api::V1::BaseController < InheritedResources::Base$/;"	c
+Api	app/controllers/api/v1/profiles_controller.rb	/^class Api::V1::ProfilesController < Api::V1::BaseController$/;"	c
+Api	app/controllers/api/v1/questions_controller.rb	/^class Api::V1::QuestionsController < Api::V1::BaseController$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Qvaca
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+Attachment	app/models/attachment.rb	/^class Attachment < ActiveRecord::Base$/;"	c
+Authorization	app/models/authorization.rb	/^class Authorization < ActiveRecord::Base$/;"	c
+AvatarFileUploader	app/uploaders/avatar_file_uploader.rb	/^class AvatarFileUploader < CarrierWave::Uploader::Base$/;"	c
+Comment	app/models/comment.rb	/^class Comment < ActiveRecord::Base$/;"	c
+CommentSerializer	app/serializers/comment_serializer.rb	/^class CommentSerializer < ActiveModel::Serializer$/;"	c
+CommentsController	app/controllers/comments_controller.rb	/^class CommentsController < InheritedResources::Base$/;"	c
+ControllerMacros	spec/support/controller_macros.rb	/^module ControllerMacros$/;"	m
+CreateAnswers	db/migrate/20140428132911_create_answers.rb	/^class CreateAnswers < ActiveRecord::Migration$/;"	c
+CreateAttachments	db/migrate/20140522044854_create_attachments.rb	/^class CreateAttachments < ActiveRecord::Migration$/;"	c
+CreateAuthorizations	db/migrate/20140616055940_create_authorizations.rb	/^class CreateAuthorizations < ActiveRecord::Migration$/;"	c
+CreateComments	db/migrate/20140428142807_create_comments.rb	/^class CreateComments < ActiveRecord::Migration$/;"	c
+CreateDelayedJobs	db/migrate/20140822020849_create_delayed_jobs.rb	/^class CreateDelayedJobs < ActiveRecord::Migration$/;"	c
+CreateDoorkeeperTables	db/migrate/20140625081101_create_doorkeeper_tables.rb	/^class CreateDoorkeeperTables < ActiveRecord::Migration$/;"	c
+CreateImpressionsTable	db/migrate/20140702043456_create_impressions_table.rb	/^class CreateImpressionsTable < ActiveRecord::Migration$/;"	c
+CreateProfiles	db/migrate/20140609041355_create_profiles.rb	/^class CreateProfiles < ActiveRecord::Migration$/;"	c
+CreateQuestions	db/migrate/20140428130750_create_questions.rb	/^class CreateQuestions < ActiveRecord::Migration$/;"	c
+CreateQuestionsTags	db/migrate/20140428144846_create_questions_tags.rb	/^class CreateQuestionsTags < ActiveRecord::Migration$/;"	c
+CreateTaggings	db/migrate/20140524082229_create_taggings.rb	/^class CreateTaggings < ActiveRecord::Migration$/;"	c
+CreateTags	db/migrate/20140428144215_create_tags.rb	/^class CreateTags < ActiveRecord::Migration$/;"	c
+CreateVotes	db/migrate/20140530022217_create_votes.rb	/^class CreateVotes < ActiveRecord::Migration$/;"	c
+DailyMailer	app/mailers/daily_mailer.rb	/^class DailyMailer < ActionMailer::Base$/;"	c
+DailyRateLimit	lib/middleware/daily_rate_limit.rb	/^class DailyRateLimit < Rack::RedisThrottle::Daily$/;"	c
+DeviseCreateUsers	db/migrate/20140508033405_devise_create_users.rb	/^class DeviseCreateUsers < ActiveRecord::Migration$/;"	c
+FileUploader	app/uploaders/file_uploader.rb	/^class FileUploader < CarrierWave::Uploader::Base$/;"	c
+OmniauthCallbacksController	app/controllers/omniauth_callbacks_controller.rb	/^class OmniauthCallbacksController < Devise::OmniauthCallbacksController$/;"	c
+OmniauthMacros	spec/support/omniauth_macros.rb	/^module OmniauthMacros$/;"	m
+Profile	app/models/profile.rb	/^class Profile < ActiveRecord::Base$/;"	c
+ProfileDecorator	app/decorators/profile_decorator.rb	/^class ProfileDecorator < Draper::Decorator$/;"	c
+ProfilesController	app/controllers/profiles_controller.rb	/^class ProfilesController < InheritedResources::Base$/;"	c
+Question	app/models/question.rb	/^class Question < ActiveRecord::Base$/;"	c
+QuestionSerializer	app/serializers/question_serializer.rb	/^class QuestionSerializer < ActiveModel::Serializer$/;"	c
+QuestionsController	app/controllers/questions_controller.rb	/^class QuestionsController < InheritedResources::Base$/;"	c
+QuestionsHelper	app/helpers/questions_helper.rb	/^module QuestionsHelper$/;"	m
+Qvaca	config/application.rb	/^module Qvaca$/;"	m
+RemoveVotesFields	db/migrate/20140530100734_remove_votes_fields.rb	/^class RemoveVotesFields < ActiveRecord::Migration$/;"	c
+RenameColumnTitleTag	db/migrate/20140524085936_rename_column_title_tag.rb	/^class RenameColumnTitleTag < ActiveRecord::Migration$/;"	c
+Reputation	app/models/reputation.rb	/^class Reputation$/;"	c
+Tag	app/models/tag.rb	/^class Tag < ActiveRecord::Base$/;"	c
+Tagging	app/models/tagging.rb	/^class Tagging < ActiveRecord::Base$/;"	c
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+UserSerializer	app/serializers/user_serializer.rb	/^class UserSerializer < ActiveModel::Serializer$/;"	c
+UsersHelper	app/helpers/users_helper.rb	/^module UsersHelper$/;"	m
+Vote	app/models/vote.rb	/^class Vote < ActiveRecord::Base$/;"	c
+VoteObserver	app/models/vote_observer.rb	/^class VoteObserver < ActiveRecord::Observer$/;"	c
+admin_abilities	app/models/ability.rb	/^  def admin_abilities$/;"	f	class:Ability
+after_save	app/models/vote_observer.rb	/^  def after_save(vote)$/;"	f	class:VoteObserver
+after_update	app/models/answer_observer.rb	/^  def after_update(answer)$/;"	f	class:AnswerObserver
+age	app/decorators/profile_decorator.rb	/^  def age$/;"	f	class:ProfileDecorator
+all	app/controllers/omniauth_callbacks_controller.rb	/^  def all$/;"	f	class:OmniauthCallbacksController
+answer_params	app/controllers/answers_controller.rb	/^  def answer_params$/;"	f	class:AnswersController
+answer_params	app/controllers/api/v1/answers_controller.rb	/^  def answer_params$/;"	f	class:Api
+answers_rating	app/models/user.rb	/^  def answers_rating() points_for_answer + points_for_first_answer + points_for_answer_own_question + points_for_best_answer end$/;"	f	class:User
+answers_vote_rate	app/models/vote.rb	/^  def self.answers_vote_rate(user)$/;"	F	class:Vote
+avatar	app/decorators/profile_decorator.rb	/^  def avatar$/;"	f	class:ProfileDecorator
+avatar	app/models/user.rb	/^  def avatar() profile.avatar end$/;"	f	class:User
+avatar=	app/models/user.rb	/^  def avatar=(name) profile.avatar = name end$/;"	f	class:User
+avatar_name	app/decorators/profile_decorator.rb	/^  def avatar_name$/;"	f	class:ProfileDecorator
+avatar_url	app/helpers/application_helper.rb	/^  def avatar_url(user)$/;"	f	class:ApplicationHelper
+best_answer	app/models/question.rb	/^  def best_answer() answers.the_best.first end$/;"	f	class:Question
+calc_age	app/decorators/profile_decorator.rb	/^  def calc_age(birthday)$/;"	f	class:ProfileDecorator
+calculate	app/models/reputation.rb	/^  def self.calculate(object)$/;"	F	class:Reputation
+calculate_rating	app/models/answer.rb	/^  def calculate_rating$/;"	f	class:Answer
+calculate_reputation	app/models/question.rb	/^  def calculate_reputation$/;"	f	class:Question
+call	lib/middleware/daily_rate_limit.rb	/^  def call(env)$/;"	f	class:DailyRateLimit
+can_vote?	app/helpers/questions_helper.rb	/^  def can_vote?(votable)$/;"	f	class:QuestionsHelper
+change	db/migrate/20140428130750_create_questions.rb	/^  def change$/;"	f	class:CreateQuestions
+change	db/migrate/20140428132911_create_answers.rb	/^  def change$/;"	f	class:CreateAnswers
+change	db/migrate/20140428142807_create_comments.rb	/^  def change$/;"	f	class:CreateComments
+change	db/migrate/20140428144215_create_tags.rb	/^  def change$/;"	f	class:CreateTags
+change	db/migrate/20140428144846_create_questions_tags.rb	/^  def change$/;"	f	class:CreateQuestionsTags
+change	db/migrate/20140508033405_devise_create_users.rb	/^  def change$/;"	f	class:DeviseCreateUsers
+change	db/migrate/20140517014325_add_user_reference.rb	/^  def change$/;"	f	class:AddUserReference
+change	db/migrate/20140522044854_create_attachments.rb	/^  def change$/;"	f	class:CreateAttachments
+change	db/migrate/20140524082229_create_taggings.rb	/^  def change$/;"	f	class:CreateTaggings
+change	db/migrate/20140524085936_rename_column_title_tag.rb	/^  def change$/;"	f	class:RenameColumnTitleTag
+change	db/migrate/20140530022217_create_votes.rb	/^  def change$/;"	f	class:CreateVotes
+change	db/migrate/20140530030015_add_index_to_votes.rb	/^  def change$/;"	f	class:AddIndexToVotes
+change	db/migrate/20140530100734_remove_votes_fields.rb	/^  def change$/;"	f	class:RemoveVotesFields
+change	db/migrate/20140609041355_create_profiles.rb	/^  def change$/;"	f	class:CreateProfiles
+change	db/migrate/20140614043337_add_the_best_to_answers.rb	/^  def change$/;"	f	class:AddTheBestToAnswers
+change	db/migrate/20140614090345_add_the_first_to_answers.rb	/^  def change$/;"	f	class:AddTheFirstToAnswers
+change	db/migrate/20140614092003_add_self_answer_to_answers.rb	/^  def change$/;"	f	class:AddSelfAnswerToAnswers
+change	db/migrate/20140616055940_create_authorizations.rb	/^  def change$/;"	f	class:CreateAuthorizations
+change	db/migrate/20140618032509_add_admin_flag_to_users.rb	/^  def change$/;"	f	class:AddAdminFlagToUsers
+change	db/migrate/20140619044919_add_index_to_questions_tags.rb	/^  def change$/;"	f	class:AddIndexToQuestionsTags
+change	db/migrate/20140623083119_add_confirmable_to_user.rb	/^  def change$/;"	f	class:AddConfirmableToUser
+change	db/migrate/20140625081101_create_doorkeeper_tables.rb	/^  def change$/;"	f	class:CreateDoorkeeperTables
+change	db/migrate/20140630031735_add_rating_to_profile.rb	/^  def change$/;"	f	class:AddRatingToProfile
+change	db/migrate/20140702055602_add_unique_views_to_question.rb	/^  def change$/;"	f	class:AddUniqueViewsToQuestion
+change	db/migrate/20140702075905_add_votes_stat_answers_stat_to_question.rb	/^  def change$/;"	f	class:AddVotesStatAnswersStatToQuestion
+check_the_first	app/models/answer.rb	/^  def check_the_first$/;"	f	class:Answer
+check_the_self_answer	app/models/answer.rb	/^  def check_the_self_answer(user_id)$/;"	f	class:Answer
+client_identifier	lib/middleware/daily_rate_limit.rb	/^  def client_identifier(request)$/;"	f	class:DailyRateLimit
+comment_params	app/controllers/comments_controller.rb	/^  def comment_params$/;"	f	class:CommentsController
+configure_permitted_parameters	app/controllers/application_controller.rb	/^  def configure_permitted_parameters$/;"	f	class:ApplicationController
+create	app/controllers/comments_controller.rb	/^  def create$/;"	f	class:CommentsController
+create	app/controllers/questions_controller.rb	/^  def create$/;"	f	class:QuestionsController
+create_resource	app/controllers/answers_controller.rb	/^  def create_resource(object)$/;"	f	class:AnswersController
+create_resource	app/controllers/api/v1/answers_controller.rb	/^  def create_resource(object)$/;"	f	class:Api
+create_resource	app/controllers/api/v1/questions_controller.rb	/^  def create_resource(object)$/;"	f	class:Api
+create_resource	app/controllers/comments_controller.rb	/^  def create_resource(object)$/;"	f	class:CommentsController
+current_resource_owner	app/controllers/api/v1/base_controller.rb	/^  def current_resource_owner$/;"	f	class:Api
+destroy	app/controllers/answers_controller.rb	/^  def destroy$/;"	f	class:AnswersController
+destroy	app/controllers/comments_controller.rb	/^  def destroy$/;"	f	class:CommentsController
+digest	app/mailers/daily_mailer.rb	/^  def digest$/;"	f	class:DailyMailer
+display_name	app/models/user.rb	/^  def display_name() profile.display_name end$/;"	f	class:User
+display_name=	app/models/user.rb	/^  def display_name=(name) profile.display_name = name end$/;"	f	class:User
+do_request	spec/api/v1/profiles_spec.rb	/^  def do_request(options={  })$/;"	f
+do_request	spec/api/v1/question_spec.rb	/^  def do_request(options={})$/;"	f
+down	db/migrate/20140702043456_create_impressions_table.rb	/^  def self.down$/;"	F	class:CreateImpressionsTable
+down	db/migrate/20140822020849_create_delayed_jobs.rb	/^  def self.down$/;"	F	class:CreateDelayedJobs
+edit	app/controllers/profiles_controller.rb	/^  def edit$/;"	f	class:ProfilesController
+extension_white_list	app/uploaders/avatar_file_uploader.rb	/^  def extension_white_list$/;"	f	class:AvatarFileUploader
+find_for_oauth	app/models/user.rb	/^  def self.find_for_oauth(auth)$/;"	F	class:User
+guest_abilities	app/models/ability.rb	/^  def guest_abilities$/;"	f	class:Ability
+index	app/controllers/api/v1/answers_controller.rb	/^  def index$/;"	f	class:Api
+index	app/controllers/api/v1/questions_controller.rb	/^  def index$/;"	f	class:Api
+init_points	app/models/answer.rb	/^  def init_points$/;"	f	class:Answer
+initialize	app/models/ability.rb	/^  def initialize(user)$/;"	f	class:Ability
+location	app/decorators/profile_decorator.rb	/^  def location$/;"	f	class:ProfileDecorator
+login_user	spec/support/controller_macros.rb	/^  def login_user$/;"	f	class:ControllerMacros
+make_the_best	app/models/answer.rb	/^  def make_the_best$/;"	f	class:Answer
+mark_the_best	app/controllers/answers_controller.rb	/^  def mark_the_best$/;"	f	class:AnswersController
+max_per_window	lib/middleware/daily_rate_limit.rb	/^  def max_per_window(request)$/;"	f	class:DailyRateLimit
+me	app/controllers/api/v1/profiles_controller.rb	/^  def me$/;"	f	class:Api
+member_since	app/decorators/profile_decorator.rb	/^  def member_since$/;"	f	class:ProfileDecorator
+mock_auth_hash	spec/support/omniauth_macros.rb	/^  def mock_auth_hash$/;"	f	class:OmniauthMacros
+need_protection?	lib/middleware/daily_rate_limit.rb	/^  def need_protection?(request)$/;"	f	class:DailyRateLimit
+new_with_session	app/models/user.rb	/^  def self.new_with_session(params, session)$/;"	F	class:User
+points_for_answer	app/models/user.rb	/^  def points_for_answer() answers.count end$/;"	f	class:User
+points_for_answer_own_question	app/models/user.rb	/^  def points_for_answer_own_question() answers.sum :self_answer end$/;"	f	class:User
+points_for_best_answer	app/models/user.rb	/^  def points_for_best_answer() answers.sum :best_graid end$/;"	f	class:User
+points_for_first_answer	app/models/user.rb	/^  def points_for_first_answer() answers.sum :the_first end$/;"	f	class:User
+profile_params	app/controllers/profiles_controller.rb	/^  def profile_params$/;"	f	class:ProfilesController
+question_params	app/controllers/api/v1/questions_controller.rb	/^  def question_params$/;"	f	class:Api
+question_params	app/controllers/questions_controller.rb	/^  def question_params$/;"	f	class:QuestionsController
+questions_vote_rate	app/models/vote.rb	/^  def self.questions_vote_rate(user)$/;"	F	class:Vote
+real_name	app/decorators/profile_decorator.rb	/^  def real_name$/;"	f	class:ProfileDecorator
+real_name	app/models/user.rb	/^  def real_name() profile.real_name end$/;"	f	class:User
+real_name=	app/models/user.rb	/^  def real_name=(name) profile.real_name = name end$/;"	f	class:User
+reputation	app/models/user.rb	/^  def reputation() profile.rating end$/;"	f	class:User
+reputation=	app/models/user.rb	/^  def reputation=(name) profile.rating = name end$/;"	f	class:User
+resource	app/controllers/profiles_controller.rb	/^  def resource$/;"	f	class:ProfilesController
+save_tag_names	app/models/question.rb	/^  def save_tag_names$/;"	f	class:Question
+set_author	app/controllers/questions_controller.rb	/^  def set_author$/;"	f	class:QuestionsController
+setup_ext_attr	app/helpers/users_helper.rb	/^  def setup_ext_attr(user)$/;"	f	class:UsersHelper
+show	app/controllers/api/v1/questions_controller.rb	/^  def show$/;"	f	class:Api
+sign_in	spec/support/acceptance_macros.rb	/^  def sign_in(user)$/;"	f	class:AcceptanceMacros
+sign_in_author?	app/helpers/questions_helper.rb	/^  def sign_in_author?(question, user=current_user)$/;"	f	class:QuestionsHelper
+store_dir	app/uploaders/avatar_file_uploader.rb	/^  def store_dir$/;"	f	class:AvatarFileUploader
+store_dir	app/uploaders/file_uploader.rb	/^  def store_dir$/;"	f	class:FileUploader
+summary_votes	app/models/answer.rb	/^  def summary_votes$/;"	f	class:Answer
+summary_votes	app/models/question.rb	/^  def summary_votes() votes.sum :voice end$/;"	f	class:Question
+tag_names	app/models/question.rb	/^  def tag_names() @tag_names || tags.pluck(:name).join(' ') end$/;"	f	class:Question
+up	db/migrate/20140702043456_create_impressions_table.rb	/^  def self.up$/;"	F	class:CreateImpressionsTable
+up	db/migrate/20140822020849_create_delayed_jobs.rb	/^  def self.up$/;"	F	class:CreateDelayedJobs
+update	app/controllers/comments_controller.rb	/^  def update$/;"	f	class:CommentsController
+update	app/controllers/profiles_controller.rb	/^  def update$/;"	f	class:ProfilesController
+update_answers_stat	app/models/question.rb	/^  def update_answers_stat$/;"	f	class:Question
+update_reputation	app/models/question.rb	/^  def update_reputation$/;"	f	class:Question
+update_votes_stat	app/models/question.rb	/^  def update_votes_stat$/;"	f	class:Question
+user_abilities	app/models/ability.rb	/^  def user_abilities(user)$/;"	f	class:Ability
+user_rate_limit	lib/middleware/daily_rate_limit.rb	/^  def user_rate_limit(env)$/;"	f	class:DailyRateLimit
+vote	app/controllers/answers_controller.rb	/^  def vote$/;"	f	class:AnswersController
+vote	app/controllers/questions_controller.rb	/^  def vote$/;"	f	class:QuestionsController
+vote	app/models/answer.rb	/^  def vote(user, rate)$/;"	f	class:Answer
+vote	app/models/question.rb	/^  def vote(user, rate)$/;"	f	class:Question
+vote_rate	app/models/vote.rb	/^  def self.vote_rate(user)$/;"	F	class:Vote
+voted_by?	app/models/answer.rb	/^  def voted_by?(user)$/;"	f	class:Answer
+voted_by?	app/models/question.rb	/^  def voted_by?(user) Vote.exists? user: user, votable: self end$/;"	f	class:Question
+website	app/decorators/profile_decorator.rb	/^  def website$/;"	f	class:ProfileDecorator

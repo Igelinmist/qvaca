@@ -1,7 +1,8 @@
 class Answer < ActiveRecord::Base
   validates :body, presence: true
 
-  before_save :init_points
+  # before_save :init_points
+  after_create :calculate_rating
 
   belongs_to :user
   belongs_to :question
@@ -49,5 +50,11 @@ class Answer < ActiveRecord::Base
 
   def check_the_self_answer(user_id)
     self.self_answer = 1 if self.question.user == self.user
+  end
+
+  private
+
+  def calculate_rating
+    reputation = Reputation.delay.calculate(self)
   end
 end

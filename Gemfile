@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
+gem 'rails', '~>4.1.4'
 
 gem 'pg'
 
@@ -49,7 +49,13 @@ gem 'active_model_serializers'
 gem 'oj'
 gem 'oj_mimic_json'
 gem 'redis-throttle', git: 'https://github.com/andreareginato/redis-throttle.git'
-
+gem 'redis'
+gem 'sidekiq'
+gem 'sidetiq'
+gem 'sinatra', '>=1.3.0', require: nil
+gem 'mysql2'
+gem 'thinking-sphinx'
+gem 'will_paginate'
 
 group :development,:test do
   gem 'rspec-rails'

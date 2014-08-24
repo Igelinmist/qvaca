@@ -1,5 +1,6 @@
 = link_to 'Разместить вопрос', new_question_path
 h1 Список вопросов
+= will_paginate collection
 table
   tbody
   	-collection.each do |question|

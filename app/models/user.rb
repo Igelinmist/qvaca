@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
 
   def avatar=(name) profile.avatar = name end
 
+  def reputation() profile.rating end
+
+  def reputation=(name) profile.rating = name end
+
   def points_for_answer() answers.count end
 
   def points_for_first_answer() answers.sum :the_first end
@@ -54,6 +58,12 @@ class User < ActiveRecord::Base
         user = User.create
       end
       user
+    end
+  end
+
+  def self.send_daily_digest
+    find_each.each do |user|
+      DailyMailer.delay.digest(user)
     end
   end
 

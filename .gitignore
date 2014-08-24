@@ -24,3 +24,5 @@ doc/
 .DS_Store
 .idea
 .secret
+config/*.sphinx.conf
+db/sphinx
