@@ -8,7 +8,6 @@ class DailyMailer < ActionMailer::Base
   #
   def digest(user)
     @greeting = "Hi"
-
     mail to: user.email
   end
 end

@@ -5,7 +5,7 @@ class AnswerObserver < ActiveRecord::Observer
     user.save!
   end
 
-  # def after_save(answer)
-  #   answer.question.update_answers_stat
-  # end
+  def after_save(answer)
+    answer.question.update_answers_stat
+  end
 end

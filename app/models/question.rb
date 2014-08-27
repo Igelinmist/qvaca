@@ -3,7 +3,6 @@ class Question < ActiveRecord::Base
   attr_writer :tag_names
 
   before_save :save_tag_names
-  after_create :update_reputation
 
   validates :title, length: { minimum: 15 }
   validates :title, presence: true
@@ -54,17 +53,6 @@ class Question < ActiveRecord::Base
     if @tag_names
       self.tags = @tag_names.split.map { |name| Tag.where(name: name).first_or_create! }
     end
-  end
-
-  private
-
-  def update_reputation
-    self.delay.calculate_reputation
-  end
-
-  def calculate_reputation
-    reputation = Reputation.calculate(self)
-    self.user.update(reputation: reputation)
   end
 
 end
