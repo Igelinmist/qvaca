@@ -13,11 +13,19 @@ h1 Результаты поиска
 
   .tab-content
     .tab-pane.active#tab1
-      =@result_all
+      -@result_all.each do |res|
+        = search_link(res)
+        br
     .tab-pane#tab2
-      =@result_question
+      -@result_question.each do |res|
+        = search_link(res)
+        br
     .tab-pane#tab3
-      =@result_answer
+      -@result_answer.each do |res|
+        = search_link(res)
+        br
     .tab-pane#tab4
-      =@result_comment
+      -@result_comment.each do |res|
+        = search_link(res)
+        br
 
