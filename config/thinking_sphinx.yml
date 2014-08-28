@@ -1,5 +1,4 @@
 test:
-  mysql141: 9307
-
+  mysql41: 9307
 development:
-  mysql141: 9306
+  mysql41: 9306

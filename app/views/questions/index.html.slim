@@ -1,3 +1,8 @@
+= form_tag search_path, method: :get do
+  .field
+    =text_field_tag :inclusion, params[:inclusion]
+    = submit_tag "Поиск", name: nil
+
 = link_to 'Разместить вопрос', new_question_path
 h1 Список вопросов
 = will_paginate collection, previous_label: h("<"), next_label: h(">")

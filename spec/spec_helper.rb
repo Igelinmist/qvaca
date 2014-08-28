@@ -30,6 +30,10 @@ Spork.prefork do
 
     config.extend ControllerMacros, type: :controller
     config.include OmniauthMacros
+
+    config.include SphinxHelpers, type: :feature
+
+
     # ## Mock Framework
     #
     # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -56,6 +60,7 @@ Spork.prefork do
     # the seed, which is printed after each run.
     #     --seed 1234
     config.order = "random"
+
   end
 
   OmniAuth.config.test_mode = true

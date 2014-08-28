@@ -1,0 +1,23 @@
+h1 Результаты поиска
+
+.tabbable
+  ul.nav.nav-tabs
+    li.active
+      =link_to 'Все', '#tab1', data: { toggle: 'tab' }
+    li
+      =link_to 'Вопросы', '#tab2', data: { toggle: 'tab' }
+    li
+      =link_to 'Ответы', '#tab3', data: { toggle: 'tab' }
+    li
+      =link_to 'Комментарии', '#tab4', data: { toggle: 'tab' }
+
+  .tab-content
+    .tab-pane.active#tab1
+      =@result_all
+    .tab-pane#tab2
+      =@result_question
+    .tab-pane#tab3
+      =@result_answer
+    .tab-pane#tab4
+      =@result_comment
+

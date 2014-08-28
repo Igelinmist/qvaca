@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+
   concern :votable do
     post :voteup, on: :member, action: :vote, rate: 1
     post :votedown, on: :member, action: :vote, rate: -1
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
     concerns [:commentable, :votable]
     patch :thebest, on: :member, action: :mark_the_best
   end
+
+  get '/search', to: 'finder#search', as: 'search'
 
   namespace :api do
     namespace :v1 do
