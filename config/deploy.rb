@@ -16,13 +16,7 @@ set :linked_files, %w{config/database.yml .env}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :deploy do
-  desc 'Provision env before assets:precompile'
-  task :fix_bug_env do
-    set :rails_env, (fetch(:rails_env) || fetch(:stage))
-  end
 
-  before "deploy:assets:precompile", "deploy:fix_bug_env"
-  
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
