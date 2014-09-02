@@ -4,9 +4,12 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{deployer@127.0.0.1}
-role :web, %w{deployer@127.0.0.1}
-role :db,  %w{deployer@127.0.0.1}
+# role :app, %w{deployer@127.0.0.1}
+role :app, %w{deployer@178.62.159.101}
+# role :web, %w{deployer@127.0.0.1}
+role :web, %w{deployer@178.62.159.101}
+# role :db,  %w{deployer@127.0.0.1}
+role :db,  %w{deployer@178.62.159.101}
 
 set :rails_env, :production
 
@@ -16,8 +19,8 @@ set :rails_env, :production
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server '127.0.0.1', user: 'deployer', roles: %w{web app db}, primary: true
-# server '178.62.159.101', user: 'deployer', roles: %w{web app db}, primary: true
+# server '127.0.0.1', user: 'deployer', roles: %w{web app db}, primary: true
+server '178.62.159.101', user: 'deployer', roles: %w{web app db}, primary: true
 
 
 # Custom SSH Options
